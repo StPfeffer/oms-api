@@ -1,10 +1,10 @@
-package pfeffer.oms.oms;
+package pfeffer.oms;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OmsApplicationTests {
+class OMSApplicationTests {
 
 	@Test
 	void contextLoads() {

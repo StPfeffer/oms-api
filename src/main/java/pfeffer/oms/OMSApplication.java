@@ -1,13 +1,13 @@
-package pfeffer.oms.oms;
+package pfeffer.oms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OmsApplication {
+public class OMSApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OmsApplication.class, args);
+		SpringApplication.run(OMSApplication.class, args);
 	}
 
 }
