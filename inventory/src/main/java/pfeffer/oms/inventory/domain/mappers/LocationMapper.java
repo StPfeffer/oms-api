@@ -15,6 +15,8 @@ public class LocationMapper {
         dto.setName(bo.getName());
         dto.setDescription(bo.getDescription());
         dto.setAddress(AddressMapper.toDTO(bo.getAddress()));
+        dto.setCreatedAt(bo.getCreatedAt());
+        dto.setUpdatedAt(bo.getUpdatedAt());
 
         return dto;
     }
@@ -28,6 +30,8 @@ public class LocationMapper {
         bo.setName(dto.getName());
         bo.setDescription(dto.getDescription());
         bo.setAddress(AddressMapper.toBO(dto.getAddress()));
+        bo.setCreatedAt(dto.getCreatedAt());
+        bo.setUpdatedAt(dto.getUpdatedAt());
 
         return bo;
     }
