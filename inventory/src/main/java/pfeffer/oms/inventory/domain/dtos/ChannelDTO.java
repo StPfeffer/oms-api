@@ -5,18 +5,18 @@ public class ChannelDTO {
     /**
      * O ID do canal de vendas.
      */
-    private Integer id;
+    private Long id;
 
     /**
      * O nome do canal de vendas.
      */
     private String name;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
