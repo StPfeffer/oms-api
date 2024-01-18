@@ -15,6 +15,11 @@ public final class OrderDTO {
     private String channelId;
 
     /**
+     * O ID da filial no qual o pedido está vinculado.
+     */
+    private String locationId;
+
+    /**
      * A data na qual o pedido foi criado no OMS.
      */
     private Date createdAt;
