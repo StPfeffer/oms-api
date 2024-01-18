@@ -10,7 +10,7 @@ public class StockDTO {
     /**
      * O ID da filial na qual o estoque pertence.
      */
-    private String locationId;
+    private LocationDTO location;
 
     /**
      * O saldo total para o respectivo SKU.

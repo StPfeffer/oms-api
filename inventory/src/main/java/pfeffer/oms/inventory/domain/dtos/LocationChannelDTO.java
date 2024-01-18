@@ -7,7 +7,7 @@ public class LocationChannelDTO {
     /**
      * O ID do canal de vendas.
      */
-    private String channelId;
+    private ChannelDTO channel;
 
     /**
      * As filiais vinculadas ao canal de vendas.
