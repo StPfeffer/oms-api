@@ -1,5 +1,7 @@
 package pfeffer.oms.core.domain.dtos;
 
+import pfeffer.oms.core.domain.enums.EnumState;
+
 public class AddressDTO {
 
     private String zip;
@@ -8,11 +10,13 @@ public class AddressDTO {
 
     private String address;
 
+    private String addressComplement;
+
     private String neighbourhood;
 
     private String city;
 
-    private String state;
+    private EnumState state;
 
     private String country;
 
