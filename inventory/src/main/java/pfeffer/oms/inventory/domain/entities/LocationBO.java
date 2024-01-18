@@ -1,6 +1,7 @@
 package pfeffer.oms.inventory.domain.entities;
 
 import pfeffer.oms.core.domain.dtos.AddressDTO;
+import pfeffer.oms.core.domain.entities.AddressBO;
 
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class LocationBO {
 
     private String description;
 
-    private AddressDTO address;
+    private AddressBO address;
 
     private Date createdAt;
 
@@ -62,11 +63,11 @@ public class LocationBO {
         this.description = description;
     }
 
-    public AddressDTO getAddress() {
+    public AddressBO getAddress() {
         return address;
     }
 
-    public void setAddress(AddressDTO address) {
+    public void setAddress(AddressBO address) {
         this.address = address;
     }
 
