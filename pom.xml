@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pfeffer.oms</groupId>
-	<artifactId>oms-order</artifactId>
+	<artifactId>oms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>oms</name>
 	<description>Demo project for Spring Boot</description>
