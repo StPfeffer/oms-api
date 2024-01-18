@@ -6,21 +6,21 @@ import pfeffer.oms.inventory.domain.entities.ChannelBO;
 public class ChannelMapper {
 
     public static ChannelDTO toDTO(ChannelBO bo) {
-        ChannelDTO newChannelDTO = new ChannelDTO();
+        ChannelDTO dto = new ChannelDTO();
 
-        newChannelDTO.setId(bo.getId());
-        newChannelDTO.setName(bo.getName());
+        dto.setId(bo.getId());
+        dto.setName(bo.getName());
 
-        return newChannelDTO;
+        return dto;
     }
 
     public static ChannelBO toBO(ChannelDTO dto) {
-        ChannelBO newChannelBO = new ChannelBO();
+        ChannelBO bo = new ChannelBO();
 
-        newChannelBO.setId(dto.getId());
-        newChannelBO.setName(dto.getName());
+        bo.setId(dto.getId());
+        bo.setName(dto.getName());
 
-        return newChannelBO;
+        return bo;
     }
 
 }
