@@ -1,5 +1,7 @@
 package pfeffer.oms.inventory.domain.dtos;
 
+import pfeffer.oms.inventory.domain.enums.EnumStockType;
+
 public class StockDTO {
 
     /**
@@ -21,6 +23,11 @@ public class StockDTO {
      * A proteção de estoque para o respectivo SKU.
      */
     private Integer threshold;
+
+    /**
+     * O tipo do estoque.
+     */
+    private EnumStockType stockType;
 
     /**
      * Determina se esse saldo está disponível para o respectivo SKU.
