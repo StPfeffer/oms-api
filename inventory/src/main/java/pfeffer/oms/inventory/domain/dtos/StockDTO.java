@@ -22,4 +22,9 @@ public class StockDTO {
      */
     private Integer threshold;
 
+    /**
+     * Determina se esse saldo está disponível para o respectivo SKU.
+     */
+    private boolean enabled;
+
 }
