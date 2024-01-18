@@ -16,4 +16,8 @@ public class AddressDTO {
 
     private String country;
 
+    private Integer latitude;
+
+    private Integer longitude;
+
 }
