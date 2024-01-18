@@ -1,13 +1,13 @@
-package pfeffer.oms;
+package pfeffer.oms.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OMSApplication {
+public class OMSOrderApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OMSApplication.class, args);
+		SpringApplication.run(OMSOrderApplication.class, args);
 	}
 
 }

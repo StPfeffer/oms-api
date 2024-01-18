@@ -1,4 +1,4 @@
-package pfeffer.oms.domain.dtos;
+package pfeffer.oms.order.domain.dtos;
 
 import java.util.Date;
 
