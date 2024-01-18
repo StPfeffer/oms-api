@@ -7,7 +7,7 @@ public final class OrderDTO {
     /**
      * O ID do pedido para seu respectivo canal de vendas.
      */
-    private String orderId;
+    private String id;
 
     /**
      * O ID do canal de vendas no qual o pedido se originou.
@@ -24,12 +24,12 @@ public final class OrderDTO {
      */
     private Date updatedAt;
 
-    public String getOrderId() {
-        return orderId;
+    public String getId() {
+        return id;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getChannelId() {
