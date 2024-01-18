@@ -1,5 +1,6 @@
 package pfeffer.oms.inventory.domain.mappers;
 
+import pfeffer.oms.core.domain.mappers.AddressMapper;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
 
@@ -13,7 +14,7 @@ public class LocationMapper {
         dto.setAlias(bo.getAlias());
         dto.setName(bo.getName());
         dto.setDescription(bo.getDescription());
-        dto.setAddress(bo.getAddress());
+        dto.setAddress(AddressMapper.toDTO(bo.getAddress()));
 
         return dto;
     }
@@ -26,7 +27,7 @@ public class LocationMapper {
         bo.setAlias(dto.getAlias());
         bo.setName(dto.getName());
         bo.setDescription(dto.getDescription());
-        bo.setAddress(dto.getAddress());
+        bo.setAddress(AddressMapper.toBO(dto.getAddress()));
 
         return bo;
     }
