@@ -37,21 +37,6 @@ public class ChannelService implements IChannelRepository {
     }
 
     @Transactional
-    public ChannelDTO updateChannel(ChannelDTO dto) {
-        ChannelDTO entity = this.findChannelByName(dto.getName());
-
-        if (entity == null) {
-            throw new RuntimeException("Não existe um canal cadastrado para esse nome");
-        }
-
-        entity.setName(dto.getName());
-
-        this.saveChannel(entity);
-
-        return entity;
-    }
-
-    @Transactional
     public void saveChannel(ChannelDTO dto) {
         JakartaChannel entity = JakartaChannelMapper.toEntity(ChannelMapper.toBO(dto));
 
@@ -60,7 +45,13 @@ public class ChannelService implements IChannelRepository {
 
     @Override
     public ChannelDTO findChannelByName(String name) {
-        return this.repository.findChannelByName(name);
+        ChannelDTO channel = this.repository.findChannelByName(name);
+
+        if (channel == null) {
+            throw new RuntimeException("Não existe um canal para o ID informado");
+        }
+
+        return channel;
     }
 
 }
