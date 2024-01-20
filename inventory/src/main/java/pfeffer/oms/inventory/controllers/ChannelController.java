@@ -41,11 +41,4 @@ public class ChannelController {
         return new ResponseEntity<>(channel, HttpStatus.OK);
     }
 
-    @PutMapping
-    public ResponseEntity<ChannelDTO> updateChannel(@RequestBody ChannelDTO channel) {
-        ChannelDTO updatedChannel = this.service.updateChannel(channel);
-
-        return new ResponseEntity<>(updatedChannel, HttpStatus.ACCEPTED);
-    }
-
 }
