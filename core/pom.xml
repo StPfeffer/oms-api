@@ -7,11 +7,14 @@
     <parent>
         <groupId>pfeffer.oms</groupId>
         <artifactId>oms</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
 
     <groupId>pfeffer.oms.core</groupId>
     <artifactId>core</artifactId>
+    <version>${core.application.version}</version>
+    <name>core</name>
+    <description>O serviço de Core da aplicação</description>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>

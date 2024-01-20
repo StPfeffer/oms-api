@@ -12,7 +12,7 @@
 
 	<groupId>pfeffer.oms</groupId>
 	<artifactId>oms</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<name>oms</name>
 	<description>Demo project for Spring Boot</description>
@@ -25,6 +25,9 @@
 
 	<properties>
 		<java.version>${java.version}</java.version>
+		<core.application.version>0.0.1</core.application.version>
+		<inventory.application.version>0.0.1</inventory.application.version>
+		<order.application.version>0.0.1</order.application.version>
 	</properties>
 
 	<dependencies>

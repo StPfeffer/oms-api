@@ -7,16 +7,34 @@
     <parent>
         <groupId>pfeffer.oms</groupId>
         <artifactId>oms</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
 
     <groupId>pfeffer.oms.order</groupId>
     <artifactId>order</artifactId>
+    <version>${order.application.version}</version>
+    <name>order</name>
+    <description>O serviço de Order da aplicaçao</description>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>pfeffer.oms.core</groupId>
+            <artifactId>core</artifactId>
+            <version>${core.application.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>pfeffer.oms.inventory</groupId>
+            <artifactId>inventory</artifactId>
+            <version>${inventory.application.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>
