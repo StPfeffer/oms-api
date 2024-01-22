@@ -36,7 +36,7 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
     }
 
     public void canCreate(JakartaChannel entity) {
-        ChannelDTO channel = this.findChannelByChannelId(entity.getChannelId());
+        ChannelDTO channel = this.findChannelByChannelId(entity.getName());
 
         if (channel != null) {
             throw new RuntimeException("Já existe um canal de vendas cadastrado com este nome");

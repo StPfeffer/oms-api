@@ -18,7 +18,7 @@ public class JakartaChannel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String channelId;
+    @Column(name = "name", nullable = false, unique = true)
+    private String name;
 
 }
