@@ -8,7 +8,7 @@ public class ChannelMapper {
     public static ChannelDTO toDTO(ChannelBO bo) {
         ChannelDTO dto = new ChannelDTO();
 
-        dto.setName(bo.getName());
+        dto.setChannelId(bo.getChannelId());
 
         return dto;
     }
@@ -16,7 +16,7 @@ public class ChannelMapper {
     public static ChannelBO toBO(ChannelDTO dto) {
         ChannelBO bo = new ChannelBO();
 
-        bo.setName(dto.getName());
+        bo.setChannelId(dto.getChannelId());
 
         return bo;
     }

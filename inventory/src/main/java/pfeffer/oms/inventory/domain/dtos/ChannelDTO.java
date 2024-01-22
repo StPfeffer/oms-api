@@ -5,14 +5,14 @@ public class ChannelDTO {
     /**
      * O nome do canal de vendas.
      */
-    private String name;
+    private String channelId;
 
-    public String getName() {
-        return name;
+    public String getChannelId() {
+        return channelId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setChannelId(String channelId) {
+        this.channelId = channelId;
     }
 
 }

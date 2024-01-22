@@ -36,7 +36,7 @@ public class ChannelController {
 
     @GetMapping("{channelId}")
     public ResponseEntity<ChannelDTO> getChannel(@PathVariable String channelId) {
-        ChannelDTO channel = this.service.findChannelByName(channelId);
+        ChannelDTO channel = this.service.findChannelByChannelId(channelId);
 
         return new ResponseEntity<>(channel, HttpStatus.OK);
     }

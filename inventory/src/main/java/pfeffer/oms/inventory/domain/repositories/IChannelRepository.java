@@ -4,6 +4,6 @@ import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
 
 public interface IChannelRepository {
 
-    ChannelDTO findChannelByName(String name);
+    ChannelDTO findChannelByChannelId(String channelId);
 
 }
