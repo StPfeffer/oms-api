@@ -36,13 +36,6 @@ public class ChannelService implements IChannelRepository {
         ).toList();
     }
 
-    @Transactional
-    public void saveChannel(ChannelDTO dto) {
-        JakartaChannel entity = JakartaChannelMapper.toEntity(ChannelMapper.toBO(dto));
-
-        this.repository.save(entity);
-    }
-
     @Override
     public ChannelDTO findChannelByChannelId(String channelId) {
         ChannelDTO channel = this.repository.findChannelByChannelId(channelId);
