@@ -14,6 +14,7 @@ public class StockMapper {
         dto.setThreshold(bo.getThreshold());
         dto.setStockType(bo.getStockType());
         dto.setEnabled(bo.isEnabled());
+        dto.setUpdatedAt(bo.getUpdatedAt());
 
         return dto;
     }
@@ -27,6 +28,7 @@ public class StockMapper {
         bo.setThreshold(dto.getThreshold());
         bo.setStockType(dto.getStockType());
         bo.setEnabled(dto.isEnabled());
+        bo.setUpdatedAt(dto.getUpdatedAt());
 
         return bo;
     }

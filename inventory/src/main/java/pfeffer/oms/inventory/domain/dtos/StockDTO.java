@@ -2,6 +2,8 @@ package pfeffer.oms.inventory.domain.dtos;
 
 import pfeffer.oms.inventory.domain.enums.EnumStockType;
 
+import java.util.Date;
+
 public class StockDTO {
 
     /**
@@ -33,6 +35,11 @@ public class StockDTO {
      * Determina se esse saldo está disponível para o respectivo SKU.
      */
     private boolean enabled;
+
+    /**
+     * A data de atualização do estoque.
+     */
+    private Date updatedAt;
 
     public String getSkuId() {
         return skuId;
@@ -80,6 +87,14 @@ public class StockDTO {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }

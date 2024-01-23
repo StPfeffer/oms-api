@@ -8,6 +8,8 @@ import lombok.Setter;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.enums.EnumStockType;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -38,5 +40,9 @@ public class JakartaStock {
 
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = false)
+    private Date updatedAt;
 
 }

@@ -3,6 +3,8 @@ package pfeffer.oms.inventory.domain.entities;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.enums.EnumStockType;
 
+import java.util.Date;
+
 public class StockBO {
 
     private String skuId;
@@ -16,6 +18,8 @@ public class StockBO {
     private EnumStockType stockType;
 
     private boolean enabled;
+
+    private Date updatedAt;
 
     public String getSkuId() {
         return skuId;
@@ -63,6 +67,14 @@ public class StockBO {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }
