@@ -4,6 +4,6 @@ import pfeffer.oms.inventory.domain.entities.LocationBO;
 
 public interface ILocationDataBaseRepository extends IAbstractDataBaseRepository<LocationBO> {
 
-    LocationBO update(LocationBO bo);
+    LocationBO update(String locationId, LocationBO bo);
 
 }
