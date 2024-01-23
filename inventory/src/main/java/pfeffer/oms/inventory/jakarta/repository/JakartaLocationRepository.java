@@ -25,9 +25,13 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     @Override
     public LocationBO persist(LocationBO bo) {
-        JakartaLocation entity = JakartaLocationMapper.toEntity(bo);
+        LocationDTO location = this.findLocationByLocationId(bo.getId());
 
-        this.canCreate(entity);
+        if (location != null) {
+            throw new RuntimeException("Já existe uma filial cadastrada com esse ID");
+        }
+
+        JakartaLocation entity = JakartaLocationMapper.toEntity(bo);
 
         em.persist(entity);
         em.flush();
@@ -35,12 +39,22 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         return JakartaLocationMapper.toDomain(entity);
     }
 
-    public void canCreate(JakartaLocation entity) {
-        LocationDTO location = this.findLocationByLocationId(entity.getLocationId());
+    @Override
+    public LocationBO update(String locationId, LocationBO bo) {
+        LocationDTO location = findLocationByLocationId(locationId);
 
-        if (location != null) {
-            throw new RuntimeException("Já existe uma filial cadastrada com esse ID");
+        if (location == null)  {
+            throw new RuntimeException("Não existe uma filial cadastrada para o ID informado");
         }
+
+        bo.setId(locationId);
+
+        JakartaLocation entity = JakartaLocationMapper.toEntity(bo);
+
+        em.merge(entity);
+        em.flush();
+
+        return JakartaLocationMapper.toDomain(entity);
     }
 
     @Override
