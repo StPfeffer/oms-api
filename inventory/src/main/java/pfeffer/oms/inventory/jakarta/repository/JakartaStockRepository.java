@@ -1,6 +1,7 @@
 package pfeffer.oms.inventory.jakarta.repository;
 
 import jakarta.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.entities.StockBO;
@@ -14,6 +15,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
 
     private final EntityManager em;
 
+    @Autowired
     public JakartaStockRepository(EntityManager em) {
         super(JakartaStock.class, em);
         this.em = em;

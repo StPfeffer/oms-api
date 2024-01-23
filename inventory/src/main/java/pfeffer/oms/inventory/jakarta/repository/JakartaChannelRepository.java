@@ -3,6 +3,7 @@ package pfeffer.oms.inventory.jakarta.repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
@@ -18,6 +19,7 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
 
     private final EntityManager em;
 
+    @Autowired
     public JakartaChannelRepository(EntityManager em) {
         super(JakartaChannel.class, em);
         this.em = em;

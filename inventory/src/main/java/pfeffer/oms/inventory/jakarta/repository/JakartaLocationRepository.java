@@ -3,6 +3,7 @@ package pfeffer.oms.inventory.jakarta.repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
@@ -18,6 +19,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     private final EntityManager em;
 
+    @Autowired
     public JakartaLocationRepository(EntityManager em) {
         super(JakartaLocation.class, em);
         this.em = em;
