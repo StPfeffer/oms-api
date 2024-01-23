@@ -1,4 +1,4 @@
-package pfeffer.oms.inventory.jakarta.repository;
+package pfeffer.oms.inventory.infra.jakarta.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -8,11 +8,12 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
 import pfeffer.oms.inventory.domain.entities.ChannelBO;
+import pfeffer.oms.inventory.domain.exceptions.ChannelException;
 import pfeffer.oms.inventory.domain.mappers.ChannelMapper;
 import pfeffer.oms.inventory.domain.repositories.IChannelDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.IChannelRepository;
-import pfeffer.oms.inventory.jakarta.mappers.JakartaChannelMapper;
-import pfeffer.oms.inventory.jakarta.model.JakartaChannel;
+import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelMapper;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 
 @Service
 public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel, Long> implements IChannelDataBaseRepository, IChannelRepository {
@@ -41,7 +42,7 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
         ChannelDTO channel = this.findChannelByChannelId(entity.getName());
 
         if (channel != null) {
-            throw new RuntimeException("Já existe um canal de vendas cadastrado com este nome");
+            throw new ChannelException("Já existe um canal de vendas cadastrado com este nome", 400);
         }
     }
 

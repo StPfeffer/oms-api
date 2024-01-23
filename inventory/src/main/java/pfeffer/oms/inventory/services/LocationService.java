@@ -4,12 +4,13 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
+import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
 import pfeffer.oms.inventory.domain.repositories.ILocationRepository;
 import pfeffer.oms.inventory.domain.usecases.CreateLocation;
 import pfeffer.oms.inventory.domain.usecases.UpdateLocation;
-import pfeffer.oms.inventory.jakarta.mappers.JakartaLocationMapper;
-import pfeffer.oms.inventory.jakarta.repository.JakartaLocationRepository;
+import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaLocationMapper;
+import pfeffer.oms.inventory.infra.jakarta.repository.JakartaLocationRepository;
 
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class LocationService implements ILocationRepository {
         LocationDTO location = this.repository.findLocationByLocationId(locationId);
 
         if (location == null) {
-            throw new RuntimeException("Não existe um canal para o ID informado");
+            throw new LocationException("Não existe uma filial cadastrada para o ID informado", 404);
         }
 
         return location;

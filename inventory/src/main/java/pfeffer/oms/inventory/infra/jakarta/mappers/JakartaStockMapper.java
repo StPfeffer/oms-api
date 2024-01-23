@@ -1,7 +1,7 @@
-package pfeffer.oms.inventory.jakarta.mappers;
+package pfeffer.oms.inventory.infra.jakarta.mappers;
 
 import pfeffer.oms.inventory.domain.entities.StockBO;
-import pfeffer.oms.inventory.jakarta.model.JakartaStock;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaStock;
 
 public class JakartaStockMapper {
 

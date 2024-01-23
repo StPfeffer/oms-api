@@ -1,8 +1,8 @@
-package pfeffer.oms.inventory.jakarta.mappers;
+package pfeffer.oms.inventory.infra.jakarta.mappers;
 
 import pfeffer.oms.core.infra.jakarta.mappers.JakartaAddressMapper;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
-import pfeffer.oms.inventory.jakarta.model.JakartaLocation;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
 public class JakartaLocationMapper {
 

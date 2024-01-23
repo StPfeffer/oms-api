@@ -4,12 +4,12 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
+import pfeffer.oms.inventory.domain.exceptions.ChannelException;
 import pfeffer.oms.inventory.domain.mappers.ChannelMapper;
 import pfeffer.oms.inventory.domain.repositories.IChannelRepository;
 import pfeffer.oms.inventory.domain.usecases.CreateChannel;
-import pfeffer.oms.inventory.jakarta.mappers.JakartaChannelMapper;
-import pfeffer.oms.inventory.jakarta.model.JakartaChannel;
-import pfeffer.oms.inventory.jakarta.repository.JakartaChannelRepository;
+import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelMapper;
+import pfeffer.oms.inventory.infra.jakarta.repository.JakartaChannelRepository;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class ChannelService implements IChannelRepository {
         ChannelDTO channel = this.repository.findChannelByChannelId(channelId);
 
         if (channel == null) {
-            throw new RuntimeException("Não existe um canal para o ID informado");
+            throw new ChannelException("Não existe um canal cadastrado para o ID informado", 400);
         }
 
         return channel;

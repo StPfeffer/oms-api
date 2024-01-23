@@ -1,4 +1,4 @@
-package pfeffer.oms.inventory.jakarta.repository;
+package pfeffer.oms.inventory.infra.jakarta.repository;
 
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.entities.StockBO;
 import pfeffer.oms.inventory.domain.repositories.IStockDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.IStockRepository;
-import pfeffer.oms.inventory.jakarta.mappers.JakartaStockMapper;
-import pfeffer.oms.inventory.jakarta.model.JakartaStock;
+import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaStockMapper;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaStock;
 
 @Service
 public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Long> implements IStockDataBaseRepository, IStockRepository {

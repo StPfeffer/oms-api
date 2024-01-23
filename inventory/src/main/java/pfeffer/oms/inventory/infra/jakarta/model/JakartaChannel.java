@@ -1,4 +1,4 @@
-package pfeffer.oms.inventory.jakarta.model;
+package pfeffer.oms.inventory.infra.jakarta.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

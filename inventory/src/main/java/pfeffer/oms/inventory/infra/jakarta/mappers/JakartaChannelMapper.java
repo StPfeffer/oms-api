@@ -1,7 +1,7 @@
-package pfeffer.oms.inventory.jakarta.mappers;
+package pfeffer.oms.inventory.infra.jakarta.mappers;
 
 import pfeffer.oms.inventory.domain.entities.ChannelBO;
-import pfeffer.oms.inventory.jakarta.model.JakartaChannel;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 
 public class JakartaChannelMapper {
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.StockDTO;
 import pfeffer.oms.inventory.domain.repositories.IStockRepository;
 import pfeffer.oms.inventory.domain.usecases.CreateStock;
-import pfeffer.oms.inventory.jakarta.repository.JakartaStockRepository;
+import pfeffer.oms.inventory.infra.jakarta.repository.JakartaStockRepository;
 
 @Service
 public class StockService implements IStockRepository {

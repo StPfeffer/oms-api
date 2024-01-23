@@ -1,4 +1,4 @@
-package pfeffer.oms.inventory.jakarta.repository;
+package pfeffer.oms.inventory.infra.jakarta.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -8,11 +8,12 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
+import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
 import pfeffer.oms.inventory.domain.repositories.ILocationDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.ILocationRepository;
-import pfeffer.oms.inventory.jakarta.mappers.JakartaLocationMapper;
-import pfeffer.oms.inventory.jakarta.model.JakartaLocation;
+import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaLocationMapper;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
 @Service
 public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocation, Long> implements ILocationDataBaseRepository, ILocationRepository {
@@ -30,7 +31,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         LocationDTO location = this.findLocationByLocationId(bo.getId());
 
         if (location != null) {
-            throw new RuntimeException("Já existe uma filial cadastrada com esse ID");
+            throw new LocationException("Já existe uma filial cadastrada com esse ID", 400);
         }
 
         JakartaLocation entity = JakartaLocationMapper.toEntity(bo);
@@ -46,7 +47,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         LocationDTO location = findLocationByLocationId(locationId);
 
         if (location == null)  {
-            throw new RuntimeException("Não existe uma filial cadastrada para o ID informado");
+            throw new LocationException("Não existe uma filial cadastrada para o ID informado", 404);
         }
 
         bo.setId(locationId);
