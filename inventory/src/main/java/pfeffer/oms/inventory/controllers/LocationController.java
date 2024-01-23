@@ -27,6 +27,13 @@ public class LocationController {
         return new ResponseEntity<>(newChannel, HttpStatus.CREATED);
     }
 
+    @PutMapping("{locationId}")
+    public ResponseEntity<LocationDTO> updateLocation(@PathVariable String locationId, @RequestBody LocationDTO location) {
+        LocationDTO newChannel = this.service.updateLocation(locationId, location);
+
+        return new ResponseEntity<>(newChannel, HttpStatus.CREATED);
+    }
+
     @GetMapping
     public ResponseEntity<List<LocationDTO>> listLocations() {
         List<LocationDTO> locations = this.service.listLocations();
