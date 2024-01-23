@@ -7,6 +7,7 @@ import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
 import pfeffer.oms.inventory.domain.repositories.ILocationRepository;
 import pfeffer.oms.inventory.domain.usecases.CreateLocation;
+import pfeffer.oms.inventory.domain.usecases.UpdateLocation;
 import pfeffer.oms.inventory.jakarta.mappers.JakartaLocationMapper;
 import pfeffer.oms.inventory.jakarta.repository.JakartaLocationRepository;
 
@@ -27,6 +28,13 @@ public class LocationService implements ILocationRepository {
         CreateLocation createLocation = new CreateLocation(repository);
 
         return createLocation.execute(dto);
+    }
+
+    @Transactional
+    public LocationDTO updateLocation(String locationId, LocationDTO dto) {
+        UpdateLocation updateLocation = new UpdateLocation(repository);
+
+        return updateLocation.execute(locationId, dto);
     }
 
     public List<LocationDTO> listLocations() {
