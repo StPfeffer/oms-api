@@ -19,10 +19,17 @@ public class StockController {
     }
 
     @PostMapping
-    public ResponseEntity<StockDTO> createLocation(@RequestBody StockDTO stock) {
+    public ResponseEntity<StockDTO> createStock(@RequestBody StockDTO stock) {
         StockDTO newStock = this.service.createStock(stock);
 
         return new ResponseEntity<>(newStock, HttpStatus.CREATED);
+    }
+
+    @PutMapping("{skuId}")
+    public ResponseEntity<StockDTO> updateStock(@PathVariable String skuId, @RequestBody StockDTO stockDTO) {
+        StockDTO updatedStock = this.service.updateStock(skuId, stockDTO);
+
+        return new ResponseEntity<>(updatedStock, HttpStatus.ACCEPTED);
     }
 
 }
