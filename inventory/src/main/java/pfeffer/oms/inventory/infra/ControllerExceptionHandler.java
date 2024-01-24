@@ -25,7 +25,7 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(InventoryException.class)
-    public ResponseEntity<ExceptionDTO> threatChannelException(InventoryException exception) {
+    public ResponseEntity<ExceptionDTO> threatInventoryException(InventoryException exception) {
         ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(), String.valueOf(exception.getStatusCode()));
 
         return switch (exception.getStatusCode()) {
