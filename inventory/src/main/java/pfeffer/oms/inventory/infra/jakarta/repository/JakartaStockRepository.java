@@ -59,7 +59,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
                 .setParameter("skuId", skuId);
 
         try {
-            return StockMapper.toDTO(JakartaStockMapper.toDomain(query.getSingleResult()));
+            return new StockMapper().toDTO(JakartaStockMapper.toDomain(query.getSingleResult()));
         } catch (NoResultException e) {
             return null;
         }
