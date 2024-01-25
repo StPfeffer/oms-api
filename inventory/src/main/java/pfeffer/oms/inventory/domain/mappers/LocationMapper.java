@@ -3,10 +3,12 @@ package pfeffer.oms.inventory.domain.mappers;
 import pfeffer.oms.core.domain.mappers.AddressMapper;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
+import pfeffer.oms.inventory.domain.interfaces.IAbstractMapper;
 
-public class LocationMapper {
+public class LocationMapper implements IAbstractMapper<LocationDTO, LocationBO> {
 
-    public static LocationDTO toDTO(LocationBO bo) {
+    @Override
+    public LocationDTO toDTO(LocationBO bo) {
         LocationDTO dto = new LocationDTO();
 
         dto.setId(bo.getId());
@@ -21,7 +23,8 @@ public class LocationMapper {
         return dto;
     }
 
-    public static LocationBO toBO(LocationDTO dto) {
+    @Override
+    public LocationBO toBO(LocationDTO dto) {
         LocationBO bo = new LocationBO();
 
         bo.setId(dto.getId());
