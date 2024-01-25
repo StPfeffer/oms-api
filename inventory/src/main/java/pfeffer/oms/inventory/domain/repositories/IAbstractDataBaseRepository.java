@@ -4,4 +4,6 @@ public interface IAbstractDataBaseRepository<BO> {
 
     BO persist(BO bo);
 
+    BO update(String id, BO bo);
+
 }
