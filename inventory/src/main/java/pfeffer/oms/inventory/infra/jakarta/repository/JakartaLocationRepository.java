@@ -66,7 +66,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
                 .setParameter("locationId", locationId);
 
         try {
-            return LocationMapper.toDTO(JakartaLocationMapper.toDomain(query.getSingleResult()));
+            return new LocationMapper().toDTO(JakartaLocationMapper.toDomain(query.getSingleResult()));
         } catch (NoResultException e) {
             return null;
         }
