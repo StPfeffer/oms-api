@@ -2,10 +2,12 @@ package pfeffer.oms.inventory.domain.mappers;
 
 import pfeffer.oms.inventory.domain.dtos.StockDTO;
 import pfeffer.oms.inventory.domain.entities.StockBO;
+import pfeffer.oms.inventory.domain.interfaces.IAbstractMapper;
 
-public class StockMapper {
+public class StockMapper implements IAbstractMapper<StockDTO, StockBO> {
 
-    public static StockDTO toDTO(StockBO bo) {
+    @Override
+    public StockDTO toDTO(StockBO bo) {
         StockDTO dto = new StockDTO();
 
         dto.setSkuId(bo.getSkuId());
@@ -19,7 +21,8 @@ public class StockMapper {
         return dto;
     }
 
-    public static StockBO toBO(StockDTO dto) {
+    @Override
+    public StockBO toBO(StockDTO dto) {
         StockBO bo = new StockBO();
 
         bo.setSkuId(dto.getSkuId());
