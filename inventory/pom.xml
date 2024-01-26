@@ -27,7 +27,6 @@
             <groupId>pfeffer.oms.core</groupId>
             <artifactId>core</artifactId>
             <version>${core.application.version}</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 

@@ -27,13 +27,11 @@
             <groupId>pfeffer.oms.core</groupId>
             <artifactId>core</artifactId>
             <version>${core.application.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>pfeffer.oms.inventory</groupId>
             <artifactId>inventory</artifactId>
             <version>${inventory.application.version}</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
