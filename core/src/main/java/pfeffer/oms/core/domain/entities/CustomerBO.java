@@ -1,5 +1,7 @@
 package pfeffer.oms.core.domain.entities;
 
+import pfeffer.oms.core.domain.enums.EnumCustomerType;
+
 import java.util.List;
 
 public class CustomerBO {
@@ -15,6 +17,8 @@ public class CustomerBO {
     private String email;
 
     private String birthdate;
+
+    private EnumCustomerType type;
 
     private List<AddressBO> addresses;
 
@@ -68,6 +72,14 @@ public class CustomerBO {
 
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public EnumCustomerType getType() {
+        return type;
+    }
+
+    public void setType(EnumCustomerType type) {
+        this.type = type;
     }
 
     public List<AddressBO> getAddresses() {
