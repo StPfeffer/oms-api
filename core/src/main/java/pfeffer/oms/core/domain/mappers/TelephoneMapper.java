@@ -11,6 +11,7 @@ public class TelephoneMapper {
         dto.setDdi(bo.getDdi());
         dto.setDdd(bo.getDdd());
         dto.setNumber(bo.getNumber());
+        dto.setType(bo.getType());
 
         return dto;
     }
@@ -21,6 +22,7 @@ public class TelephoneMapper {
         bo.setDdi(dto.getDdi());
         bo.setDdd(dto.getDdd());
         bo.setNumber(dto.getNumber());
+        bo.setType(dto.getType());
 
         return bo;
     }
