@@ -7,8 +7,8 @@ import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
 import pfeffer.oms.inventory.domain.repositories.ILocationRepository;
-import pfeffer.oms.inventory.domain.usecases.CreateLocation;
-import pfeffer.oms.inventory.domain.usecases.UpdateLocation;
+import pfeffer.oms.inventory.domain.usecases.create.CreateLocation;
+import pfeffer.oms.inventory.domain.usecases.update.UpdateLocation;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaLocationMapper;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaLocationRepository;
 
@@ -40,7 +40,7 @@ public class LocationService implements ILocationRepository {
 
     public List<LocationDTO> listLocations() {
         return this.repository.findAll().stream().map(jakartaLocation ->
-                LocationMapper.toDTO(JakartaLocationMapper.toDomain(jakartaLocation))
+                new LocationMapper().toDTO(JakartaLocationMapper.toDomain(jakartaLocation))
         ).toList();
     }
 
