@@ -7,7 +7,7 @@ import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
 import pfeffer.oms.inventory.domain.exceptions.ChannelException;
 import pfeffer.oms.inventory.domain.mappers.ChannelMapper;
 import pfeffer.oms.inventory.domain.repositories.IChannelRepository;
-import pfeffer.oms.inventory.domain.usecases.CreateChannel;
+import pfeffer.oms.inventory.domain.usecases.create.CreateChannel;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelMapper;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaChannelRepository;
 
@@ -32,7 +32,7 @@ public class ChannelService implements IChannelRepository {
 
     public List<ChannelDTO> listChannels() {
         return this.repository.findAll().stream().map(jakartaChannel ->
-                ChannelMapper.toDTO(JakartaChannelMapper.toDomain(jakartaChannel))
+                new ChannelMapper().toDTO(JakartaChannelMapper.toDomain(jakartaChannel))
         ).toList();
     }
 
