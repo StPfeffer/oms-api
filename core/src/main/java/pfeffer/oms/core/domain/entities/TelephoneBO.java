@@ -3,8 +3,11 @@ package pfeffer.oms.core.domain.entities;
 public class TelephoneBO {
 
     private String ddi;
+
     private String ddd;
+
     private String number;
+
     private String type;
 
     public String getDdi() {
