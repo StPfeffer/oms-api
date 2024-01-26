@@ -5,6 +5,7 @@ public class TelephoneBO {
     private String ddi;
     private String ddd;
     private String number;
+    private String type;
 
     public String getDdi() {
         return ddi;
@@ -28,6 +29,14 @@ public class TelephoneBO {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 }
