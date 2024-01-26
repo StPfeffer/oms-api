@@ -11,8 +11,8 @@ import pfeffer.oms.core.domain.enums.EnumState;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
-@Entity(name = "address")
+@Entity
+@Table(name = "address")
 public class JakartaAddress {
 
     @Id
