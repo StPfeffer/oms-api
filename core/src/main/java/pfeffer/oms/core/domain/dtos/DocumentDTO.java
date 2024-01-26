@@ -2,14 +2,24 @@ package pfeffer.oms.core.domain.dtos;
 
 public final class DocumentDTO {
 
-    /**
-     * O tipo do documento informado.
-     */
     private String type;
 
-    /**
-     * O número do documento informado.
-     */
     private String number;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
 }
