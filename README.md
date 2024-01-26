@@ -10,12 +10,10 @@ Um Sistema de Gestão de Pedidos (OMS) é uma aplicação que facilita o process
 
 O sistema em desenvolvimento pretende abranger as seguintes funcionalidades:
 
-- **Gestão de Pedidos**: Permitirá a criação, edição, e cancelamento de pedidos.
-- **Gestão de Clientes**: Cadastro e manutenção de informações dos clientes.
-- **Gestão de Produtos**: Cadastro e manutenção de informações dos produtos disponíveis para compra.
+- **Gestão de Pedidos**: Gerenciamento do fluxo de entrega de um pedido, com a possibilidade de possuir múltiplos fulfillments e canais de vendas.
+- **Gestão de Filiais**: Cadastro e gerenciamento das funcionalidades da filial, tais como capacidade de atendimento, horários e formas de entrega disponíveis.
 - **Gestão de Estoque**: Monitoramento e atualização dos níveis de estoque.
-- **Processamento de Pedidos**: Fluxo de trabalho para processar pedidos recebidos.
-- **Relatórios e Estatísticas**: Geração de relatórios e análises sobre pedidos, clientes e produtos.
+- **Relatórios e Estatísticas**: Geração de relatórios e análises sobre pedidos, entregas, clientes e produtos.
 
 ## Arquitetura Limpa e Tecnologias Utilizadas
 
