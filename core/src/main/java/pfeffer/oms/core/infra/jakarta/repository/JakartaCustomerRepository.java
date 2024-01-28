@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.core.domain.dtos.CustomerDTO;
 import pfeffer.oms.core.domain.entities.CustomerBO;
+import pfeffer.oms.core.domain.exceptions.CustomerException;
 import pfeffer.oms.core.domain.mappers.CustomerMapper;
 import pfeffer.oms.core.domain.repositories.ICustomerDataBaseRepository;
 import pfeffer.oms.core.domain.repositories.ICustomerRepository;
@@ -31,7 +32,7 @@ public class JakartaCustomerRepository extends SimpleJpaRepository<JakartaCustom
         CustomerDTO customer = this.findCustomerById(bo.getId());
 
         if (customer != null) {
-            throw new RuntimeException("Já existe um cliente cadastrado com esse ID");
+            throw new CustomerException("Já existe um cliente cadastrado com esse ID", 400);
         }
 
         JakartaCustomer entity = JakartaCustomerMapper.toEntity(bo);
@@ -47,7 +48,7 @@ public class JakartaCustomerRepository extends SimpleJpaRepository<JakartaCustom
         CustomerDTO customer = this.findCustomerById(customerId);
 
         if (customer == null) {
-            throw new RuntimeException("Não existe um cliente cadastrado com esse ID");
+            throw new CustomerException("Não existe um cliente cadastrado com esse ID", 404);
         }
 
         bo.setId(customerId);
