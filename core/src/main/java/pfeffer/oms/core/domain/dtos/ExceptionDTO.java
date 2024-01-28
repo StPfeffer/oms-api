@@ -1,7 +1,9 @@
-package pfeffer.oms.inventory.domain.dtos;
+package pfeffer.oms.core.domain.dtos;
 
 public final class ExceptionDTO {
+
     private String message;
+
     private String statusCode;
 
     public ExceptionDTO(String message, String statusCode) {
