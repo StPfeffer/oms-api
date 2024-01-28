@@ -22,16 +22,16 @@ public class LocationController {
 
     @PostMapping
     public ResponseEntity<LocationDTO> createLocation(@RequestBody LocationDTO location) {
-        LocationDTO newChannel = this.service.createLocation(location);
+        LocationDTO newLocation = this.service.createLocation(location);
 
-        return new ResponseEntity<>(newChannel, HttpStatus.CREATED);
+        return new ResponseEntity<>(newLocation, HttpStatus.CREATED);
     }
 
     @PutMapping("{locationId}")
     public ResponseEntity<LocationDTO> updateLocation(@PathVariable String locationId, @RequestBody LocationDTO location) {
-        LocationDTO newChannel = this.service.updateLocation(locationId, location);
+        LocationDTO newLocation = this.service.updateLocation(locationId, location);
 
-        return new ResponseEntity<>(newChannel, HttpStatus.CREATED);
+        return new ResponseEntity<>(newLocation, HttpStatus.CREATED);
     }
 
     @GetMapping
