@@ -13,7 +13,7 @@ import java.util.List;
 
 public class JakartaCustomerMapper {
 
-    public static JakartaCustomer toDTO(CustomerBO bo) {
+    public static JakartaCustomer toEntity(CustomerBO bo) {
         JakartaCustomer dto = new JakartaCustomer();
 
         dto.setCustomerId(bo.getId());
@@ -35,7 +35,7 @@ public class JakartaCustomerMapper {
         return dto;
     }
 
-    public static CustomerBO toBO(JakartaCustomer dto) {
+    public static CustomerBO toDomain(JakartaCustomer dto) {
         CustomerBO bo = new CustomerBO();
 
         bo.setId(dto.getCustomerId());
