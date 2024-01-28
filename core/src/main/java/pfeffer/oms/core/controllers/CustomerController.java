@@ -29,9 +29,9 @@ public class CustomerController {
 
     @PutMapping("{customerId}")
     public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable String customerId, @RequestBody CustomerDTO customer) {
-        CustomerDTO newCustomer = this.service.updateCustomer(customerId, customer);
+        CustomerDTO updatedCustomer = this.service.updateCustomer(customerId, customer);
 
-        return new ResponseEntity<>(newCustomer, HttpStatus.CREATED);
+        return new ResponseEntity<>(updatedCustomer, HttpStatus.CREATED);
     }
 
     @GetMapping

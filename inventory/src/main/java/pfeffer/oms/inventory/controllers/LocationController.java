@@ -29,9 +29,9 @@ public class LocationController {
 
     @PutMapping("{locationId}")
     public ResponseEntity<LocationDTO> updateLocation(@PathVariable String locationId, @RequestBody LocationDTO location) {
-        LocationDTO newLocation = this.service.updateLocation(locationId, location);
+        LocationDTO updatedLocation = this.service.updateLocation(locationId, location);
 
-        return new ResponseEntity<>(newLocation, HttpStatus.CREATED);
+        return new ResponseEntity<>(updatedLocation, HttpStatus.CREATED);
     }
 
     @GetMapping
