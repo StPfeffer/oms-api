@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.core.domain.dtos.CustomerDTO;
+import pfeffer.oms.core.domain.exceptions.CustomerException;
 import pfeffer.oms.core.domain.mappers.CustomerMapper;
 import pfeffer.oms.core.domain.repositories.ICustomerRepository;
 import pfeffer.oms.core.domain.usecases.CreateCustomer;
@@ -48,7 +49,7 @@ public class CustomerService implements ICustomerRepository {
         CustomerDTO location = this.repository.findCustomerById(locationId);
 
         if (location == null) {
-            throw new RuntimeException("Não existe um cliente cadastrado para o ID informado");
+            throw new CustomerException("Não existe um cliente cadastrado para o ID informado", 404);
         }
 
         return location;
