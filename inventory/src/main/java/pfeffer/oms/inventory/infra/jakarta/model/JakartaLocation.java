@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pfeffer.oms.core.infra.jakarta.model.JakartaAddress;
 
 import java.util.Date;
 
@@ -36,7 +35,8 @@ public class JakartaLocation {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "address", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
     private JakartaAddress address;
 
     @Temporal(TemporalType.TIMESTAMP)
