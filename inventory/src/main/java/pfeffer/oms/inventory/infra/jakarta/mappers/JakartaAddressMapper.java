@@ -15,7 +15,7 @@ public class JakartaAddressMapper {
         entity.setNeighbourhood(bo.getNeighbourhood());
         entity.setCity(bo.getCity());
         entity.setState(bo.getState());
-        entity.setCity(bo.getCity());
+        entity.setCountry(bo.getCountry());
         entity.setLatitude(bo.getLatitude());
         entity.setLongitude(bo.getLongitude());
 
@@ -32,7 +32,7 @@ public class JakartaAddressMapper {
         bo.setNeighbourhood(entity.getNeighbourhood());
         bo.setCity(entity.getCity());
         bo.setState(entity.getState());
-        bo.setCity(entity.getCity());
+        bo.setCountry(entity.getCountry());
         bo.setLatitude(entity.getLatitude());
         bo.setLongitude(entity.getLongitude());
 
