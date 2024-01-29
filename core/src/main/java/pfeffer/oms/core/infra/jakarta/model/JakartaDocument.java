@@ -24,4 +24,8 @@ public class JakartaDocument {
     @Column(name = "number", nullable = false)
     private String number;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private JakartaCustomer customer;
+
 }
