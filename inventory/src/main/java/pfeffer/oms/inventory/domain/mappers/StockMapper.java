@@ -9,7 +9,7 @@ public class StockMapper {
         StockDTO dto = new StockDTO();
 
         dto.setSkuId(bo.getSkuId());
-        dto.setLocation(bo.getLocation());
+        dto.setLocation(LocationMapper.toDTO(bo.getLocation()));
         dto.setQuantity(bo.getQuantity());
         dto.setThreshold(bo.getThreshold());
         dto.setStockType(bo.getStockType());
@@ -23,7 +23,7 @@ public class StockMapper {
         StockBO bo = new StockBO();
 
         bo.setSkuId(dto.getSkuId());
-        bo.setLocation(dto.getLocation());
+        bo.setLocation(LocationMapper.toBO(dto.getLocation()));
         bo.setQuantity(dto.getQuantity());
         bo.setThreshold(dto.getThreshold());
         bo.setStockType(dto.getStockType());
