@@ -1,7 +1,5 @@
 package pfeffer.oms.inventory.domain.entities;
 
-import pfeffer.oms.core.domain.entities.AddressBO;
-
 import java.util.Date;
 
 public class LocationBO {

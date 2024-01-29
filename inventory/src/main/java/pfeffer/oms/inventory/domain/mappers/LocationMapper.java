@@ -1,6 +1,5 @@
 package pfeffer.oms.inventory.domain.mappers;
 
-import pfeffer.oms.core.domain.mappers.AddressMapper;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
 
