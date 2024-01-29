@@ -31,4 +31,8 @@ public class JakartaTelephone {
     @Column(name = "type", nullable = false)
     private String type;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private JakartaCustomer customer;
+
 }
