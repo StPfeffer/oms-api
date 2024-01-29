@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pfeffer.oms.inventory.domain.enums.EnumState;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,6 +19,7 @@ public class JakartaAddress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
     @Column(name = "zip", nullable = false)
@@ -45,13 +48,17 @@ public class JakartaAddress {
     private String country;
 
     @Column(name = "latitude")
-    private Integer latitude;
+    private BigDecimal latitude;
 
     @Column(name = "longitude")
-    private Integer longitude;
+    private BigDecimal longitude;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private JakartaCustomer customer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private JakartaLocation location;
 
 }

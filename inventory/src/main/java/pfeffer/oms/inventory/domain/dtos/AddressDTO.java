@@ -2,6 +2,8 @@ package pfeffer.oms.inventory.domain.dtos;
 
 import pfeffer.oms.inventory.domain.enums.EnumState;
 
+import java.math.BigDecimal;
+
 public class AddressDTO {
 
     private String zip;
@@ -20,9 +22,9 @@ public class AddressDTO {
 
     private String country;
 
-    private Integer latitude;
+    private BigDecimal latitude;
 
-    private Integer longitude;
+    private BigDecimal longitude;
 
     public String getZip() {
         return zip;
@@ -88,19 +90,19 @@ public class AddressDTO {
         this.country = country;
     }
 
-    public Integer getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Integer latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public Integer getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Integer longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 
