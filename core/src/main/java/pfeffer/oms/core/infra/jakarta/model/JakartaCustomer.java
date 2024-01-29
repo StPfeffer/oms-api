@@ -43,13 +43,13 @@ public class JakartaCustomer {
     @Column(name = "type", nullable = false)
     private EnumCustomerType type;
 
-    @Column(name = "addresses")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<JakartaAddress> addresses;
 
-    @Column(name = "telephones")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<JakartaTelephone> telephones;
 
-    @Column(name = "documents")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<JakartaDocument> documents;
 
 }
