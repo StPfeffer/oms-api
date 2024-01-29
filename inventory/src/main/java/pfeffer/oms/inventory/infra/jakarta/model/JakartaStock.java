@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.enums.EnumStockType;
 
 import java.util.Date;
@@ -25,8 +24,9 @@ public class JakartaStock {
     @Column(name = "sku_id", nullable = false)
     private String skuId;
 
-    @Column(name = "location_id", nullable = false)
-    private LocationDTO location;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private JakartaLocation location;
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
