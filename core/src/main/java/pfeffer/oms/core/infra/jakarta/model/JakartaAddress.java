@@ -50,4 +50,8 @@ public class JakartaAddress {
     @Column(name = "longitude")
     private Integer longitude;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private JakartaCustomer customer;
+
 }
