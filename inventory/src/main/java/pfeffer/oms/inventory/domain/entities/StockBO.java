@@ -1,6 +1,5 @@
 package pfeffer.oms.inventory.domain.entities;
 
-import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.enums.EnumStockType;
 
 import java.util.Date;
@@ -9,7 +8,7 @@ public class StockBO {
 
     private String skuId;
 
-    private LocationDTO location;
+    private LocationBO location;
 
     private Integer quantity;
 
@@ -29,11 +28,11 @@ public class StockBO {
         this.skuId = skuId;
     }
 
-    public LocationDTO getLocation() {
+    public LocationBO getLocation() {
         return location;
     }
 
-    public void setLocation(LocationDTO location) {
+    public void setLocation(LocationBO location) {
         this.location = location;
     }
 
