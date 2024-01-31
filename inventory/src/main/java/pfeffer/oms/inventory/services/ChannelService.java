@@ -41,7 +41,7 @@ public class ChannelService implements IChannelRepository {
         ChannelDTO channel = this.repository.findChannelByChannelId(channelId);
 
         if (channel == null) {
-            throw new ChannelException("Não existe um canal cadastrado para o ID informado", 400);
+            throw new ChannelException("There is no channel registered with the provided channelId", 400);
         }
 
         return channel;
