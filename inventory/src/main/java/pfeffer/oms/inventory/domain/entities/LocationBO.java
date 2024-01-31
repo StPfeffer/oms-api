@@ -1,6 +1,7 @@
 package pfeffer.oms.inventory.domain.entities;
 
 import java.util.Date;
+import java.util.List;
 
 public class LocationBO {
 
@@ -15,6 +16,8 @@ public class LocationBO {
     private String description;
 
     private AddressBO address;
+
+    private List<DocumentBO> documents;
 
     private Date createdAt;
 
@@ -66,6 +69,14 @@ public class LocationBO {
 
     public void setAddress(AddressBO address) {
         this.address = address;
+    }
+
+    public List<DocumentBO> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<DocumentBO> documents) {
+        this.documents = documents;
     }
 
     public Date getCreatedAt() {
