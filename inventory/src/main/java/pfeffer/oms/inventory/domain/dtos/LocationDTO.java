@@ -1,6 +1,7 @@
 package pfeffer.oms.inventory.domain.dtos;
 
 import java.util.Date;
+import java.util.List;
 
 public class LocationDTO {
 
@@ -15,6 +16,8 @@ public class LocationDTO {
     private String description;
 
     private AddressDTO address;
+
+    private List<DocumentDTO> documents;
 
     private Date createdAt;
 
@@ -66,6 +69,14 @@ public class LocationDTO {
 
     public void setAddress(AddressDTO address) {
         this.address = address;
+    }
+
+    public List<DocumentDTO> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<DocumentDTO> documents) {
+        this.documents = documents;
     }
 
     public Date getCreatedAt() {
