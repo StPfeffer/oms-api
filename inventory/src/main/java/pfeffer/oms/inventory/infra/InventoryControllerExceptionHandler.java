@@ -29,8 +29,8 @@ public class InventoryControllerExceptionHandler {
         ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(), String.valueOf(exception.getStatusCode()));
 
         return switch (exception.getStatusCode()) {
-            case 400 -> ResponseEntity.notFound().build();
-            case 404 -> ResponseEntity.badRequest().body(exceptionDTO);
+            case 400 -> ResponseEntity.badRequest().body(exceptionDTO);
+            case 404 -> ResponseEntity.notFound().build();
             default -> ResponseEntity.internalServerError().body(exceptionDTO);
         };
     }
