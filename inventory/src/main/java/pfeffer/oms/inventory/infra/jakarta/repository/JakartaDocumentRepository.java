@@ -1,6 +1,8 @@
 package pfeffer.oms.inventory.infra.jakarta.repository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
@@ -31,8 +33,20 @@ public class JakartaDocumentRepository extends SimpleJpaRepository<JakartaDocume
     }
 
     @Override
-    public DocumentBO update(String id, DocumentBO documentBO) {
+    public DocumentBO update(String id, DocumentBO bo) {
         throw new UnsupportedOperationException();
+    }
+
+    public DocumentBO findByDocument(DocumentBO bo) {
+        TypedQuery<JakartaDocument> query = em.createQuery("SELECT e FROM JakartaDocument e WHERE e.type = :type AND e.number = :number", JakartaDocument.class)
+                .setParameter("type", bo.getType())
+                .setParameter("number", bo.getNumber());
+
+        try {
+            return JakartaDocumentMapper.toDomain(query.getSingleResult());
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
 }
