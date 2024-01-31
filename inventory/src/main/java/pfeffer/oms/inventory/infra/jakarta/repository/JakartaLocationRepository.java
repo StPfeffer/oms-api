@@ -20,10 +20,13 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     private final EntityManager em;
 
+    private final JakartaDocumentRepository documentRepository;
+
     @Autowired
-    public JakartaLocationRepository(EntityManager em) {
+    public JakartaLocationRepository(EntityManager em, JakartaDocumentRepository documentRepository) {
         super(JakartaLocation.class, em);
         this.em = em;
+        this.documentRepository = documentRepository;
     }
 
     @Override
@@ -33,6 +36,12 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         if (location != null) {
             throw new LocationException("There is already a branch registered with the provided id.", 400);
         }
+
+        bo.getDocuments().forEach(documentBO -> {
+            if (this.documentRepository.findByDocument(documentBO) != null) {
+                throw new LocationException("There is already a branch registered with the provided documents", 400);
+            }
+        });
 
         JakartaLocation entity = JakartaLocationMapper.toEntity(bo);
 
