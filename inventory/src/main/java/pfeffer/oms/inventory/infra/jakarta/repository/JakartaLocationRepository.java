@@ -12,7 +12,6 @@ import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
 import pfeffer.oms.inventory.domain.repositories.ILocationDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.ILocationRepository;
-import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaAddressMapper;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaLocationMapper;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
