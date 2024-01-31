@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "address")
+@Table(name = "document")
 public class JakartaDocument {
 
     @Id
@@ -27,5 +27,9 @@ public class JakartaDocument {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private JakartaCustomer customer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private JakartaLocation location;
 
 }
