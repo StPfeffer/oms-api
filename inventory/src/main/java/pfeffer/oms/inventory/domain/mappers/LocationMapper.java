@@ -1,7 +1,12 @@
 package pfeffer.oms.inventory.domain.mappers;
 
+import pfeffer.oms.inventory.domain.dtos.DocumentDTO;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
+import pfeffer.oms.inventory.domain.entities.DocumentBO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LocationMapper {
 
@@ -14,6 +19,11 @@ public class LocationMapper {
         dto.setName(bo.getName());
         dto.setDescription(bo.getDescription());
         dto.setAddress(AddressMapper.toDTO(bo.getAddress()));
+
+        List<DocumentDTO> documents = bo.getDocuments().stream().map(DocumentMapper::toDTO).toList();
+
+        dto.setDocuments(documents);
+
         dto.setCreatedAt(bo.getCreatedAt());
         dto.setUpdatedAt(bo.getUpdatedAt());
 
@@ -29,6 +39,11 @@ public class LocationMapper {
         bo.setName(dto.getName());
         bo.setDescription(dto.getDescription());
         bo.setAddress(AddressMapper.toBO(dto.getAddress()));
+
+        List<DocumentBO> documents = dto.getDocuments().stream().map(DocumentMapper::toBO).toList();
+
+        bo.setDocuments(documents);
+
         bo.setCreatedAt(dto.getCreatedAt());
         bo.setUpdatedAt(dto.getUpdatedAt());
 
