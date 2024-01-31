@@ -47,7 +47,7 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
         ChannelDTO channel = this.findChannelByChannelId(entity.getName());
 
         if (channel != null) {
-            throw new ChannelException("Já existe um canal de vendas cadastrado com este nome", 400);
+            throw new ChannelException("There is already a channel registered with the provided channelId", 400);
         }
     }
 
