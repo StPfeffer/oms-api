@@ -49,7 +49,7 @@ public class LocationService implements ILocationRepository {
         LocationDTO location = this.repository.findLocationByLocationId(locationId);
 
         if (location == null) {
-            throw new LocationException("Não existe uma filial cadastrada para o ID informado", 404);
+            throw new LocationException("There is no branch registered with the provided id", 404);
         }
 
         return location;
