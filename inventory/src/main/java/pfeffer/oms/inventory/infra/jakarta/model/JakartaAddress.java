@@ -47,10 +47,10 @@ public class JakartaAddress {
     @Column(name = "country")
     private String country;
 
-    @Column(name = "latitude")
+    @Column(name = "latitude", precision = 20, scale = 10)
     private BigDecimal latitude;
 
-    @Column(name = "longitude")
+    @Column(name = "longitude", precision = 20, scale = 10)
     private BigDecimal longitude;
 
     @ManyToOne(fetch = FetchType.LAZY)
