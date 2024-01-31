@@ -1,7 +1,11 @@
 package pfeffer.oms.inventory.infra.jakarta.mappers;
 
+import pfeffer.oms.inventory.domain.entities.DocumentBO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaDocument;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
+
+import java.util.List;
 
 public class JakartaLocationMapper {
 
@@ -14,6 +18,11 @@ public class JakartaLocationMapper {
         entity.setName(bo.getName());
         entity.setDescription(bo.getDescription());
         entity.setAddress(JakartaAddressMapper.toEntity(bo.getAddress()));
+
+        List<JakartaDocument> documents = bo.getDocuments().stream().map(JakartaDocumentMapper::toEntity).toList();
+
+        entity.setDocuments(documents);
+
         entity.setCreatedAt(bo.getCreatedAt());
         entity.setUpdatedAt(bo.getUpdatedAt());
 
@@ -29,6 +38,11 @@ public class JakartaLocationMapper {
         bo.setName(entity.getName());
         bo.setDescription(entity.getDescription());
         bo.setAddress(JakartaAddressMapper.toDomain(entity.getAddress()));
+
+        List<DocumentBO> documents = entity.getDocuments().stream().map(JakartaDocumentMapper::toDomain).toList();
+
+        bo.setDocuments(documents);
+
         bo.setCreatedAt(entity.getCreatedAt());
         bo.setUpdatedAt(entity.getUpdatedAt());
 
