@@ -5,6 +5,7 @@ import pfeffer.oms.inventory.domain.entities.LocationBO;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaDocument;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
+import java.util.Date;
 import java.util.List;
 
 public class JakartaLocationMapper {
@@ -23,8 +24,8 @@ public class JakartaLocationMapper {
 
         entity.setDocuments(documents);
 
-        entity.setCreatedAt(bo.getCreatedAt());
-        entity.setUpdatedAt(bo.getUpdatedAt());
+        entity.setCreatedAt(bo.getCreatedAt() != null ? bo.getCreatedAt() : new Date());
+        entity.setUpdatedAt(bo.getUpdatedAt() != null ? bo.getUpdatedAt() : new Date());
 
         return entity;
     }
