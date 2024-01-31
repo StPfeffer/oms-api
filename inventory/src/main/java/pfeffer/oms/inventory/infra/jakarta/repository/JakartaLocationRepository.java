@@ -12,6 +12,7 @@ import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
 import pfeffer.oms.inventory.domain.repositories.ILocationDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.ILocationRepository;
+import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaAddressMapper;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaLocationMapper;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
@@ -31,7 +32,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         LocationDTO location = this.findLocationByLocationId(bo.getId());
 
         if (location != null) {
-            throw new LocationException("Já existe uma filial cadastrada com esse ID", 400);
+            throw new LocationException("There is already a branch registered with the provided id.", 400);
         }
 
         JakartaLocation entity = JakartaLocationMapper.toEntity(bo);
@@ -47,7 +48,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         LocationDTO location = findLocationByLocationId(locationId);
 
         if (location == null)  {
-            throw new LocationException("Não existe uma filial cadastrada para o ID informado", 404);
+            throw new LocationException("There is no branch registered with the provided id", 404);
         }
 
         bo.setId(locationId);
