@@ -13,8 +13,8 @@ public class UpdateStock {
         this.repository = repository;
     }
 
-    public StockDTO execute(String skuId, StockDTO dto) {
-        StockBO entity = repository.update(skuId, StockMapper.toBO(dto));
+    public StockDTO execute(String locationId, String skuId, StockDTO dto) {
+        StockBO entity = repository.update(locationId, skuId, StockMapper.toBO(dto));
 
         return StockMapper.toDTO(entity);
     }
