@@ -10,6 +10,8 @@ import pfeffer.oms.inventory.domain.usecases.CreateStock;
 import pfeffer.oms.inventory.domain.usecases.UpdateStock;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaStockRepository;
 
+import java.util.List;
+
 @Service
 public class StockService implements IStockRepository {
 
@@ -28,15 +30,26 @@ public class StockService implements IStockRepository {
     }
 
     @Transactional
-    public StockDTO updateStock(String skuId, StockDTO dto) {
+    public StockDTO updateStock(String locationId, String skuId, StockDTO dto) {
         UpdateStock updateStock = new UpdateStock(repository);
 
-        return updateStock.execute(skuId, dto);
+        return updateStock.execute(locationId, skuId, dto);
     }
 
     @Override
-    public StockDTO findStockBySkuId(String skuId) {
-        StockDTO stock = this.repository.findStockBySkuId(skuId);
+    public List<StockDTO> listStockBySkuId(String skuId) {
+        List<StockDTO> stocks = this.repository.listStockBySkuId(skuId);
+
+        if (stocks == null) {
+            throw new StockException("Não existe um estoque para o SKU informado", 404);
+        }
+
+        return stocks;
+    }
+
+    @Override
+    public StockDTO findStockBySkuIdAndLocationId(String skuId, String locationId) {
+        StockDTO stock = this.repository.findStockBySkuIdAndLocationId(skuId, locationId);
 
         if (stock == null) {
             throw new StockException("Não existe um estoque para o SKU informado", 404);
