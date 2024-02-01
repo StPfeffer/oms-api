@@ -31,9 +31,4 @@ public class JakartaTelephoneRepository extends SimpleJpaRepository<JakartaTelep
         return JakartaTelephoneMapper.toDomain(entity);
     }
 
-    @Override
-    public TelephoneBO update(String id, TelephoneBO telephoneBO) {
-        throw new UnsupportedOperationException();
-    }
-
 }

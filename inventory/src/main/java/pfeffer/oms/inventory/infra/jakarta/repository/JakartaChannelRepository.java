@@ -38,11 +38,6 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
         return JakartaChannelMapper.toDomain(entity);
     }
 
-    @Override
-    public ChannelBO update(String channelId, ChannelBO bo) {
-        throw new UnsupportedOperationException();
-    }
-
     public void canCreate(JakartaChannel entity) {
         ChannelDTO channel = this.findChannelByChannelId(entity.getName());
 

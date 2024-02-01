@@ -32,11 +32,6 @@ public class JakartaDocumentRepository extends SimpleJpaRepository<JakartaDocume
         return JakartaDocumentMapper.toDomain(entity);
     }
 
-    @Override
-    public DocumentBO update(String id, DocumentBO bo) {
-        throw new UnsupportedOperationException();
-    }
-
     public DocumentBO findByDocument(DocumentBO bo) {
         TypedQuery<JakartaDocument> query = em.createQuery("SELECT e FROM JakartaDocument e WHERE e.type = :type AND e.number = :number", JakartaDocument.class)
                 .setParameter("type", bo.getType())

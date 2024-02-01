@@ -30,9 +30,4 @@ public class JakartaAddressRepository extends SimpleJpaRepository<JakartaAddress
         return JakartaAddressMapper.toDomain(entity);
     }
 
-    @Override
-    public AddressBO update(String id, AddressBO addressBO) {
-        throw new UnsupportedOperationException();
-    }
-
 }
