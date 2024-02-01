@@ -24,11 +24,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>pfeffer.oms.core</groupId>
-            <artifactId>core</artifactId>
-            <version>${core.application.version}</version>
-        </dependency>
-        <dependency>
             <groupId>pfeffer.oms.inventory</groupId>
             <artifactId>inventory</artifactId>
             <version>${inventory.application.version}</version>
