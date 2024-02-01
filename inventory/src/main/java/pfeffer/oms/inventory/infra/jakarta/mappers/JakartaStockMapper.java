@@ -9,7 +9,7 @@ public class JakartaStockMapper {
         JakartaStock entity = new JakartaStock();
 
         entity.setSkuId(bo.getSkuId());
-        entity.setLocation(JakartaLocationMapper.toEntity(bo.getLocation()));
+        entity.setLocationId(bo.getLocationId());
         entity.setQuantity(bo.getQuantity());
         entity.setThreshold(bo.getThreshold());
         entity.setStockType(bo.getStockType());
@@ -23,7 +23,7 @@ public class JakartaStockMapper {
         StockBO bo = new StockBO();
 
         bo.setSkuId(entity.getSkuId());
-        bo.setLocation(JakartaLocationMapper.toDomain(entity.getLocation()));
+        bo.setLocationId(entity.getLocationId());
         bo.setQuantity(entity.getQuantity());
         bo.setThreshold(entity.getThreshold());
         bo.setStockType(entity.getStockType());
