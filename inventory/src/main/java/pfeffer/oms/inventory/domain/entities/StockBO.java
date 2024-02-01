@@ -8,7 +8,7 @@ public class StockBO {
 
     private String skuId;
 
-    private LocationBO location;
+    private String locationId;
 
     private Integer quantity;
 
@@ -28,12 +28,12 @@ public class StockBO {
         this.skuId = skuId;
     }
 
-    public LocationBO getLocation() {
-        return location;
+    public String getLocationId() {
+        return locationId;
     }
 
-    public void setLocation(LocationBO location) {
-        this.location = location;
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
     }
 
     public Integer getQuantity() {
