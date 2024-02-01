@@ -17,6 +17,7 @@ import pfeffer.oms.inventory.domain.mappers.StockMapper;
 import pfeffer.oms.inventory.domain.repositories.IStockDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.IStockRepository;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaStockMapper;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaStock;
 
 import java.util.List;
@@ -37,13 +38,13 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
 
     @Override
     public StockBO persist(StockBO bo) {
-        LocationDTO location = locationRepository.findLocationByLocationId(bo.getLocationId());
+        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId());
 
         if (location == null) {
             throw new StockException("There is no branch registered with the provided id", 400);
         }
 
-        JakartaStock entity = JakartaStockMapper.toEntity(bo, LocationMapper.toBO(location));
+        JakartaStock entity = JakartaStockMapper.toEntity(bo, location);
 
         this.canCreate(entity);
 
@@ -61,7 +62,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
             throw new LocationException("Não existe uma filial cadastrada para o ID informado", 404);
         }
 
-        JakartaStock entity = JakartaStockMapper.toEntity(bo, LocationMapper.toBO(locationRepository.findLocationByLocationId(bo.getLocationId())));
+        JakartaStock entity = JakartaStockMapper.toEntity(bo, locationRepository.findJakartaLocationByLocationId(bo.getLocationId()));
 
         em.merge(entity);
         em.flush();
@@ -87,7 +88,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
 
     @Override
     public StockDTO findStockBySkuIdAndLocationId(String skuId, String locationId) {
-        TypedQuery<JakartaStock> query = em.createQuery("SELECT e FROM JakartaStock e WHERE e.skuId = :skuId AND e.location.id = :locationId", JakartaStock.class)
+        TypedQuery<JakartaStock> query = em.createQuery("SELECT e FROM JakartaStock e WHERE e.skuId = :skuId AND e.location.locationId = :locationId", JakartaStock.class)
                 .setParameter("skuId", skuId)
                 .setParameter("locationId", locationId);
 
