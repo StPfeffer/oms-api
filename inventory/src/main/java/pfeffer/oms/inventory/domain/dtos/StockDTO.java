@@ -14,7 +14,7 @@ public class StockDTO {
     /**
      * O ID da filial na qual o estoque pertence.
      */
-    private LocationDTO location;
+    private String locationId;
 
     /**
      * O saldo total para o respectivo SKU.
@@ -49,12 +49,12 @@ public class StockDTO {
         this.skuId = skuId;
     }
 
-    public LocationDTO getLocation() {
-        return location;
+    public String getLocationId() {
+        return locationId;
     }
 
-    public void setLocation(LocationDTO location) {
-        this.location = location;
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
     }
 
     public Integer getQuantity() {
