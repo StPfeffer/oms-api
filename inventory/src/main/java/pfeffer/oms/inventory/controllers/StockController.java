@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pfeffer.oms.inventory.domain.dtos.StockDTO;
 import pfeffer.oms.inventory.services.StockService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("stock")
 public class StockController {
@@ -25,11 +27,25 @@ public class StockController {
         return new ResponseEntity<>(newStock, HttpStatus.CREATED);
     }
 
-    @PutMapping("{skuId}")
-    public ResponseEntity<StockDTO> updateStock(@PathVariable String skuId, @RequestBody StockDTO stockDTO) {
-        StockDTO updatedStock = this.service.updateStock(skuId, stockDTO);
+    @PutMapping("{locationId}/{skuId}")
+    public ResponseEntity<StockDTO> updateStock(@PathVariable String locationId, @PathVariable String skuId, @RequestBody StockDTO stockDTO) {
+        StockDTO updatedStock = this.service.updateStock(locationId, skuId, stockDTO);
 
         return new ResponseEntity<>(updatedStock, HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("{skuId}")
+    public ResponseEntity<List<StockDTO>> listStock(@PathVariable String skuId) {
+        List<StockDTO> stocks = this.service.listStockBySkuId(skuId);
+
+        return new ResponseEntity<>(stocks, HttpStatus.OK);
+    }
+
+    @GetMapping("{locationId}/{skuId}")
+    public ResponseEntity<StockDTO> getStock(@PathVariable String locationId, @PathVariable String skuId) {
+        StockDTO stock = this.service.findStockBySkuIdAndLocationId(skuId, locationId);
+
+        return new ResponseEntity<>(stock, HttpStatus.OK);
     }
 
 }
