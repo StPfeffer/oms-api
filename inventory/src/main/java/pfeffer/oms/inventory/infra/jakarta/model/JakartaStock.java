@@ -25,14 +25,14 @@ public class JakartaStock {
     private String skuId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "location_id", nullable = false)
     private JakartaLocation location;
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "threshold")
-    private Integer threshold;
+    @Column(name = "threshold", nullable = false)
+    private Integer threshold = 0;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "stock_type", nullable = false)
