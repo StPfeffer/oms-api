@@ -18,6 +18,8 @@ public class StockBO {
 
     private boolean enabled;
 
+    private Date createdAt;
+
     private Date updatedAt;
 
     public String getSkuId() {
@@ -66,6 +68,14 @@ public class StockBO {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {

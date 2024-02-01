@@ -6,39 +6,20 @@ import java.util.Date;
 
 public class StockDTO {
 
-    /**
-     * O ID do SKU no qual o estoque está vinculado.
-     */
     private String skuId;
 
-    /**
-     * O ID da filial na qual o estoque pertence.
-     */
     private String locationId;
 
-    /**
-     * O saldo total para o respectivo SKU.
-     */
     private Integer quantity;
 
-    /**
-     * A proteção de estoque para o respectivo SKU.
-     */
     private Integer threshold;
 
-    /**
-     * O tipo do estoque.
-     */
     private EnumStockType stockType;
 
-    /**
-     * Determina se esse saldo está disponível para o respectivo SKU.
-     */
     private boolean enabled;
 
-    /**
-     * A data de atualização do estoque.
-     */
+    private Date createdAt;
+
     private Date updatedAt;
 
     public String getSkuId() {
@@ -87,6 +68,14 @@ public class StockDTO {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Date getUpdatedAt() {
