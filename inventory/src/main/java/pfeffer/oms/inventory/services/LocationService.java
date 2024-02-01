@@ -28,6 +28,8 @@ public class LocationService implements ILocationRepository {
     public LocationDTO createLocation(LocationDTO dto) {
         CreateLocation createLocation = new CreateLocation(repository);
 
+        this.isValidLocation(dto);
+
         return createLocation.execute(dto);
     }
 
@@ -53,6 +55,20 @@ public class LocationService implements ILocationRepository {
         }
 
         return location;
+    }
+
+    private void isValidLocation(LocationDTO dto) {
+        if (dto.getId() == null) {
+            throw new LocationException("Missing property in the request body: id", 400);
+        }
+
+        if (dto.getName() == null) {
+            throw new LocationException("Missing property in the request body: name", 400);
+        }
+
+        if (dto.getTradingName() == null) {
+            throw new LocationException("Missing property in the request body: tradingName", 400);
+        }
     }
 
 }
