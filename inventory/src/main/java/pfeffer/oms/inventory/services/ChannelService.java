@@ -27,6 +27,8 @@ public class ChannelService implements IChannelRepository {
     public ChannelDTO createChannel(ChannelDTO dto) {
         CreateChannel createChannel = new CreateChannel(repository);
 
+        this.isValidChannel(dto);
+
         return createChannel.execute(dto);
     }
 
@@ -45,6 +47,12 @@ public class ChannelService implements IChannelRepository {
         }
 
         return channel;
+    }
+
+    private void isValidChannel(ChannelDTO dto) {
+        if (dto.getChannelId() == null) {
+            throw new ChannelException("Missing property in the request body: channelId", 400);
+        }
     }
 
 }
