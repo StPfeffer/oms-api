@@ -1,15 +1,20 @@
 package pfeffer.oms.inventory.infra.jakarta.mappers;
 
+import pfeffer.oms.inventory.domain.entities.LocationBO;
 import pfeffer.oms.inventory.domain.entities.StockBO;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaStock;
 
 public class JakartaStockMapper {
 
-    public static JakartaStock toEntity(StockBO bo) {
+    public static JakartaStock toEntity(StockBO bo, LocationBO locationBO) {
         JakartaStock entity = new JakartaStock();
 
         entity.setSkuId(bo.getSkuId());
-        entity.setLocationId(bo.getLocationId());
+
+        JakartaLocation jakartaLocation = JakartaLocationMapper.toEntity(locationBO);
+
+        entity.setLocation(jakartaLocation);
         entity.setQuantity(bo.getQuantity());
         entity.setThreshold(bo.getThreshold());
         entity.setStockType(bo.getStockType());
@@ -23,7 +28,7 @@ public class JakartaStockMapper {
         StockBO bo = new StockBO();
 
         bo.setSkuId(entity.getSkuId());
-        bo.setLocationId(entity.getLocationId());
+        bo.setLocationId(entity.getLocation().getLocationId());
         bo.setQuantity(entity.getQuantity());
         bo.setThreshold(entity.getThreshold());
         bo.setStockType(entity.getStockType());
