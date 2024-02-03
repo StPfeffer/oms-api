@@ -19,6 +19,8 @@ public class LocationDTO {
 
     private List<DocumentDTO> documents;
 
+    private List<LocationChannelDTO> channels;
+
     private Date createdAt;
 
     private Date updatedAt;
@@ -77,6 +79,14 @@ public class LocationDTO {
 
     public void setDocuments(List<DocumentDTO> documents) {
         this.documents = documents;
+    }
+
+    public List<LocationChannelDTO> getChannels() {
+        return channels;
+    }
+
+    public void setChannels(List<LocationChannelDTO> channels) {
+        this.channels = channels;
     }
 
     public Date getCreatedAt() {

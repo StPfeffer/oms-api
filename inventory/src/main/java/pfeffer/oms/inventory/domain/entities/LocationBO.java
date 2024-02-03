@@ -19,6 +19,8 @@ public class LocationBO {
 
     private List<DocumentBO> documents;
 
+    private List<LocationChannelBO> channels;
+
     private Date createdAt;
 
     private Date updatedAt;
@@ -77,6 +79,14 @@ public class LocationBO {
 
     public void setDocuments(List<DocumentBO> documents) {
         this.documents = documents;
+    }
+
+    public List<LocationChannelBO> getChannels() {
+        return channels;
+    }
+
+    public void setChannels(List<LocationChannelBO> channels) {
+        this.channels = channels;
     }
 
     public Date getCreatedAt() {
