@@ -3,6 +3,7 @@ package pfeffer.oms.inventory.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pfeffer.oms.inventory.domain.dtos.LocationChannelDTO;
@@ -19,7 +20,7 @@ public class LocationChannelController {
     }
 
     @PostMapping
-    public ResponseEntity<LocationChannelDTO> createLocationChannel(LocationChannelDTO locationChannel) {
+    public ResponseEntity<LocationChannelDTO> createLocationChannel(@RequestBody LocationChannelDTO locationChannel) {
         LocationChannelDTO newLocationChannel = this.service.createChannel(locationChannel);
 
         return new ResponseEntity<>(newLocationChannel, HttpStatus.CREATED);
