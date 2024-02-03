@@ -44,6 +44,10 @@ public class JakartaLocation {
     @JoinColumn(name = "document_id")
     private List<JakartaDocument> documents;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channel_id")
+    private List<JakartaLocationChannel> channels;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", updatable = false, nullable = false)
     private Date createdAt;
