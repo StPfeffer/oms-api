@@ -62,48 +62,17 @@ O diretório `infra` é responsável pela implementação dos detalhes de infrae
 
 Essa estrutura organizacional ajuda a manter um código limpo, coeso e modular, facilitando o desenvolvimento, teste e manutenção do sistema. Além disso, promove uma clara separação de responsabilidades entre os diferentes componentes da aplicação.
 
-### Módulo "**core**"
-
-O módulo "core" é o núcleo do sistema e contém as funcionalidades comuns que são compartilhadas pelos outros módulos. Suas principais responsabilidades incluem:
-
-- **DTOs (Data Transfer Objects)**: Responsáveis por transferir dados entre diferentes camadas da aplicação e a interface de usuário.
-- **BOs (Business Objects)**: Encapsulam a lógica de negócios central da aplicação.
-- **Repositories**: Interfaces que definem contratos para acessar e manipular dados no banco de dados.
-- **Controllers**: Responsáveis por receber e responder às requisições HTTP da aplicação.
-
 ### Módulo "**inventory**"
 
-O módulo "inventory" concentra-se no gerenciamento do estoque dos SKUs (Stock Keeping Units). Este módulo depende do módulo "core" para acessar as funcionalidades comuns e estende essas funcionalidades para lidar especificamente com o inventário. Suas responsabilidades incluem:
+O módulo "inventory" concentra-se no gerenciamento do estoque dos SKUs (Stock Keeping Units). Suas responsabilidades incluem:
 
 - **Gestão de Estoque**: Implementação das operações para verificar, atualizar e monitorar o estoque dos SKUs.
-- **Dependência do Módulo "core"**: Utiliza os recursos fornecidos pelo módulo "core" para lidar com aspectos genéricos da aplicação.
-
 ### Módulo "**order**"
 
-O módulo "order" é responsável pelo gerenciamento dos pedidos realizados pelos clientes. Ele depende tanto do módulo "core" quanto do módulo "inventory" para funcionar corretamente. Suas responsabilidades incluem:
+O módulo "order" é responsável pelo gerenciamento dos pedidos realizados pelos clientes. Ele depende do módulo "inventory" para funcionar corretamente. Suas responsabilidades incluem:
 
 - **Gestão de Pedidos**: Implementação das funcionalidades relacionadas à criação, edição e cancelamento de pedidos.
-- **Dependência dos Módulos "core" e "inventory"**: Utiliza funcionalidades comuns do módulo "core" e interage com o módulo "inventory" para verificar a disponibilidade de produtos em estoque.
-
-### Diagrama de Dependências
-
-Abaixo está um diagrama simplificado das dependências entre os módulos:
-
-```
-   +-------------+       +-------------+
-   |    core     |  <--  |  inventory  |
-   +-------------+       +-------------+
-            |                  |
-            |                  |
-            +--------+---------+
-                     |
-                     v
-                +------------+
-                |   order    |
-                +------------+
-```
-
-Este diagrama ilustra como o módulo "order" depende dos módulos "core" e "inventory" para funcionar corretamente.
+- **Dependência do Módulo "inventory"**: Utiliza funcionalidades comuns do módulo "inventory" para verificar a disponibilidade de produtos em estoque.
 
 A estrutura modular adotada neste projeto promove a reutilização de código, facilita a manutenção e permite que cada parte do sistema seja desenvolvida e testada independentemente das outras. Isso resulta em um código mais limpo, coeso e escalável.
 
