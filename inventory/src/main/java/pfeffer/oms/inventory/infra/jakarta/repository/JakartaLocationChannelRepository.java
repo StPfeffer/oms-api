@@ -49,7 +49,9 @@ public class JakartaLocationChannelRepository extends SimpleJpaRepository<Jakart
             throw new ChannelException("There is no channel registered with the provided id", 400);
         }
 
-        JakartaLocationChannel entity = JakartaLocationChannelMapper.toEntity(bo, location, channel);
+        JakartaLocationChannel entity = JakartaLocationChannelMapper.toEntity(bo);
+        entity.setLocation(location);
+        entity.setChannel(channel);
 
         this.canCreate(entity);
 
