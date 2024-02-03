@@ -10,6 +10,7 @@ public class LocationChannelMapper {
 
         dto.setLocationId(bo.getLocationId());
         dto.setChannelId(bo.getChannelId());
+        dto.setEnabled(bo.isEnabled());
 
         return dto;
     }
@@ -19,6 +20,7 @@ public class LocationChannelMapper {
 
         bo.setLocationId(dto.getLocationId());
         bo.setChannelId(dto.getChannelId());
+        bo.setEnabled(dto.isEnabled());
 
         return bo;
     }
