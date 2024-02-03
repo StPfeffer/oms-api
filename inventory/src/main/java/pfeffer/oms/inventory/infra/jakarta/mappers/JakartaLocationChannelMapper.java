@@ -1,17 +1,13 @@
 package pfeffer.oms.inventory.infra.jakarta.mappers;
 
 import pfeffer.oms.inventory.domain.entities.LocationChannelBO;
-import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
-import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocationChannel;
 
 public class JakartaLocationChannelMapper {
 
-    public static JakartaLocationChannel toEntity(LocationChannelBO bo, JakartaLocation location, JakartaChannel channel) {
+    public static JakartaLocationChannel toEntity(LocationChannelBO bo) {
         JakartaLocationChannel entity = new JakartaLocationChannel();
 
-        entity.setLocation(location);
-        entity.setChannel(channel);
         entity.setEnabled(bo.isEnabled());
 
         return entity;
