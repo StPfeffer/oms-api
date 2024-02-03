@@ -16,13 +16,13 @@ class JakartaChannelMapperTest {
         JakartaChannel entity = JakartaChannelMapper.toEntity(bo);
 
         assertNotNull(entity);
-        assertEquals("channel", entity.getName());
+        assertEquals("channel", entity.getChannelId());
     }
 
     @Test
     void toDomain() {
         JakartaChannel dto = new JakartaChannel();
-        dto.setName("channel");
+        dto.setChannelId("channel");
 
         ChannelBO bo = JakartaChannelMapper.toDomain(dto);
 

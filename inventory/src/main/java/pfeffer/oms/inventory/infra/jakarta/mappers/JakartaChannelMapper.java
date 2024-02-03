@@ -8,7 +8,7 @@ public class JakartaChannelMapper {
     public static JakartaChannel toEntity(ChannelBO bo) {
         JakartaChannel entity = new JakartaChannel();
 
-        entity.setName(bo.getChannelId());
+        entity.setChannelId(bo.getChannelId());
 
         return entity;
     }
@@ -16,7 +16,7 @@ public class JakartaChannelMapper {
     public static ChannelBO toDomain(JakartaChannel entity) {
         ChannelBO bo = new ChannelBO();
 
-        bo.setChannelId(entity.getName());
+        bo.setChannelId(entity.getChannelId());
 
         return bo;
     }
