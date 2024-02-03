@@ -39,7 +39,7 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
     }
 
     public void canCreate(JakartaChannel entity) {
-        ChannelDTO channel = this.findChannelByChannelId(entity.getName());
+        ChannelDTO channel = this.findChannelByChannelId(entity.getChannelId());
 
         if (channel != null) {
             throw new ChannelException("There is already a channel registered with the provided channelId", 400);
@@ -48,11 +48,22 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
 
     @Override
     public ChannelDTO findChannelByChannelId(String channelId) {
-        TypedQuery<JakartaChannel> query = em.createQuery("SELECT e FROM JakartaChannel e WHERE e.name = :name", JakartaChannel.class)
-                .setParameter("name", channelId);
+        TypedQuery<JakartaChannel> query = em.createQuery("SELECT e FROM JakartaChannel e WHERE e.channelId = :channelId", JakartaChannel.class)
+                .setParameter("channelId", channelId);
 
         try {
             return ChannelMapper.toDTO(JakartaChannelMapper.toDomain(query.getSingleResult()));
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public JakartaChannel findJakartaChannelByChannelId(String channelId) {
+        TypedQuery<JakartaChannel> query = em.createQuery("SELECT e FROM JakartaChannel e WHERE e.channelId = :channelId", JakartaChannel.class)
+                .setParameter("channelId", channelId);
+
+        try {
+            return query.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }
