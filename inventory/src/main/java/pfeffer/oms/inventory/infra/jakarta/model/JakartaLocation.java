@@ -41,6 +41,10 @@ public class JakartaLocation {
     private JakartaAddress address;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "telephone_id")
+    private List<JakartaTelephone> telephones;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "document_id")
     private List<JakartaDocument> documents;
 
