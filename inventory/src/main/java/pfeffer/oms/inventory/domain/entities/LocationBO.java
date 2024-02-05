@@ -17,6 +17,8 @@ public class LocationBO {
 
     private AddressBO address;
 
+    private List<TelephoneBO> telephones;
+
     private List<DocumentBO> documents;
 
     private List<LocationChannelBO> channels;
@@ -71,6 +73,14 @@ public class LocationBO {
 
     public void setAddress(AddressBO address) {
         this.address = address;
+    }
+
+    public List<TelephoneBO> getTelephones() {
+        return telephones;
+    }
+
+    public void setTelephones(List<TelephoneBO> telephones) {
+        this.telephones = telephones;
     }
 
     public List<DocumentBO> getDocuments() {
