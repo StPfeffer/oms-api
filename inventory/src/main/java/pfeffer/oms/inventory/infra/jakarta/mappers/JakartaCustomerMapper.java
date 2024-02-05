@@ -14,41 +14,41 @@ import java.util.List;
 public class JakartaCustomerMapper {
 
     public static JakartaCustomer toEntity(CustomerBO bo) {
-        JakartaCustomer dto = new JakartaCustomer();
+        JakartaCustomer entity = new JakartaCustomer();
 
-        dto.setCustomerId(bo.getId());
-        dto.setFirstName(bo.getFirstName());
-        dto.setLastName(bo.getLastName());
-        dto.setFullName(bo.getFullName());
-        dto.setEmail(bo.getEmail());
-        dto.setBirthdate(bo.getBirthdate());
-        dto.setType(bo.getType());
+        entity.setCustomerId(bo.getId());
+        entity.setFirstName(bo.getFirstName());
+        entity.setLastName(bo.getLastName());
+        entity.setFullName(bo.getFullName());
+        entity.setEmail(bo.getEmail());
+        entity.setBirthdate(bo.getBirthdate());
+        entity.setType(bo.getType());
 
         List<JakartaAddress> addresses = bo.getAddresses().stream().map(JakartaAddressMapper::toEntity).toList();
         List<JakartaTelephone> telephones = bo.getTelephones().stream().map(JakartaTelephoneMapper::toEntity).toList();
         List<JakartaDocument> documents = bo.getDocuments().stream().map(JakartaDocumentMapper::toEntity).toList();
 
-        dto.setAddresses(addresses);
-        dto.setTelephones(telephones);
-        dto.setDocuments(documents);
+        entity.setAddresses(addresses);
+        entity.setTelephones(telephones);
+        entity.setDocuments(documents);
 
-        return dto;
+        return entity;
     }
 
-    public static CustomerBO toDomain(JakartaCustomer dto) {
+    public static CustomerBO toDomain(JakartaCustomer entity) {
         CustomerBO bo = new CustomerBO();
 
-        bo.setId(dto.getCustomerId());
-        bo.setFirstName(dto.getFirstName());
-        bo.setLastName(dto.getLastName());
-        bo.setFullName(dto.getFullName());
-        bo.setEmail(dto.getEmail());
-        bo.setBirthdate(dto.getBirthdate());
-        bo.setType(dto.getType());
+        bo.setId(entity.getCustomerId());
+        bo.setFirstName(entity.getFirstName());
+        bo.setLastName(entity.getLastName());
+        bo.setFullName(entity.getFullName());
+        bo.setEmail(entity.getEmail());
+        bo.setBirthdate(entity.getBirthdate());
+        bo.setType(entity.getType());
 
-        List<AddressBO> addresses = dto.getAddresses().stream().map(JakartaAddressMapper::toDomain).toList();
-        List<TelephoneBO> telephones = dto.getTelephones().stream().map(JakartaTelephoneMapper::toDomain).toList();
-        List<DocumentBO> documents = dto.getDocuments().stream().map(JakartaDocumentMapper::toDomain).toList();
+        List<AddressBO> addresses = entity.getAddresses().stream().map(JakartaAddressMapper::toDomain).toList();
+        List<TelephoneBO> telephones = entity.getTelephones().stream().map(JakartaTelephoneMapper::toDomain).toList();
+        List<DocumentBO> documents = entity.getDocuments().stream().map(JakartaDocumentMapper::toDomain).toList();
 
         bo.setAddresses(addresses);
         bo.setTelephones(telephones);
