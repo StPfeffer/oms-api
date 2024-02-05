@@ -3,9 +3,8 @@ package pfeffer.oms.inventory.infra.jakarta.mappers;
 import pfeffer.oms.inventory.domain.entities.DocumentBO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
 import pfeffer.oms.inventory.domain.entities.LocationChannelBO;
-import pfeffer.oms.inventory.infra.jakarta.model.JakartaDocument;
-import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
-import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocationChannel;
+import pfeffer.oms.inventory.domain.entities.TelephoneBO;
+import pfeffer.oms.inventory.infra.jakarta.model.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,14 +20,25 @@ public class JakartaLocationMapper {
         entity.setAlias(bo.getAlias());
         entity.setName(bo.getName());
         entity.setDescription(bo.getDescription());
-        entity.setAddress(JakartaAddressMapper.toEntity(bo.getAddress()));
 
-        List<JakartaDocument> documents = bo.getDocuments().stream().map(JakartaDocumentMapper::toEntity).toList();
-        entity.setDocuments(documents);
+        JakartaAddress jakartaAddress = JakartaAddressMapper.toEntity(bo.getAddress());
+        jakartaAddress.setLocation(entity);
 
-        List<LocationChannelBO> channelsBO = bo.getChannels();
+        entity.setAddress(jakartaAddress);
 
-        if (channelsBO == null || channelsBO.isEmpty()) {
+        if (bo.getTelephones() != null && bo.getTelephones().size() > 0) {
+            List<JakartaTelephone> telephones = bo.getTelephones().stream().map(JakartaTelephoneMapper::toEntity).toList();
+            telephones.forEach(telephone -> telephone.setLocation(entity));
+            entity.setTelephones(telephones);
+        }
+
+        if (bo.getDocuments() != null && bo.getDocuments().size() > 0) {
+            List<JakartaDocument> documents = bo.getDocuments().stream().map(JakartaDocumentMapper::toEntity).toList();
+            documents.forEach(document -> document.setLocation(entity));
+            entity.setDocuments(documents);
+        }
+
+        if (bo.getChannels() == null || bo.getChannels().isEmpty()) {
             entity.setChannels(new ArrayList<>());
         } else {
             List<JakartaLocationChannel> channels = bo.getChannels().stream().map(JakartaLocationChannelMapper::toEntity).toList();
@@ -51,8 +61,15 @@ public class JakartaLocationMapper {
         bo.setDescription(entity.getDescription());
         bo.setAddress(JakartaAddressMapper.toDomain(entity.getAddress()));
 
-        List<DocumentBO> documents = entity.getDocuments().stream().map(JakartaDocumentMapper::toDomain).toList();
-        bo.setDocuments(documents);
+        if (entity.getTelephones() != null && entity.getTelephones().size() > 0) {
+            List<TelephoneBO> telephones = entity.getTelephones().stream().map(JakartaTelephoneMapper::toDomain).toList();
+            bo.setTelephones(telephones);
+        }
+
+        if (entity.getDocuments() != null && entity.getDocuments().size() > 0) {
+            List<DocumentBO> documents = entity.getDocuments().stream().map(JakartaDocumentMapper::toDomain).toList();
+            bo.setDocuments(documents);
+        }
 
         List<JakartaLocationChannel> jakartaChannels = entity.getChannels();
 
