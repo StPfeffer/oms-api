@@ -41,7 +41,7 @@ public class StockService implements IStockRepository {
         List<StockDTO> stocks = this.repository.listStockBySkuId(skuId);
 
         if (stocks == null) {
-            throw new StockException("Não existe um estoque para o SKU informado", 404);
+            throw new StockException("There is no stock registered for the provided skuId", 404);
         }
 
         return stocks;
@@ -52,7 +52,7 @@ public class StockService implements IStockRepository {
         StockDTO stock = this.repository.findStockBySkuIdAndLocationId(skuId, locationId);
 
         if (stock == null) {
-            throw new StockException("Não existe um estoque para o SKU informado", 404);
+            throw new StockException("There is no stock registered for the provided skuId", 404);
         }
 
         return stock;
