@@ -17,6 +17,8 @@ public class LocationDTO {
 
     private AddressDTO address;
 
+    private List<TelephoneDTO> telephones;
+
     private List<DocumentDTO> documents;
 
     private List<LocationChannelDTO> channels;
@@ -71,6 +73,14 @@ public class LocationDTO {
 
     public void setAddress(AddressDTO address) {
         this.address = address;
+    }
+
+    public List<TelephoneDTO> getTelephones() {
+        return telephones;
+    }
+
+    public void setTelephones(List<TelephoneDTO> telephones) {
+        this.telephones = telephones;
     }
 
     public List<DocumentDTO> getDocuments() {
