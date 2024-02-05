@@ -26,6 +26,6 @@ public class JakartaLocationChannel {
     @JoinColumn(name = "channel_id", nullable = false)
     private JakartaChannel channel;
 
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false)
     private boolean enabled;
 }
