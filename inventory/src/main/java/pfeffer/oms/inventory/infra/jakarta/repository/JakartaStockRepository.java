@@ -59,7 +59,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
         StockDTO stock = findStockBySkuIdAndLocationId(skuId, locationId);
 
         if (stock == null)  {
-            throw new LocationException("Não existe uma filial cadastrada para o ID informado", 404);
+            throw new LocationException("There is no branch registered with the provided id", 404);
         }
 
         JakartaStock entity = JakartaStockMapper.toEntity(bo, locationRepository.findJakartaLocationByLocationId(bo.getLocationId()));
