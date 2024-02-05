@@ -9,7 +9,7 @@ public class JakartaTelephoneMapper {
         JakartaTelephone entity = new JakartaTelephone();
 
         entity.setDdi(bo.getDdi());
-        entity.setDdi(bo.getDdd());
+        entity.setDdd(bo.getDdd());
         entity.setNumber(bo.getNumber());
         entity.setType(bo.getType());
 
@@ -20,7 +20,7 @@ public class JakartaTelephoneMapper {
         TelephoneBO bo = new TelephoneBO();
 
         bo.setDdi(entity.getDdi());
-        bo.setDdi(entity.getDdd());
+        bo.setDdd(entity.getDdd());
         bo.setNumber(entity.getNumber());
         bo.setType(entity.getType());
 
