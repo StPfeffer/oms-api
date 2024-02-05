@@ -49,7 +49,7 @@ public class CustomerService implements ICustomerRepository {
         CustomerDTO location = this.repository.findCustomerById(locationId);
 
         if (location == null) {
-            throw new CustomerException("Não existe um cliente cadastrado para o ID informado", 404);
+            throw new CustomerException("There is no customer registered with the provided id", 404);
         }
 
         return location;
