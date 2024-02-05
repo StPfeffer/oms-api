@@ -28,4 +28,5 @@ public class JakartaLocationChannel {
 
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
+
 }
