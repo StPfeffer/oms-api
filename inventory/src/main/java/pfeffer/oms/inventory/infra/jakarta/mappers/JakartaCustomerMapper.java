@@ -4,6 +4,7 @@ import pfeffer.oms.inventory.domain.entities.AddressBO;
 import pfeffer.oms.inventory.domain.entities.CustomerBO;
 import pfeffer.oms.inventory.domain.entities.DocumentBO;
 import pfeffer.oms.inventory.domain.entities.TelephoneBO;
+import pfeffer.oms.inventory.domain.enums.EnumCustomerType;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaAddress;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaCustomer;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaDocument;
@@ -22,15 +23,26 @@ public class JakartaCustomerMapper {
         entity.setFullName(bo.getFullName());
         entity.setEmail(bo.getEmail());
         entity.setBirthdate(bo.getBirthdate());
-        entity.setType(bo.getType());
+        entity.setType(bo.getType() == null ? EnumCustomerType.INDIVIDUAL : bo.getType());
 
         List<JakartaAddress> addresses = bo.getAddresses().stream().map(JakartaAddressMapper::toEntity).toList();
-        List<JakartaTelephone> telephones = bo.getTelephones().stream().map(JakartaTelephoneMapper::toEntity).toList();
-        List<JakartaDocument> documents = bo.getDocuments().stream().map(JakartaDocumentMapper::toEntity).toList();
+        addresses.forEach(address -> address.setCustomer(entity));
 
         entity.setAddresses(addresses);
-        entity.setTelephones(telephones);
-        entity.setDocuments(documents);
+
+        if (bo.getTelephones() != null && bo.getTelephones().size() > 0) {
+            List<JakartaTelephone> telephones = bo.getTelephones().stream().map(JakartaTelephoneMapper::toEntity).toList();
+            telephones.forEach(telephone -> telephone.setCustomer(entity));
+
+            entity.setTelephones(telephones);
+        }
+
+        if (bo.getDocuments() != null && bo.getDocuments().size() > 0) {
+            List<JakartaDocument> documents = bo.getDocuments().stream().map(JakartaDocumentMapper::toEntity).toList();
+            documents.forEach(document -> document.setCustomer(entity));
+
+            entity.setDocuments(documents);
+        }
 
         return entity;
     }
