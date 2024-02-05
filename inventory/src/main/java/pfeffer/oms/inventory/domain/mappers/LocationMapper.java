@@ -1,12 +1,10 @@
 package pfeffer.oms.inventory.domain.mappers;
 
-import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
-import pfeffer.oms.inventory.domain.dtos.DocumentDTO;
-import pfeffer.oms.inventory.domain.dtos.LocationChannelDTO;
-import pfeffer.oms.inventory.domain.dtos.LocationDTO;
+import pfeffer.oms.inventory.domain.dtos.*;
 import pfeffer.oms.inventory.domain.entities.DocumentBO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
 import pfeffer.oms.inventory.domain.entities.LocationChannelBO;
+import pfeffer.oms.inventory.domain.entities.TelephoneBO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +21,15 @@ public class LocationMapper {
         dto.setDescription(bo.getDescription());
         dto.setAddress(AddressMapper.toDTO(bo.getAddress()));
 
-        List<DocumentDTO> documents = bo.getDocuments().stream().map(DocumentMapper::toDTO).toList();
-        dto.setDocuments(documents);
+        if (bo.getTelephones() != null && bo.getTelephones().size() > 0) {
+            List<TelephoneDTO> telephones = bo.getTelephones().stream().map(TelephoneMapper::toDTO).toList();
+            dto.setTelephones(telephones);
+        }
+
+        if (bo.getDocuments() != null && bo.getDocuments().size() > 0) {
+            List<DocumentDTO> documents = bo.getDocuments().stream().map(DocumentMapper::toDTO).toList();
+            dto.setDocuments(documents);
+        }
 
         List<LocationChannelBO> channelsBO = bo.getChannels();
 
@@ -51,8 +56,15 @@ public class LocationMapper {
         bo.setDescription(dto.getDescription());
         bo.setAddress(AddressMapper.toBO(dto.getAddress()));
 
-        List<DocumentBO> documents = dto.getDocuments().stream().map(DocumentMapper::toBO).toList();
-        bo.setDocuments(documents);
+        if (dto.getTelephones() != null && dto.getTelephones().size() > 0) {
+            List<TelephoneBO> telephones = dto.getTelephones().stream().map(TelephoneMapper::toBO).toList();
+            bo.setTelephones(telephones);
+        }
+
+        if (dto.getDocuments() != null && dto.getDocuments().size() > 0) {
+            List<DocumentBO> documents = dto.getDocuments().stream().map(DocumentMapper::toBO).toList();
+            bo.setDocuments(documents);
+        }
 
         List<LocationChannelDTO> channelsBO = dto.getChannels();
 
