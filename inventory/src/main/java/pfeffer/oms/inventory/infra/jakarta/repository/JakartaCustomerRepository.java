@@ -32,7 +32,7 @@ public class JakartaCustomerRepository extends SimpleJpaRepository<JakartaCustom
         CustomerDTO customer = this.findCustomerById(bo.getId());
 
         if (customer != null) {
-            throw new CustomerException("Já existe um cliente cadastrado com esse ID", 400);
+            throw new CustomerException("There is already a customer registered with the provided id", 400);
         }
 
         JakartaCustomer entity = JakartaCustomerMapper.toEntity(bo);
@@ -48,7 +48,7 @@ public class JakartaCustomerRepository extends SimpleJpaRepository<JakartaCustom
         CustomerDTO customer = this.findCustomerById(customerId);
 
         if (customer == null) {
-            throw new CustomerException("Não existe um cliente cadastrado com esse ID", 404);
+            throw new CustomerException("There is no customer registered with the provided id", 404);
         }
 
         bo.setId(customerId);
