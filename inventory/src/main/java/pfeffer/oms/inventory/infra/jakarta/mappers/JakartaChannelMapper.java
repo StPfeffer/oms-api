@@ -9,6 +9,7 @@ public class JakartaChannelMapper {
         JakartaChannel entity = new JakartaChannel();
 
         entity.setChannelId(bo.getChannelId());
+        entity.setDefault(bo.isDefault());
 
         return entity;
     }
@@ -17,6 +18,7 @@ public class JakartaChannelMapper {
         ChannelBO bo = new ChannelBO();
 
         bo.setChannelId(entity.getChannelId());
+        bo.setDefault(entity.isDefault());
 
         return bo;
     }
