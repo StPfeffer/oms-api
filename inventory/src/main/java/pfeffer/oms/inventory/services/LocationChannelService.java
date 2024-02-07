@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.LocationChannelDTO;
 import pfeffer.oms.inventory.domain.exceptions.ChannelException;
-import pfeffer.oms.inventory.domain.repositories.ILocationChannelRepository;
-import pfeffer.oms.inventory.domain.usecases.CreateLocationChannel;
+import pfeffer.oms.inventory.domain.repositories.location.ILocationChannelRepository;
+import pfeffer.oms.inventory.domain.usecases.location.CreateLocationChannel;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaLocationChannelRepository;
 
 @Service

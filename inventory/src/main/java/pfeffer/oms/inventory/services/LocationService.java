@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
-import pfeffer.oms.inventory.domain.repositories.ILocationRepository;
-import pfeffer.oms.inventory.domain.usecases.CreateLocation;
-import pfeffer.oms.inventory.domain.usecases.UpdateLocation;
+import pfeffer.oms.inventory.domain.repositories.location.ILocationRepository;
+import pfeffer.oms.inventory.domain.usecases.location.CreateLocation;
+import pfeffer.oms.inventory.domain.usecases.location.UpdateLocation;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaLocationMapper;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaLocationRepository;
 

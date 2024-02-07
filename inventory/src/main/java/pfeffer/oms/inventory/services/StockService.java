@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.StockDTO;
 import pfeffer.oms.inventory.domain.exceptions.StockException;
-import pfeffer.oms.inventory.domain.repositories.IStockRepository;
-import pfeffer.oms.inventory.domain.usecases.CreateStock;
-import pfeffer.oms.inventory.domain.usecases.UpdateStock;
+import pfeffer.oms.inventory.domain.repositories.stock.IStockRepository;
+import pfeffer.oms.inventory.domain.usecases.stock.CreateStock;
+import pfeffer.oms.inventory.domain.usecases.stock.UpdateStock;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaStockRepository;
 
 import java.util.List;

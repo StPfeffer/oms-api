@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
 import pfeffer.oms.inventory.domain.exceptions.ChannelException;
 import pfeffer.oms.inventory.domain.mappers.ChannelMapper;
-import pfeffer.oms.inventory.domain.repositories.IChannelRepository;
-import pfeffer.oms.inventory.domain.usecases.CreateChannel;
+import pfeffer.oms.inventory.domain.repositories.channel.IChannelRepository;
+import pfeffer.oms.inventory.domain.usecases.channel.CreateChannel;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelMapper;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaChannelRepository;
 

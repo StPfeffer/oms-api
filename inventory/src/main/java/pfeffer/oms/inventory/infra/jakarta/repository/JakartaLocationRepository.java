@@ -10,8 +10,8 @@ import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
 import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
-import pfeffer.oms.inventory.domain.repositories.ILocationDataBaseRepository;
-import pfeffer.oms.inventory.domain.repositories.ILocationRepository;
+import pfeffer.oms.inventory.domain.repositories.location.ILocationDataBaseRepository;
+import pfeffer.oms.inventory.domain.repositories.location.ILocationRepository;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaLocationMapper;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 

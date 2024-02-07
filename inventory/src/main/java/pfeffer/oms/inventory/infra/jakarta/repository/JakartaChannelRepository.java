@@ -10,8 +10,8 @@ import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
 import pfeffer.oms.inventory.domain.entities.ChannelBO;
 import pfeffer.oms.inventory.domain.exceptions.ChannelException;
 import pfeffer.oms.inventory.domain.mappers.ChannelMapper;
-import pfeffer.oms.inventory.domain.repositories.IChannelDataBaseRepository;
-import pfeffer.oms.inventory.domain.repositories.IChannelRepository;
+import pfeffer.oms.inventory.domain.repositories.channel.IChannelDataBaseRepository;
+import pfeffer.oms.inventory.domain.repositories.channel.IChannelRepository;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelMapper;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 
