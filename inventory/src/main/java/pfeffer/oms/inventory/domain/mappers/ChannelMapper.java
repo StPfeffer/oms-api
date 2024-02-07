@@ -9,6 +9,7 @@ public class ChannelMapper {
         ChannelDTO dto = new ChannelDTO();
 
         dto.setChannelId(bo.getChannelId());
+        dto.setDefault(bo.isDefault());
 
         return dto;
     }
@@ -17,6 +18,7 @@ public class ChannelMapper {
         ChannelBO bo = new ChannelBO();
 
         bo.setChannelId(dto.getChannelId());
+        bo.setDefault(dto.isDefault());
 
         return bo;
     }
