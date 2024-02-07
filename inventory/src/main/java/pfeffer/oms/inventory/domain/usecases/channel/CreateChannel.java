@@ -1,9 +1,9 @@
-package pfeffer.oms.inventory.domain.usecases;
+package pfeffer.oms.inventory.domain.usecases.channel;
 
 import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
 import pfeffer.oms.inventory.domain.entities.ChannelBO;
 import pfeffer.oms.inventory.domain.mappers.ChannelMapper;
-import pfeffer.oms.inventory.domain.repositories.IChannelDataBaseRepository;
+import pfeffer.oms.inventory.domain.repositories.channel.IChannelDataBaseRepository;
 
 public class CreateChannel {
 

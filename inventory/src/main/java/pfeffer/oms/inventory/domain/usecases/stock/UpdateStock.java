@@ -1,9 +1,9 @@
-package pfeffer.oms.inventory.domain.usecases;
+package pfeffer.oms.inventory.domain.usecases.stock;
 
 import pfeffer.oms.inventory.domain.dtos.StockDTO;
 import pfeffer.oms.inventory.domain.entities.StockBO;
 import pfeffer.oms.inventory.domain.mappers.StockMapper;
-import pfeffer.oms.inventory.domain.repositories.IStockDataBaseRepository;
+import pfeffer.oms.inventory.domain.repositories.stock.IStockDataBaseRepository;
 
 public class UpdateStock {
 

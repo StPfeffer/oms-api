@@ -1,9 +1,9 @@
-package pfeffer.oms.inventory.domain.usecases;
+package pfeffer.oms.inventory.domain.usecases.location;
 
 import pfeffer.oms.inventory.domain.dtos.LocationChannelDTO;
 import pfeffer.oms.inventory.domain.entities.LocationChannelBO;
 import pfeffer.oms.inventory.domain.mappers.LocationChannelMapper;
-import pfeffer.oms.inventory.domain.repositories.ILocationChannelDataBaseRepository;
+import pfeffer.oms.inventory.domain.repositories.location.ILocationChannelDataBaseRepository;
 
 public class CreateLocationChannel {
 

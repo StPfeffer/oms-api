@@ -1,4 +1,4 @@
-package pfeffer.oms.inventory.domain.repositories;
+package pfeffer.oms.inventory.domain.repositories.channel;
 
 import pfeffer.oms.inventory.domain.dtos.ChannelDTO;
 

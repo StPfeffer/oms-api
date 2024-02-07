@@ -1,4 +1,4 @@
-package pfeffer.oms.inventory.domain.repositories;
+package pfeffer.oms.inventory.domain.repositories.stock;
 
 import pfeffer.oms.inventory.domain.dtos.StockDTO;
 

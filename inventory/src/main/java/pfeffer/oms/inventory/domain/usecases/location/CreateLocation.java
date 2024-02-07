@@ -1,9 +1,9 @@
-package pfeffer.oms.inventory.domain.usecases;
+package pfeffer.oms.inventory.domain.usecases.location;
 
 import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 import pfeffer.oms.inventory.domain.entities.LocationBO;
 import pfeffer.oms.inventory.domain.mappers.LocationMapper;
-import pfeffer.oms.inventory.domain.repositories.ILocationDataBaseRepository;
+import pfeffer.oms.inventory.domain.repositories.location.ILocationDataBaseRepository;
 
 public class CreateLocation {
 
