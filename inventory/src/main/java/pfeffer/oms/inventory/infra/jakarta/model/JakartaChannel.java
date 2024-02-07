@@ -21,4 +21,7 @@ public class JakartaChannel {
     @Column(name = "channel_id", nullable = false, unique = true)
     private String channelId;
 
+    @Column(name = "default", nullable = false)
+    private boolean isDefault;
+
 }
