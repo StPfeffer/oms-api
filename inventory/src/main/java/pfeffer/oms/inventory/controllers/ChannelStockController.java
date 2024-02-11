@@ -21,17 +21,24 @@ public class ChannelStockController {
     }
 
     @PostMapping
-    public ResponseEntity<ChannelStockDTO> createChannel(@RequestBody ChannelStockDTO channel) {
-        ChannelStockDTO newChannel = this.service.createChannelStock(channel);
+    public ResponseEntity<ChannelStockDTO> createChannelStock(@RequestBody ChannelStockDTO dto) {
+        ChannelStockDTO newChannelStock = this.service.createChannelStock(dto);
 
-        return new ResponseEntity<>(newChannel, HttpStatus.CREATED);
+        return new ResponseEntity<>(newChannelStock, HttpStatus.CREATED);
+    }
+
+    @PutMapping("{channelId}")
+    public ResponseEntity<ChannelStockDTO> updateChannelStock(@PathVariable String channelId, @RequestBody ChannelStockDTO dto) {
+        ChannelStockDTO updatedChannelStock = this.service.updateChannelStock(channelId, dto);
+
+        return new ResponseEntity<>(updatedChannelStock, HttpStatus.ACCEPTED);
     }
 
     @GetMapping
-    public ResponseEntity<List<ChannelStockDTO>> listChannels() {
-        List<ChannelStockDTO> channels = this.service.listChannelStockTypes();
+    public ResponseEntity<List<ChannelStockDTO>> listChannelStockTypes() {
+        List<ChannelStockDTO> stockTypes = this.service.listChannelStockTypes();
 
-        return new ResponseEntity<>(channels, HttpStatus.OK);
+        return new ResponseEntity<>(stockTypes, HttpStatus.OK);
     }
 
 }
