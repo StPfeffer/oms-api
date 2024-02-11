@@ -1,10 +1,14 @@
 package pfeffer.oms.inventory.domain.dtos;
 
+import java.util.List;
+
 public class ChannelDTO {
 
     private String channelId;
 
     private boolean isDefault;
+
+    private List<ChannelStockDTO> stockTypes;
 
     public String getChannelId() {
         return channelId;
@@ -20,6 +24,14 @@ public class ChannelDTO {
 
     public void setDefault(boolean isDefault) {
         this.isDefault = isDefault;
+    }
+
+    public List<ChannelStockDTO> getStockTypes() {
+        return stockTypes;
+    }
+
+    public void setStockTypes(List<ChannelStockDTO> stockTypes) {
+        this.stockTypes = stockTypes;
     }
 
 }
