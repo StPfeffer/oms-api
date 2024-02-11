@@ -10,6 +10,7 @@ public class ChannelMapper {
 
         dto.setChannelId(bo.getChannelId());
         dto.setDefault(bo.isDefault());
+        dto.setStockTypes(bo.getStockTypes().stream().map(ChannelStockMapper::toDTO).toList());
 
         return dto;
     }
@@ -19,6 +20,7 @@ public class ChannelMapper {
 
         bo.setChannelId(dto.getChannelId());
         bo.setDefault(dto.isDefault());
+        bo.setStockTypes(dto.getStockTypes().stream().map(ChannelStockMapper::toBO).toList());
 
         return bo;
     }
