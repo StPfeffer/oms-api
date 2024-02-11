@@ -13,8 +13,8 @@ public class UpdateChannelStock {
         this.repository = repository;
     }
 
-    public ChannelStockDTO execute(ChannelStockDTO dto) {
-        ChannelStockBO entity = repository.update(dto.getChannelId(), ChannelStockMapper.toBO(dto));
+    public ChannelStockDTO execute(String channelId, ChannelStockDTO dto) {
+        ChannelStockBO entity = repository.update(channelId, ChannelStockMapper.toBO(dto));
 
         return ChannelStockMapper.toDTO(entity);
     }
