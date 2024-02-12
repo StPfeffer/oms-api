@@ -1,5 +1,7 @@
 package pfeffer.oms.inventory.domain.dtos;
 
+import pfeffer.oms.inventory.domain.enums.EnumStockType;
+
 import java.util.List;
 
 public class ChannelDTO {
@@ -8,7 +10,7 @@ public class ChannelDTO {
 
     private boolean isDefault;
 
-    private List<ChannelStockDTO> stockTypes;
+    private List<EnumStockType> stockTypes;
 
     public String getChannelId() {
         return channelId;
@@ -26,11 +28,11 @@ public class ChannelDTO {
         this.isDefault = isDefault;
     }
 
-    public List<ChannelStockDTO> getStockTypes() {
+    public List<EnumStockType> getStockTypes() {
         return stockTypes;
     }
 
-    public void setStockTypes(List<ChannelStockDTO> stockTypes) {
+    public void setStockTypes(List<EnumStockType> stockTypes) {
         this.stockTypes = stockTypes;
     }
 
