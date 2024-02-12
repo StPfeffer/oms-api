@@ -73,7 +73,7 @@ public class JakartaLocationMapper {
 
         List<JakartaLocationChannel> jakartaChannels = entity.getChannels();
 
-        if (jakartaChannels == null || jakartaChannels.size() == 0) {
+        if (jakartaChannels == null || jakartaChannels.isEmpty()) {
             bo.setChannels(new ArrayList<>());
         } else {
             List<LocationChannelBO> channels = entity.getChannels().stream().map(JakartaLocationChannelMapper::toDomain).toList();
