@@ -1,5 +1,7 @@
 package pfeffer.oms.inventory.domain.entities;
 
+import pfeffer.oms.inventory.domain.enums.EnumStockType;
+
 import java.util.List;
 
 public class ChannelBO {
@@ -7,7 +9,7 @@ public class ChannelBO {
 
     private boolean isDefault;
 
-    private List<ChannelStockBO> stockTypes;
+    private List<EnumStockType> stockTypes;
 
     public String getChannelId() {
         return channelId;
@@ -25,11 +27,11 @@ public class ChannelBO {
         isDefault = aDefault;
     }
 
-    public List<ChannelStockBO> getStockTypes() {
+    public List<EnumStockType> getStockTypes() {
         return stockTypes;
     }
 
-    public void setStockTypes(List<ChannelStockBO> stockTypes) {
+    public void setStockTypes(List<EnumStockType> stockTypes) {
         this.stockTypes = stockTypes;
     }
 
