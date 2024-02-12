@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,5 +25,10 @@ public class JakartaChannel {
 
     @Column(name = "is_default", nullable = false)
     private boolean isDefault;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channel_stock_id")
+    private List<JakartaChannelStock> stockTypes;
+
 
 }
