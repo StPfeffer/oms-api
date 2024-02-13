@@ -53,7 +53,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     @Override
     public LocationBO update(String locationId, LocationBO bo) {
-        LocationDTO location = findLocationByLocationId(locationId);
+        JakartaLocation location = findJakartaLocationByLocationId(locationId);
 
         if (location == null)  {
             throw new LocationException("There is no branch registered with the provided id", 404);
@@ -62,6 +62,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         bo.setId(locationId);
 
         JakartaLocation entity = JakartaLocationMapper.toEntity(bo);
+        entity.setId(location.getId());
 
         em.merge(entity);
         em.flush();
