@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.ChannelStockDTO;
+import pfeffer.oms.inventory.domain.enums.EnumStockType;
 import pfeffer.oms.inventory.domain.exceptions.StockException;
 import pfeffer.oms.inventory.domain.mappers.ChannelStockMapper;
 import pfeffer.oms.inventory.domain.usecases.channel.CreateChannelStock;
@@ -12,6 +13,7 @@ import pfeffer.oms.inventory.domain.usecases.channel.UpdateChannelStock;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelStockMapper;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaChannelStockRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -27,6 +29,12 @@ public class ChannelStockService implements IChannelStockRepository {
     @Transactional
     public ChannelStockDTO createChannelStock(ChannelStockDTO dto) {
         CreateChannelStock createChannelStock = new CreateChannelStock(repository);
+
+        List<EnumStockType> stockTypes = dto.getStockTypes();
+
+        if (stockTypes == null || stockTypes.isEmpty()) {
+            dto.setStockTypes(Collections.singletonList(EnumStockType.PHYSICAL));
+        }
 
         return createChannelStock.execute(dto);
     }
