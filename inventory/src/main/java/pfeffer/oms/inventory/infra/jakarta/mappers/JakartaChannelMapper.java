@@ -22,6 +22,7 @@ public class JakartaChannelMapper {
             channelStockBO.setChannelId(bo.getChannelId());
 
             List<JakartaChannelStock> physicalStockType = Collections.singletonList(JakartaChannelStockMapper.toEntity(channelStockBO));
+            physicalStockType.forEach(stockType -> stockType.setChannel(entity));
 
             entity.setStockTypes(physicalStockType);
         } else {
@@ -30,6 +31,7 @@ public class JakartaChannelMapper {
             channelStockBO.setStockTypes(bo.getStockTypes());
 
             List<JakartaChannelStock> jakartaChannelStocks = Collections.singletonList(JakartaChannelStockMapper.toEntity(channelStockBO));
+            jakartaChannelStocks.forEach(stockType -> stockType.setChannel(entity));
 
             entity.setStockTypes(jakartaChannelStocks);
         }
