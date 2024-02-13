@@ -53,6 +53,11 @@ public class ChannelStockService implements IChannelStockRepository {
     }
 
     @Override
+    public ChannelStockDTO findChannelStockByChannelId(String channelId) {
+        return this.repository.findChannelStockByChannelId(channelId);
+    }
+
+    @Override
     public List<ChannelStockDTO> findChannelStockTypesByChannelId(String channelId) {
         List<ChannelStockDTO> stockTypes = this.repository.findChannelStockTypesByChannelId(channelId);
 
