@@ -37,7 +37,7 @@ public class ChannelService implements IChannelRepository {
             dto.setDefault(true);
         }
 
-        if (dto.getStockTypes() == null) {
+        if (dto.getStockTypes() == null || dto.getStockTypes().isEmpty()) {
             dto.setStockTypes(Collections.singletonList(EnumStockType.PHYSICAL));
         }
 
