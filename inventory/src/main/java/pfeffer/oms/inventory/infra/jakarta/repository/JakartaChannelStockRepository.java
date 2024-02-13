@@ -36,7 +36,20 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
 
     @Override
     public ChannelStockBO persist(ChannelStockBO bo) {
+        JakartaChannel channel = this.channelRepository.findJakartaChannelByChannelId(bo.getChannelId());
+
+        if (channel == null) {
+            throw new ChannelException("There is no channel registered with the provided id", 404);
+        }
+
+        ChannelStockDTO channelStock = this.findChannelStockByChannelId(bo.getChannelId());
+
+        if (channelStock != null) {
+            this.update(bo.getChannelId(), bo);
+        }
+
         JakartaChannelStock entity = JakartaChannelStockMapper.toEntity(bo);
+        entity.setChannel(channel);
 
         em.persist(entity);
         em.flush();
@@ -46,15 +59,16 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
 
     @Override
     public ChannelStockBO update(String channelId, ChannelStockBO bo) {
-        List<ChannelStockDTO> stockTypes = this.findChannelStockTypesByChannelId(channelId);
+        JakartaChannelStock channelStock = this.findJakartaChannelStockByChannelId(channelId);
 
-        if (stockTypes.isEmpty()) {
+        if (channelStock == null) {
             throw new ChannelException("There is no channel registered with the provided id", 404);
         }
 
         JakartaChannel channel = JakartaChannelMapper.toEntity(ChannelMapper.toBO(channelRepository.findChannelByChannelId(channelId)));
 
         JakartaChannelStock entity = JakartaChannelStockMapper.toEntity(bo);
+        entity.setId(channelStock.getId());
         entity.setChannel(channel);
 
         em.merge(entity);
@@ -74,6 +88,29 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
             return stockTypes.stream().map(jakartaChannelStock ->
                     ChannelStockMapper.toDTO(JakartaChannelStockMapper.toDomain(jakartaChannelStock))
             ).toList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public ChannelStockDTO findChannelStockByChannelId(String channelId) {
+        TypedQuery<JakartaChannelStock> query = em.createQuery("SELECT e FROM JakartaChannelStock e WHERE e.channel.channelId = :channelId", JakartaChannelStock.class)
+                .setParameter("channelId", channelId);
+
+        try {
+            return ChannelStockMapper.toDTO(JakartaChannelStockMapper.toDomain(query.getSingleResult()));
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public JakartaChannelStock findJakartaChannelStockByChannelId(String channelId) {
+        TypedQuery<JakartaChannelStock> query = em.createQuery("SELECT e FROM JakartaChannelStock e WHERE e.channel.channelId = :channelId", JakartaChannelStock.class)
+                .setParameter("channelId", channelId);
+
+        try {
+            return query.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }
