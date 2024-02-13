@@ -27,7 +27,7 @@ public class JakartaChannel {
     private boolean isDefault;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "channel_stock_id")
+    @JoinColumn(name = "id")
     private List<JakartaChannelStock> stockTypes;
 
 
