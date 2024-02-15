@@ -26,8 +26,7 @@ public class JakartaChannel {
     @Column(name = "is_default", nullable = false)
     private boolean isDefault;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @OneToMany(mappedBy = "channel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JakartaChannelStock> stockTypes;
 
 
