@@ -65,7 +65,7 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
             throw new ChannelException("There is no channel registered with the provided id", 404);
         }
 
-        JakartaChannel channel = JakartaChannelMapper.toEntity(ChannelMapper.toBO(channelRepository.findChannelByChannelId(channelId)));
+        JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(channelId);
 
         JakartaChannelStock entity = JakartaChannelStockMapper.toEntity(bo);
         entity.setId(channelStock.getId());
