@@ -9,11 +9,9 @@ import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.ChannelStockDTO;
 import pfeffer.oms.inventory.domain.entities.ChannelStockBO;
 import pfeffer.oms.inventory.domain.exceptions.ChannelException;
-import pfeffer.oms.inventory.domain.mappers.ChannelMapper;
 import pfeffer.oms.inventory.domain.mappers.ChannelStockMapper;
 import pfeffer.oms.inventory.domain.repositories.channel.IChannelStockDataBaseRepository;
 import pfeffer.oms.inventory.domain.usecases.channel.IChannelStockRepository;
-import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelMapper;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelStockMapper;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannelStock;
@@ -45,7 +43,7 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
         ChannelStockDTO channelStock = this.findChannelStockByChannelId(bo.getChannelId());
 
         if (channelStock != null) {
-            this.update(bo.getChannelId(), bo);
+            return this.update(bo.getChannelId(), bo);
         }
 
         JakartaChannelStock entity = JakartaChannelStockMapper.toEntity(bo);
@@ -65,16 +63,9 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
             throw new ChannelException("There is no channel registered with the provided id", 404);
         }
 
-        JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(channelId);
+        channelStock.setStockTypes(bo.getStockTypes());
 
-        JakartaChannelStock entity = JakartaChannelStockMapper.toEntity(bo);
-        entity.setId(channelStock.getId());
-        entity.setChannel(channel);
-
-        em.merge(entity);
-        em.flush();
-
-        return JakartaChannelStockMapper.toDomain(entity);
+        return JakartaChannelStockMapper.toDomain(channelStock);
     }
 
     @Override
