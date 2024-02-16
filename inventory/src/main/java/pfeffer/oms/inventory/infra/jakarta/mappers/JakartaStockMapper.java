@@ -8,11 +8,10 @@ import java.util.Date;
 
 public class JakartaStockMapper {
 
-    public static JakartaStock toEntity(StockBO bo, JakartaLocation jakartaLocation) {
+    public static JakartaStock toEntity(StockBO bo) {
         JakartaStock entity = new JakartaStock();
 
         entity.setSkuId(bo.getSkuId());
-        entity.setLocation(jakartaLocation);
         entity.setQuantity(bo.getQuantity());
         entity.setThreshold(bo.getThreshold());
         entity.setStockType(bo.getStockType());

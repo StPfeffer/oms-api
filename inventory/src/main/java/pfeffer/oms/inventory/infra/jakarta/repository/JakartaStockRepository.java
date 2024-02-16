@@ -42,7 +42,8 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
             throw new StockException("There is no branch registered with the provided id", 400);
         }
 
-        JakartaStock entity = JakartaStockMapper.toEntity(bo, location);
+        JakartaStock entity = JakartaStockMapper.toEntity(bo);
+        entity.setLocation(location);
 
         this.canCreate(entity);
 
@@ -60,7 +61,8 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
             throw new LocationException("There is no branch registered with the provided id", 404);
         }
 
-        JakartaStock entity = JakartaStockMapper.toEntity(bo, locationRepository.findJakartaLocationByLocationId(bo.getLocationId()));
+        JakartaStock entity = JakartaStockMapper.toEntity(bo);
+        entity.setLocation(locationRepository.findJakartaLocationByLocationId(bo.getLocationId()));
 
         em.merge(entity);
         em.flush();
