@@ -22,7 +22,7 @@ public class JakartaChannelStock {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "channel_id", nullable = false)
+    @JoinColumn(name = "channel_id", nullable = false, unique = true)
     private JakartaChannel channel;
 
     @Enumerated(EnumType.STRING)
