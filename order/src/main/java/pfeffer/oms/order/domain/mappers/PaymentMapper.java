@@ -10,6 +10,8 @@ public class PaymentMapper {
 
         dto.setType(bo.getType());
         dto.setAmount(bo.getAmount());
+        dto.setTariff(bo.getTariff());
+        dto.setDiscount(bo.getDiscount());
         dto.setAcquirer(bo.getAcquirer());
         dto.setCurrency(bo.getCurrency());
         dto.setInstallments(bo.getInstallments());
@@ -26,6 +28,8 @@ public class PaymentMapper {
 
         bo.setType(dto.getType());
         bo.setAmount(dto.getAmount());
+        bo.setTariff(dto.getTariff());
+        bo.setDiscount(dto.getDiscount());
         bo.setAcquirer(dto.getAcquirer());
         bo.setCurrency(dto.getCurrency());
         bo.setInstallments(dto.getInstallments());
