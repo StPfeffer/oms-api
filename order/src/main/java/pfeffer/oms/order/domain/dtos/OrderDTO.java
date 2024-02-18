@@ -4,6 +4,7 @@ import pfeffer.oms.inventory.domain.dtos.AddressDTO;
 import pfeffer.oms.inventory.domain.dtos.CustomerDTO;
 
 import java.util.Date;
+import java.util.List;
 
 public final class OrderDTO {
 
@@ -20,6 +21,8 @@ public final class OrderDTO {
     private CustomerDTO customer;
 
     private AddressDTO billingAddress;
+
+    private List<PaymentDTO> payments;
 
     public String getOrderId() {
         return orderId;
@@ -75,6 +78,14 @@ public final class OrderDTO {
 
     public void setBillingAddress(AddressDTO billingAddress) {
         this.billingAddress = billingAddress;
+    }
+
+    public List<PaymentDTO> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<PaymentDTO> payments) {
+        this.payments = payments;
     }
 
 }
