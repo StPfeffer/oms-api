@@ -8,6 +8,4 @@ public interface IChannelStockRepository {
 
     ChannelStockDTO findChannelStockByChannelId(String channelId);
 
-    List<ChannelStockDTO> findChannelStockTypesByChannelId(String channelId);
-
 }
