@@ -83,12 +83,20 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
     }
 
     public JakartaLocation findJakartaLocationByLocationId(String locationId) {
+        return this.findJakartaLocationByLocationId(locationId, false);
+    }
+
+    public JakartaLocation findJakartaLocationByLocationId(String locationId, boolean exception) {
         TypedQuery<JakartaLocation> query = em.createQuery("SELECT e FROM JakartaLocation e WHERE e.locationId = :locationId", JakartaLocation.class)
                 .setParameter("locationId", locationId);
 
         try {
             return query.getSingleResult();
         } catch (NoResultException e) {
+            if (exception) {
+                throw new LocationException("There is no branch registered with the provided id", 404);
+            }
+
             return null;
         }
     }
