@@ -18,7 +18,7 @@ public class InventoryControllerExceptionHandler {
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<ExceptionDTO> DataIntegrityViolationExceptions(DataIntegrityViolationException exception) {
+    public ResponseEntity<ExceptionDTO> threatDataIntegrityViolationExceptions(DataIntegrityViolationException exception) {
         ExceptionDTO exceptionDTO = new ExceptionDTO(exception.getMessage(), "400");
 
         return ResponseEntity.badRequest().body(exceptionDTO);
