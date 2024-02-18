@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pfeffer.oms.inventory.domain.enums.EnumState;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaAddress;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaCustomer;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
