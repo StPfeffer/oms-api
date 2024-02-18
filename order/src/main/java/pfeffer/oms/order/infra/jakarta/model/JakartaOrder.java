@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaAddress;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaCustomer;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
@@ -31,6 +32,10 @@ public class JakartaOrder {
 
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channel_id", nullable = false)
+    private JakartaChannel channel;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = false)
