@@ -4,6 +4,7 @@ import pfeffer.oms.inventory.domain.entities.AddressBO;
 import pfeffer.oms.inventory.domain.entities.CustomerBO;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderBO {
 
@@ -20,6 +21,8 @@ public class OrderBO {
     private CustomerBO customer;
 
     private AddressBO billingAddress;
+
+    private List<PaymentBO> payments;
 
     public String getOrderId() {
         return orderId;
@@ -75,6 +78,14 @@ public class OrderBO {
 
     public void setBillingAddress(AddressBO billingAddress) {
         this.billingAddress = billingAddress;
+    }
+
+    public List<PaymentBO> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<PaymentBO> payments) {
+        this.payments = payments;
     }
 
 }
