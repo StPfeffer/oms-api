@@ -9,6 +9,10 @@ public class PaymentDTO {
 
     private BigDecimal amount;
 
+    private BigDecimal tariff;
+
+    private BigDecimal discount;
+
     private String acquirer;
 
     private String currency;
@@ -37,6 +41,22 @@ public class PaymentDTO {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public BigDecimal getTariff() {
+        return tariff;
+    }
+
+    public void setTariff(BigDecimal tariff) {
+        this.tariff = tariff;
+    }
+
+    public BigDecimal getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(BigDecimal discount) {
+        this.discount = discount;
     }
 
     public String getAcquirer() {
