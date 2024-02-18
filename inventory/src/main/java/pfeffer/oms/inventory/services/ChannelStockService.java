@@ -57,15 +57,4 @@ public class ChannelStockService implements IChannelStockRepository {
         return this.repository.findChannelStockByChannelId(channelId);
     }
 
-    @Override
-    public List<ChannelStockDTO> findChannelStockTypesByChannelId(String channelId) {
-        List<ChannelStockDTO> stockTypes = this.repository.findChannelStockTypesByChannelId(channelId);
-
-        if (stockTypes.isEmpty()) {
-            throw new StockException("There is not a single stock type associated with for the provided channel", 400);
-        }
-
-        return stockTypes;
-    }
-
 }

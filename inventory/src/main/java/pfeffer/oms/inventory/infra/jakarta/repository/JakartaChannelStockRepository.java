@@ -16,8 +16,6 @@ import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaChannelStockMapper;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannelStock;
 
-import java.util.List;
-
 @Service
 public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaChannelStock, Long> implements IChannelStockDataBaseRepository, IChannelStockRepository {
 
@@ -34,14 +32,11 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
 
     @Override
     public ChannelStockBO persist(ChannelStockBO bo) {
-        JakartaChannel channel = this.channelRepository.findJakartaChannelByChannelId(bo.getChannelId());
+        JakartaChannel channel = this.channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
 
-        if (channel == null) {
-            throw ChannelException.NOT_FOUND;
-        }
+        JakartaChannelStock channelStock = this.findJakartaChannelStockByChannelId(bo.getChannelId());
 
-        ChannelStockDTO channelStock = this.findChannelStockByChannelId(bo.getChannelId());
-
+        // auto update
         if (channelStock != null) {
             return this.update(bo.getChannelId(), bo);
         }
@@ -66,22 +61,6 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
         channelStock.setStockTypes(bo.getStockTypes());
 
         return JakartaChannelStockMapper.toDomain(channelStock);
-    }
-
-    @Override
-    public List<ChannelStockDTO> findChannelStockTypesByChannelId(String channelId) {
-        TypedQuery<JakartaChannelStock> query = em.createQuery("SELECT e FROM JakartaChannelStock e WHERE e.channel.channelId = :channelId", JakartaChannelStock.class)
-                .setParameter("channelId", channelId);
-
-        try {
-            List<JakartaChannelStock> stockTypes = query.getResultList();
-
-            return stockTypes.stream().map(jakartaChannelStock ->
-                    ChannelStockMapper.toDTO(JakartaChannelStockMapper.toDomain(jakartaChannelStock))
-            ).toList();
-        } catch (NoResultException e) {
-            return null;
-        }
     }
 
     @Override
