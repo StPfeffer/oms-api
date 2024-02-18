@@ -59,12 +59,20 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
     }
 
     public JakartaChannel findJakartaChannelByChannelId(String channelId) {
+        return this.findJakartaChannelByChannelId(channelId, false);
+    }
+
+    public JakartaChannel findJakartaChannelByChannelId(String channelId, boolean exception) {
         TypedQuery<JakartaChannel> query = em.createQuery("SELECT e FROM JakartaChannel e WHERE e.channelId = :channelId", JakartaChannel.class)
                 .setParameter("channelId", channelId);
 
         try {
             return query.getSingleResult();
         } catch (NoResultException e) {
+            if (exception) {
+                throw new ChannelException("There is not channel registered with the provided channelId", 404);
+            }
+
             return null;
         }
     }
