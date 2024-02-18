@@ -27,9 +27,11 @@ public class JakartaOrder {
     @Column(name = "order_id", nullable = false)
     private String orderId;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false)
     private Date createdAt;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
