@@ -19,6 +19,8 @@ public class OrderMapper {
         dto.setCustomer(CustomerMapper.toDTO(bo.getCustomer()));
         dto.setBillingAddress(AddressMapper.toDTO(bo.getBillingAddress()));
 
+        dto.setPayments(bo.getPayments().stream().map(PaymentMapper::toDTO).toList());
+
         return dto;
     }
 
@@ -33,6 +35,8 @@ public class OrderMapper {
 
         bo.setCustomer(CustomerMapper.toBO(dto.getCustomer()));
         bo.setBillingAddress(AddressMapper.toBO(dto.getBillingAddress()));
+
+        bo.setPayments(dto.getPayments().stream().map(PaymentMapper::toBO).toList());
 
         return bo;
     }
