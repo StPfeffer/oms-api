@@ -37,17 +37,8 @@ public class JakartaLocationChannelRepository extends SimpleJpaRepository<Jakart
 
     @Override
     public LocationChannelBO persist(LocationChannelBO bo) {
-        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId());
-
-        if (location == null) {
-            throw LocationException.NOT_FOUND;
-        }
-
-        JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId());
-
-        if (channel == null) {
-            throw ChannelException.NOT_FOUND;
-        }
+        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId(), true);
+        JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
 
         JakartaLocationChannel entity = JakartaLocationChannelMapper.toEntity(bo);
         entity.setLocation(location);
