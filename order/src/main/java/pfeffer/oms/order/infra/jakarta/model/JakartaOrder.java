@@ -11,6 +11,7 @@ import pfeffer.oms.inventory.infra.jakarta.model.JakartaCustomer;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -50,5 +51,8 @@ public class JakartaOrder {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id", nullable = false)
     private JakartaLocation location;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<JakartaPayment> payments;
 
 }
