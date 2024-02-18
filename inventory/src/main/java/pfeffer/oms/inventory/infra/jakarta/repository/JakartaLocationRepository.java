@@ -53,11 +53,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     @Override
     public LocationBO update(String locationId, LocationBO bo) {
-        JakartaLocation location = findJakartaLocationByLocationId(locationId);
-
-        if (location == null)  {
-            throw LocationException.NOT_FOUND;
-        }
+        JakartaLocation location = findJakartaLocationByLocationId(locationId, true);
 
         bo.setId(locationId);
 
@@ -72,10 +68,11 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     @Override
     public LocationDTO findLocationByLocationId(String locationId) {
-        JakartaLocation location = this.findJakartaLocationByLocationId(locationId);
+        TypedQuery<JakartaLocation> query = em.createQuery("SELECT e FROM JakartaLocation e WHERE e.locationId = :locationId", JakartaLocation.class)
+                .setParameter("locationId", locationId);
 
         try {
-            return LocationMapper.toDTO(JakartaLocationMapper.toDomain(location));
+            return LocationMapper.toDTO(JakartaLocationMapper.toDomain(query.getSingleResult()));
         } catch (NoResultException e) {
             return null;
         }
