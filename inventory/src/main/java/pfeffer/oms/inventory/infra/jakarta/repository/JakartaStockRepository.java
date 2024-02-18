@@ -15,6 +15,7 @@ import pfeffer.oms.inventory.domain.mappers.StockMapper;
 import pfeffer.oms.inventory.domain.repositories.stock.IStockDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.stock.IStockRepository;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaStockMapper;
+import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannelStock;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaStock;
 
@@ -36,11 +37,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
 
     @Override
     public StockBO persist(StockBO bo) {
-        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId());
-
-        if (location == null) {
-            throw new StockException("There is no branch registered with the provided id", 400);
-        }
+        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId(), true);
 
         JakartaStock entity = JakartaStockMapper.toEntity(bo);
         entity.setLocation(location);
@@ -55,13 +52,10 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
 
     @Override
     public StockBO update(String locationId, String skuId, StockBO bo) {
-        StockDTO stock = findStockBySkuIdAndLocationId(skuId, locationId);
-
-        if (stock == null)  {
-            throw LocationException.NOT_FOUND;
-        }
+        JakartaStock stock = findJakartaStockBySkuIdAndLocationId(skuId, locationId);
 
         JakartaStock entity = JakartaStockMapper.toEntity(bo);
+        entity.setId(stock.getId());
         entity.setLocation(locationRepository.findJakartaLocationByLocationId(bo.getLocationId()));
 
         em.merge(entity);
@@ -95,6 +89,26 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
         try {
             return StockMapper.toDTO(JakartaStockMapper.toDomain(query.getSingleResult()));
         } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public JakartaStock findJakartaStockBySkuIdAndLocationId(String skuId, String locationId) {
+        return this.findJakartaStockBySkuIdAndLocationId(skuId, locationId, false);
+    }
+
+    public JakartaStock findJakartaStockBySkuIdAndLocationId(String skuId, String locationId, boolean exception) {
+        TypedQuery<JakartaStock> query = em.createQuery("SELECT e FROM JakartaStock e WHERE e.skuId = :skuId AND e.location.locationId = :locationId", JakartaStock.class)
+                .setParameter("skuId", skuId)
+                .setParameter("locationId", locationId);
+
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            if (exception) {
+                throw new StockException("There is not stock registered for the provided skuId and locationId", 404);
+            }
+
             return null;
         }
     }
