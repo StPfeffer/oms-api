@@ -58,7 +58,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
         StockDTO stock = findStockBySkuIdAndLocationId(skuId, locationId);
 
         if (stock == null)  {
-            throw new LocationException("There is no branch registered with the provided id", 404);
+            throw LocationException.NOT_FOUND;
         }
 
         JakartaStock entity = JakartaStockMapper.toEntity(bo);
@@ -103,7 +103,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
         StockDTO stock = this.findStockBySkuIdAndLocationId(entity.getSkuId(), entity.getLocation().getLocationId());
 
         if (stock != null) {
-            throw new ChannelException("There is already a stock registered with the provided skuId and locationId", 400);
+            throw new StockException("There is already a stock registered with the provided skuId and locationId", 400);
         }
     }
 

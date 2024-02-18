@@ -40,13 +40,13 @@ public class JakartaLocationChannelRepository extends SimpleJpaRepository<Jakart
         JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId());
 
         if (location == null) {
-            throw new LocationException("There is no branch registered with the provided id", 400);
+            throw LocationException.NOT_FOUND;
         }
 
         JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId());
 
         if (channel == null) {
-            throw new ChannelException("There is no channel registered with the provided id", 400);
+            throw ChannelException.NOT_FOUND;
         }
 
         JakartaLocationChannel entity = JakartaLocationChannelMapper.toEntity(bo);

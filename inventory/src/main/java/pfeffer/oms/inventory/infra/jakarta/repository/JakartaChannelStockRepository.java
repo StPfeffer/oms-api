@@ -37,7 +37,7 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
         JakartaChannel channel = this.channelRepository.findJakartaChannelByChannelId(bo.getChannelId());
 
         if (channel == null) {
-            throw new ChannelException("There is no channel registered with the provided id", 404);
+            throw ChannelException.NOT_FOUND;
         }
 
         ChannelStockDTO channelStock = this.findChannelStockByChannelId(bo.getChannelId());
@@ -60,7 +60,7 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
         JakartaChannelStock channelStock = this.findJakartaChannelStockByChannelId(channelId);
 
         if (channelStock == null) {
-            throw new ChannelException("There is no channel registered with the provided id", 404);
+            throw ChannelException.NOT_FOUND;
         }
 
         channelStock.setStockTypes(bo.getStockTypes());

@@ -34,7 +34,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         LocationDTO location = this.findLocationByLocationId(bo.getId());
 
         if (location != null) {
-            throw new LocationException("There is already a branch registered with the provided id.", 400);
+            throw LocationException.ALREADY_EXISTS;
         }
 
         bo.getDocuments().forEach(documentBO -> {
@@ -56,7 +56,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
         JakartaLocation location = findJakartaLocationByLocationId(locationId);
 
         if (location == null)  {
-            throw new LocationException("There is no branch registered with the provided id", 404);
+            throw LocationException.NOT_FOUND;
         }
 
         bo.setId(locationId);
@@ -72,11 +72,10 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     @Override
     public LocationDTO findLocationByLocationId(String locationId) {
-        TypedQuery<JakartaLocation> query = em.createQuery("SELECT e FROM JakartaLocation e WHERE e.locationId = :locationId", JakartaLocation.class)
-                .setParameter("locationId", locationId);
+        JakartaLocation location = this.findJakartaLocationByLocationId(locationId);
 
         try {
-            return LocationMapper.toDTO(JakartaLocationMapper.toDomain(query.getSingleResult()));
+            return LocationMapper.toDTO(JakartaLocationMapper.toDomain(location));
         } catch (NoResultException e) {
             return null;
         }
@@ -94,7 +93,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
             return query.getSingleResult();
         } catch (NoResultException e) {
             if (exception) {
-                throw new LocationException("There is no branch registered with the provided id", 404);
+                throw LocationException.NOT_FOUND;
             }
 
             return null;

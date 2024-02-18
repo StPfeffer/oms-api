@@ -42,7 +42,7 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
         ChannelDTO channel = this.findChannelByChannelId(entity.getChannelId());
 
         if (channel != null) {
-            throw new ChannelException("There is already a channel registered with the provided channelId", 400);
+            throw ChannelException.ALREADY_EXISTS;
         }
     }
 
@@ -70,7 +70,7 @@ public class JakartaChannelRepository extends SimpleJpaRepository<JakartaChannel
             return query.getSingleResult();
         } catch (NoResultException e) {
             if (exception) {
-                throw new ChannelException("There is not channel registered with the provided channelId", 404);
+                throw ChannelException.NOT_FOUND;
             }
 
             return null;
