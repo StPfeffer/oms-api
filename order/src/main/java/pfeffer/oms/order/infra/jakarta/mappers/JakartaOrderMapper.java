@@ -17,20 +17,24 @@ public class JakartaOrderMapper {
         entity.setCustomer(JakartaCustomerMapper.toEntity(domain.getCustomer()));
         entity.setBillingAddress(JakartaAddressMapper.toEntity(domain.getBillingAddress()));
 
+        entity.setPayments(domain.getPayments().stream().map(JakartaPaymentMapper::toEntity).toList());
+
         return entity;
     }
 
-    public static OrderBO toDomain(JakartaOrder order) {
+    public static OrderBO toDomain(JakartaOrder entity) {
         OrderBO domain = new OrderBO();
 
-        domain.setOrderId(order.getOrderId());
-        domain.setCreatedAt(order.getCreatedAt());
-        domain.setUpdatedAt(order.getUpdatedAt());
+        domain.setOrderId(entity.getOrderId());
+        domain.setCreatedAt(entity.getCreatedAt());
+        domain.setUpdatedAt(entity.getUpdatedAt());
 
-        domain.setChannelId(order.getChannel().getChannelId());
-        domain.setLocationId(order.getLocation().getLocationId());
-        domain.setCustomer(JakartaCustomerMapper.toDomain(order.getCustomer()));
-        domain.setBillingAddress(JakartaAddressMapper.toDomain(order.getBillingAddress()));
+        domain.setChannelId(entity.getChannel().getChannelId());
+        domain.setLocationId(entity.getLocation().getLocationId());
+        domain.setCustomer(JakartaCustomerMapper.toDomain(entity.getCustomer()));
+        domain.setBillingAddress(JakartaAddressMapper.toDomain(entity.getBillingAddress()));
+
+        domain.setPayments(entity.getPayments().stream().map(JakartaPaymentMapper::toDomain).toList());
 
         return domain;
     }
