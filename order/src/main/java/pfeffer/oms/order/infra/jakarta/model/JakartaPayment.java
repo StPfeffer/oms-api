@@ -1,8 +1,6 @@
 package pfeffer.oms.order.infra.jakarta.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,5 +49,9 @@ public class JakartaPayment {
 
     @Column(name = "payment_date")
     private Date paymentDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private JakartaOrder order;
 
 }
