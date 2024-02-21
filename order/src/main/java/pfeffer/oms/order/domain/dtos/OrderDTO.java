@@ -3,6 +3,7 @@ package pfeffer.oms.order.domain.dtos;
 import pfeffer.oms.inventory.domain.dtos.AddressDTO;
 import pfeffer.oms.inventory.domain.dtos.CustomerDTO;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +24,10 @@ public final class OrderDTO {
     private AddressDTO billingAddress;
 
     private List<PaymentDTO> payments;
+
+    private BigDecimal price;
+
+    private BigDecimal shippingPrice;
 
     public String getOrderId() {
         return orderId;
@@ -86,6 +91,22 @@ public final class OrderDTO {
 
     public void setPayments(List<PaymentDTO> payments) {
         this.payments = payments;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public BigDecimal getShippingPrice() {
+        return shippingPrice;
+    }
+
+    public void setShippingPrice(BigDecimal shippingPrice) {
+        this.shippingPrice = shippingPrice;
     }
 
 }
