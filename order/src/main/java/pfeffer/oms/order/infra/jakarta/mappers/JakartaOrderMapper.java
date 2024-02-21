@@ -19,6 +19,9 @@ public class JakartaOrderMapper {
 
         entity.setPayments(domain.getPayments().stream().map(JakartaPaymentMapper::toEntity).toList());
 
+        entity.setPrice(domain.getPrice());
+        entity.setShippingPrice(domain.getShippingPrice());
+
         return entity;
     }
 
@@ -35,6 +38,9 @@ public class JakartaOrderMapper {
         domain.setBillingAddress(JakartaAddressMapper.toDomain(entity.getBillingAddress()));
 
         domain.setPayments(entity.getPayments().stream().map(JakartaPaymentMapper::toDomain).toList());
+
+        domain.setPrice(entity.getPrice());
+        domain.setShippingPrice(entity.getShippingPrice());
 
         return domain;
     }
