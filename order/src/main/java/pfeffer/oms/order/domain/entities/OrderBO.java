@@ -3,6 +3,7 @@ package pfeffer.oms.order.domain.entities;
 import pfeffer.oms.inventory.domain.entities.AddressBO;
 import pfeffer.oms.inventory.domain.entities.CustomerBO;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +24,10 @@ public class OrderBO {
     private AddressBO billingAddress;
 
     private List<PaymentBO> payments;
+
+    private BigDecimal price;
+
+    private BigDecimal shippingPrice;
 
     public String getOrderId() {
         return orderId;
@@ -86,6 +91,22 @@ public class OrderBO {
 
     public void setPayments(List<PaymentBO> payments) {
         this.payments = payments;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public BigDecimal getShippingPrice() {
+        return shippingPrice;
+    }
+
+    public void setShippingPrice(BigDecimal shippingPrice) {
+        this.shippingPrice = shippingPrice;
     }
 
 }
