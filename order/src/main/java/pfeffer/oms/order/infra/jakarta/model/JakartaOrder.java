@@ -10,6 +10,7 @@ import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaCustomer;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -54,5 +55,11 @@ public class JakartaOrder {
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<JakartaPayment> payments;
+
+    @Column(name = "price", nullable = false)
+    private BigDecimal price = BigDecimal.ZERO;
+
+    @Column(name = "shipping_price", nullable = false)
+    private BigDecimal shippingPrice = BigDecimal.ZERO;
 
 }
