@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  oms-database:
+    image: postgres:16.2
+    container_name: oms-database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: oms
+    ports:
+      - "5432:5432"
+    volumes:
+      - "oms-database-volume:/var/lib/postgresql/data"
+
+  inventory:
+    image: inventory:latest
+    container_name: inventory
+    build:
+      context: ./inventory
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    volumes:
+      - "oms-inventory-volume:/tmp"
+
+  order:
+    image: order:latest
+    container_name: order
+    build:
+      context: ./order
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - inventory
+    volumes:
+      - "oms-order-volume:/tmp"
+
+volumes:
+  oms-database-volume:
+  oms-inventory-volume:
+  oms-order-volume:
