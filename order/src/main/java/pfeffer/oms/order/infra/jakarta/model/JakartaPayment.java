@@ -17,6 +17,10 @@ import java.util.Date;
 @Table(name = "payment")
 public class JakartaPayment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(name = "type", nullable = false)
     private String type;
 
