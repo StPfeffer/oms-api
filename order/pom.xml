@@ -12,7 +12,7 @@
 
     <groupId>pfeffer.oms.order</groupId>
     <artifactId>order</artifactId>
-    <version>${order.application.version}</version>
+    <version>0.0.1</version>
     <name>order</name>
     <description>O serviço de Order da aplicaçao</description>
 
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>pfeffer.oms.inventory</groupId>
             <artifactId>inventory</artifactId>
-            <version>${inventory.application.version}</version>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 

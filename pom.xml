@@ -24,8 +24,6 @@
 
 	<properties>
 		<java.version>17</java.version>
-		<inventory.application.version>0.0.1</inventory.application.version>
-		<order.application.version>0.0.1</order.application.version>
 	</properties>
 
 	<dependencies>

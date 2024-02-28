@@ -8,11 +8,12 @@
         <groupId>pfeffer.oms</groupId>
         <artifactId>oms-api</artifactId>
         <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>pfeffer.oms.inventory</groupId>
     <artifactId>inventory</artifactId>
-    <version>${inventory.application.version}</version>
+    <version>0.0.1</version>
     <name>inventory</name>
     <description>O serviço de Inventory da aplicação</description>
 
