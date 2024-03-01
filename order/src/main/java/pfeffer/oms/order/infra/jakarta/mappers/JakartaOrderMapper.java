@@ -33,7 +33,6 @@ public class JakartaOrderMapper {
         domain.setUpdatedAt(entity.getUpdatedAt());
 
         domain.setChannelId(entity.getChannel().getChannelId());
-        domain.setLocationId(entity.getLocation().getLocationId());
         domain.setCustomer(JakartaCustomerMapper.toDomain(entity.getCustomer()));
         domain.setBillingAddress(JakartaAddressMapper.toDomain(entity.getBillingAddress()));
 
