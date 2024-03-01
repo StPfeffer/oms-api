@@ -13,8 +13,6 @@ public final class OrderDTO {
 
     private String channelId;
 
-    private String locationId;
-
     private Date createdAt;
 
     private Date updatedAt;
@@ -43,14 +41,6 @@ public final class OrderDTO {
 
     public void setChannelId(String channelId) {
         this.channelId = channelId;
-    }
-
-    public String getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(String locationId) {
-        this.locationId = locationId;
     }
 
     public Date getCreatedAt() {
