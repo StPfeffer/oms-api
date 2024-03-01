@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
-import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaChannelRepository;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaLocationRepository;
 import pfeffer.oms.order.domain.dtos.OrderDTO;
@@ -24,15 +23,12 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
 
     private final EntityManager em;
 
-    private final JakartaLocationRepository locationRepository;
-
     private final JakartaChannelRepository channelRepository;
 
     @Autowired
     public JakartaOrderRepository(EntityManager em, JakartaLocationRepository locationRepository, JakartaChannelRepository channelRepository) {
         super(JakartaOrder.class, em);
         this.em = em;
-        this.locationRepository = locationRepository;
         this.channelRepository = channelRepository;
     }
 
@@ -68,9 +64,6 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
     }
 
     private void populateAdditionalAttributes(JakartaOrder order, OrderBO bo) {
-        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId(), true);
-        order.setLocation(location);
-
         JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
         order.setChannel(channel);
     }
