@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class FulfillmentDTO {
 
-    private String id;
+    private String fulfillmentId;
 
     private String orderId;
 
@@ -19,12 +19,12 @@ public class FulfillmentDTO {
 
     private BigDecimal shippingPrice;
 
-    public String getId() {
-        return id;
+    public String getFulfillmentId() {
+        return fulfillmentId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFulfillmentId(String fulfillmentId) {
+        this.fulfillmentId = fulfillmentId;
     }
 
     public String getOrderId() {
