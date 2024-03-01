@@ -8,6 +8,7 @@
         <groupId>pfeffer.oms</groupId>
         <artifactId>oms-api</artifactId>
         <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>pfeffer.oms.order</groupId>
