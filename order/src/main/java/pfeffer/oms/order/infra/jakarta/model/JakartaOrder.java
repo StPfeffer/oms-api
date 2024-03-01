@@ -8,7 +8,6 @@ import lombok.Setter;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaAddress;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaCustomer;
-import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -48,10 +47,6 @@ public class JakartaOrder {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "billing_address_id", nullable = false)
     private JakartaAddress billingAddress;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "location_id", nullable = false)
-    private JakartaLocation location;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<JakartaPayment> payments;
