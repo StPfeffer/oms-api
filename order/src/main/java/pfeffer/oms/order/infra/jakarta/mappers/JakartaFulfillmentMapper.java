@@ -27,6 +27,7 @@ public class JakartaFulfillmentMapper {
         domain.setShippingPrice(entity.getShippingPrice());
         domain.setLocationId(entity.getLocation().getLocationId());
         domain.setOrderId(entity.getOrder().getOrderId());
+        domain.setChannelId(entity.getChannel().getChannelId());
 
         return domain;
     }
