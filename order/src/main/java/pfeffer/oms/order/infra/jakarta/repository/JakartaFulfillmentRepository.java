@@ -47,7 +47,7 @@ public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFul
         FulfillmentDTO fulfillment = this.findByOrderIdChannelIdFulfillmentId(bo.getOrderId(), bo.getChannelId(), bo.getFulfillmentId());
 
         if (fulfillment != null) {
-            throw new FulfillmentException("There is already a fulfillment registered with the provided orderId, channelId and fulfillmentId", 400);
+            throw FulfillmentException.ALREADY_EXISTS;
         }
 
         JakartaFulfillment entity = JakartaFulfillmentMapper.toEntity(bo);
