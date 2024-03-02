@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaChannelRepository;
-import pfeffer.oms.inventory.infra.jakarta.repository.JakartaLocationRepository;
 import pfeffer.oms.order.domain.dtos.OrderDTO;
 import pfeffer.oms.order.domain.entities.OrderBO;
 import pfeffer.oms.order.domain.exceptions.OrderException;
@@ -26,7 +25,7 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
     private final JakartaChannelRepository channelRepository;
 
     @Autowired
-    public JakartaOrderRepository(EntityManager em, JakartaLocationRepository locationRepository, JakartaChannelRepository channelRepository) {
+    public JakartaOrderRepository(EntityManager em, JakartaChannelRepository channelRepository) {
         super(JakartaOrder.class, em);
         this.em = em;
         this.channelRepository = channelRepository;
@@ -37,7 +36,7 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
         OrderDTO order = this.findOrderByOrderIdAndChannelId(bo.getOrderId(), bo.getChannelId());
 
         if (order != null) {
-            throw new OrderException("There is already a order registered with the provided orderId for the specified channelId", 400);
+            throw OrderException.ALREADY_EXISTS;
         }
 
         JakartaOrder entity = JakartaOrderMapper.toEntity(bo);
@@ -59,6 +58,26 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
         try {
             return OrderMapper.toDTO(JakartaOrderMapper.toDomain(query.getSingleResult()));
         } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public JakartaOrder findJakartaOrderByOrderIdAndChannelId(String orderId, String channelId) {
+        return this.findJakartaOrderByOrderIdAndChannelId(orderId, channelId, false);
+    }
+
+    public JakartaOrder findJakartaOrderByOrderIdAndChannelId(String orderId, String channelId, boolean exception) {
+        TypedQuery<JakartaOrder> query = em.createQuery("SELECT e FROM JakartaOrder e WHERE e.orderId = :orderId AND e.channel.channelId = :channelId", JakartaOrder.class)
+                .setParameter("orderId", orderId)
+                .setParameter("channelId", channelId);
+
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            if (exception) {
+                throw OrderException.NOT_FOUND;
+            }
+
             return null;
         }
     }
