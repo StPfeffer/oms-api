@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.ChannelStockDTO;
 import pfeffer.oms.inventory.domain.enums.EnumStockType;
-import pfeffer.oms.inventory.domain.exceptions.StockException;
 import pfeffer.oms.inventory.domain.mappers.ChannelStockMapper;
 import pfeffer.oms.inventory.domain.usecases.channel.CreateChannelStock;
 import pfeffer.oms.inventory.domain.usecases.channel.IChannelStockRepository;
@@ -53,8 +52,8 @@ public class ChannelStockService implements IChannelStockRepository {
     }
 
     @Override
-    public ChannelStockDTO findChannelStockByChannelId(String channelId) {
-        return this.repository.findChannelStockByChannelId(channelId);
+    public ChannelStockDTO findByChannelId(String channelId) {
+        return this.repository.findByChannelId(channelId);
     }
 
 }
