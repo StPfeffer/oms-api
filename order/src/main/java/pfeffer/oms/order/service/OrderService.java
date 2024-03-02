@@ -9,6 +9,8 @@ import pfeffer.oms.order.domain.repositories.IOrderRepository;
 import pfeffer.oms.order.domain.usecases.CreateOrder;
 import pfeffer.oms.order.infra.jakarta.repository.JakartaOrderRepository;
 
+import java.util.List;
+
 @Service
 public class OrderService implements IOrderRepository {
 
@@ -31,14 +33,25 @@ public class OrderService implements IOrderRepository {
     }
 
     @Override
-    public OrderDTO findOrderByOrderIdAndChannelId(String orderId, String channelId) {
-        OrderDTO order = this.repository.findOrderByOrderIdAndChannelId(orderId, channelId);
+    public OrderDTO findByOrderIdAndChannelId(String orderId, String channelId) {
+        OrderDTO order = this.repository.findByOrderIdAndChannelId(orderId, channelId);
 
         if (order == null) {
             throw OrderException.NOT_FOUND;
         }
 
         return order;
+    }
+
+    @Override
+    public List<OrderDTO> listAllByChannelId(String channelId) {
+        List<OrderDTO> orders = this.repository.listAllByChannelId(channelId);
+
+        if (orders == null || orders.isEmpty()) {
+            throw OrderException.NOT_FOUND;
+        }
+
+        return orders;
     }
 
 }

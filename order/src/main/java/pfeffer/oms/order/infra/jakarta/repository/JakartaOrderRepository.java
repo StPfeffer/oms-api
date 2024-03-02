@@ -17,6 +17,8 @@ import pfeffer.oms.order.domain.repositories.IOrderRepository;
 import pfeffer.oms.order.infra.jakarta.mappers.JakartaOrderMapper;
 import pfeffer.oms.order.infra.jakarta.model.JakartaOrder;
 
+import java.util.List;
+
 @Service
 public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Long> implements IOrderDataBaseRepository, IOrderRepository {
 
@@ -33,7 +35,7 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
 
     @Override
     public OrderBO persist(OrderBO bo) {
-        OrderDTO order = this.findOrderByOrderIdAndChannelId(bo.getOrderId(), bo.getChannelId());
+        OrderDTO order = this.findByOrderIdAndChannelId(bo.getOrderId(), bo.getChannelId());
 
         if (order != null) {
             throw OrderException.ALREADY_EXISTS;
@@ -50,13 +52,31 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
     }
 
     @Override
-    public OrderDTO findOrderByOrderIdAndChannelId(String orderId, String channelId) {
+    public OrderDTO findByOrderIdAndChannelId(String orderId, String channelId) {
         TypedQuery<JakartaOrder> query = em.createQuery("SELECT e FROM JakartaOrder e WHERE e.orderId = :orderId AND e.channel.channelId = :channelId", JakartaOrder.class)
                 .setParameter("orderId", orderId)
                 .setParameter("channelId", channelId);
 
         try {
             return OrderMapper.toDTO(JakartaOrderMapper.toDomain(query.getSingleResult()));
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<OrderDTO> listAllByChannelId(String channelId) {
+        TypedQuery<JakartaOrder> query = em.createQuery("SELECT e FROM JakartaOrder e WHERE e.channel.channelId = :channelId", JakartaOrder.class)
+                .setParameter("channelId", channelId);
+
+        try {
+            return query.getResultList()
+                    .stream()
+                    .map(JakartaOrderMapper::toDomain)
+                    .toList()
+                    .stream()
+                    .map(OrderMapper::toDTO)
+                    .toList();
         } catch (NoResultException e) {
             return null;
         }
