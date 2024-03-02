@@ -34,7 +34,7 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
     public ChannelStockBO persist(ChannelStockBO bo) {
         JakartaChannel channel = this.channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
 
-        JakartaChannelStock channelStock = this.findJakartaChannelStockByChannelId(bo.getChannelId());
+        JakartaChannelStock channelStock = this.findEntityByChannelId(bo.getChannelId());
 
         // auto update
         if (channelStock != null) {
@@ -52,7 +52,7 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
 
     @Override
     public ChannelStockBO update(String channelId, ChannelStockBO bo) {
-        JakartaChannelStock channelStock = this.findJakartaChannelStockByChannelId(channelId);
+        JakartaChannelStock channelStock = this.findEntityByChannelId(channelId);
 
         if (channelStock == null) {
             throw ChannelException.NOT_FOUND;
@@ -64,18 +64,17 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
     }
 
     @Override
-    public ChannelStockDTO findChannelStockByChannelId(String channelId) {
-        TypedQuery<JakartaChannelStock> query = em.createQuery("SELECT e FROM JakartaChannelStock e WHERE e.channel.channelId = :channelId", JakartaChannelStock.class)
-                .setParameter("channelId", channelId);
+    public ChannelStockDTO findByChannelId(String channelId) {
+        JakartaChannelStock entity = this.findEntityByChannelId(channelId);
 
         try {
-            return ChannelStockMapper.toDTO(JakartaChannelStockMapper.toDomain(query.getSingleResult()));
+            return ChannelStockMapper.toDTO(JakartaChannelStockMapper.toDomain(entity));
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public JakartaChannelStock findJakartaChannelStockByChannelId(String channelId) {
+    public JakartaChannelStock findEntityByChannelId(String channelId) {
         TypedQuery<JakartaChannelStock> query = em.createQuery("SELECT e FROM JakartaChannelStock e WHERE e.channel.channelId = :channelId", JakartaChannelStock.class)
                 .setParameter("channelId", channelId);
 
