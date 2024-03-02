@@ -20,7 +20,11 @@ public class OrderService implements IOrderRepository {
     }
 
     @Transactional
-    public OrderDTO createOrder(OrderDTO dto) {
+    public OrderDTO createOrder(String channelId, OrderDTO dto) {
+        if (!channelId.equals(dto.getChannelId())) {
+            throw OrderException.DIFF_CHANNEL;
+        }
+
         CreateOrder createOrder = new CreateOrder(repository);
 
         return createOrder.execute(dto);
