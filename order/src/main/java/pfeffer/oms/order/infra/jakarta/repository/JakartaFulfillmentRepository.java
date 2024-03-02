@@ -62,7 +62,7 @@ public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFul
 
     @Override
     public FulfillmentDTO findByOrderIdChannelIdFulfillmentId(String orderId, String channelId, String fulfillmentId) {
-        TypedQuery<JakartaFulfillment> query = em.createQuery("", JakartaFulfillment.class)
+        TypedQuery<JakartaFulfillment> query = em.createQuery("SELECT e FROM JakartaFulfillment e WHERE e.order.orderId = :orderId AND e.channel.channelId = :channelId AND e.fulfillmentId = :fulfillmentId", JakartaFulfillment.class)
                 .setParameter("orderId", orderId)
                 .setParameter("channelId", channelId)
                 .setParameter("fulfillmentId", fulfillmentId);
@@ -76,7 +76,7 @@ public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFul
 
     @Override
     public List<FulfillmentDTO> listAllByOrderIdAndChannelid(String orderId, String channelId) {
-        TypedQuery<JakartaFulfillment> query = em.createQuery("", JakartaFulfillment.class)
+        TypedQuery<JakartaFulfillment> query = em.createQuery("SELECT e FROM JakartaFulfillment e WHERE e.order.orderId = :orderId AND e.channel.channelId = :channelId", JakartaFulfillment.class)
                 .setParameter("orderId", orderId)
                 .setParameter("channelId", channelId);
 
