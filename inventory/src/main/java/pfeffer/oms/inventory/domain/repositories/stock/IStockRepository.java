@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IStockRepository {
 
-    List<StockDTO> listStockBySkuId(String skuId);
+    List<StockDTO> listBySkuId(String skuId);
 
-    StockDTO findStockBySkuIdAndLocationId(String skuId, String locationId);
+    StockDTO findBySkuIdAndLocationId(String skuId, String locationId);
 
 }
