@@ -6,6 +6,8 @@ public class OrderException extends RuntimeException {
 
     public static OrderException ALREADY_EXISTS = new OrderException("There is already a order registered with the provided orderId for the provided channelId", 400);
 
+    public static OrderException DIFF_CHANNEL = new OrderException("The provided channelId in the path does not match the channelId in the request body", 400);
+
     private String message;
 
     private Integer statusCode;
