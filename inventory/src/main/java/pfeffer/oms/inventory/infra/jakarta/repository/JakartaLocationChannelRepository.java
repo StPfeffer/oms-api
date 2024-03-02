@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.LocationChannelDTO;
 import pfeffer.oms.inventory.domain.entities.LocationChannelBO;
 import pfeffer.oms.inventory.domain.exceptions.ChannelException;
-import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.mappers.LocationChannelMapper;
 import pfeffer.oms.inventory.domain.repositories.location.ILocationChannelDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.location.ILocationChannelRepository;
@@ -37,7 +36,7 @@ public class JakartaLocationChannelRepository extends SimpleJpaRepository<Jakart
 
     @Override
     public LocationChannelBO persist(LocationChannelBO bo) {
-        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId(), true);
+        JakartaLocation location = locationRepository.findEntityByLocationId(bo.getLocationId(), true);
         JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
 
         JakartaLocationChannel entity = JakartaLocationChannelMapper.toEntity(bo);

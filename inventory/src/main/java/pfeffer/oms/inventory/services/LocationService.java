@@ -47,8 +47,8 @@ public class LocationService implements ILocationRepository {
     }
 
     @Override
-    public LocationDTO findLocationByLocationId(String locationId) {
-        LocationDTO location = this.repository.findLocationByLocationId(locationId);
+    public LocationDTO findDTOByLocationId(String locationId) {
+        LocationDTO location = this.repository.findDTOByLocationId(locationId);
 
         if (location == null) {
             throw LocationException.NOT_FOUND;

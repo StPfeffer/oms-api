@@ -97,7 +97,7 @@ public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFul
         JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
         fulfillment.setChannel(channel);
 
-        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId());
+        JakartaLocation location = locationRepository.findEntityByLocationId(bo.getLocationId());
         fulfillment.setLocation(location);
 
         JakartaOrder order = orderRepository.findJakartaOrderByOrderIdAndChannelId(bo.getOrderId(), bo.getChannelId(), true);

@@ -31,7 +31,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     @Override
     public LocationBO persist(LocationBO bo) {
-        LocationDTO location = this.findLocationByLocationId(bo.getId());
+        LocationDTO location = this.findDTOByLocationId(bo.getId());
 
         if (location != null) {
             throw LocationException.ALREADY_EXISTS;
@@ -53,7 +53,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     @Override
     public LocationBO update(String locationId, LocationBO bo) {
-        JakartaLocation location = findJakartaLocationByLocationId(locationId, true);
+        JakartaLocation location = findEntityByLocationId(locationId, true);
 
         bo.setId(locationId);
 
@@ -67,22 +67,21 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
     }
 
     @Override
-    public LocationDTO findLocationByLocationId(String locationId) {
-        TypedQuery<JakartaLocation> query = em.createQuery("SELECT e FROM JakartaLocation e WHERE e.locationId = :locationId", JakartaLocation.class)
-                .setParameter("locationId", locationId);
+    public LocationDTO findDTOByLocationId(String locationId) {
+        JakartaLocation entity = this.findEntityByLocationId(locationId);
 
         try {
-            return LocationMapper.toDTO(JakartaLocationMapper.toDomain(query.getSingleResult()));
+            return LocationMapper.toDTO(JakartaLocationMapper.toDomain(entity));
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public JakartaLocation findJakartaLocationByLocationId(String locationId) {
-        return this.findJakartaLocationByLocationId(locationId, false);
+    public JakartaLocation findEntityByLocationId(String locationId) {
+        return this.findEntityByLocationId(locationId, false);
     }
 
-    public JakartaLocation findJakartaLocationByLocationId(String locationId, boolean exception) {
+    public JakartaLocation findEntityByLocationId(String locationId, boolean exception) {
         TypedQuery<JakartaLocation> query = em.createQuery("SELECT e FROM JakartaLocation e WHERE e.locationId = :locationId", JakartaLocation.class)
                 .setParameter("locationId", locationId);
 

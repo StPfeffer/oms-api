@@ -8,14 +8,11 @@ import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 import pfeffer.oms.inventory.domain.dtos.StockDTO;
 import pfeffer.oms.inventory.domain.entities.StockBO;
-import pfeffer.oms.inventory.domain.exceptions.ChannelException;
-import pfeffer.oms.inventory.domain.exceptions.LocationException;
 import pfeffer.oms.inventory.domain.exceptions.StockException;
 import pfeffer.oms.inventory.domain.mappers.StockMapper;
 import pfeffer.oms.inventory.domain.repositories.stock.IStockDataBaseRepository;
 import pfeffer.oms.inventory.domain.repositories.stock.IStockRepository;
 import pfeffer.oms.inventory.infra.jakarta.mappers.JakartaStockMapper;
-import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannelStock;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaStock;
 
@@ -37,7 +34,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
 
     @Override
     public StockBO persist(StockBO bo) {
-        JakartaLocation location = locationRepository.findJakartaLocationByLocationId(bo.getLocationId(), true);
+        JakartaLocation location = locationRepository.findEntityByLocationId(bo.getLocationId(), true);
 
         JakartaStock entity = JakartaStockMapper.toEntity(bo);
         entity.setLocation(location);
@@ -56,7 +53,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
 
         JakartaStock entity = JakartaStockMapper.toEntity(bo);
         entity.setId(stock.getId());
-        entity.setLocation(locationRepository.findJakartaLocationByLocationId(bo.getLocationId()));
+        entity.setLocation(locationRepository.findEntityByLocationId(bo.getLocationId()));
 
         em.merge(entity);
         em.flush();
