@@ -29,7 +29,7 @@ public class JakartaCustomerRepository extends SimpleJpaRepository<JakartaCustom
 
     @Override
     public CustomerBO persist(CustomerBO bo) {
-        CustomerDTO customer = this.findCustomerById(bo.getId());
+        CustomerDTO customer = this.findByCustomerId(bo.getId());
 
         if (customer != null) {
             throw new CustomerException("There is already a customer registered with the provided id", 400);
@@ -45,7 +45,7 @@ public class JakartaCustomerRepository extends SimpleJpaRepository<JakartaCustom
 
     @Override
     public CustomerBO update(String customerId, CustomerBO bo) {
-        CustomerDTO customer = this.findCustomerById(customerId);
+        CustomerDTO customer = this.findByCustomerId(customerId);
 
         if (customer == null) {
             throw new CustomerException("There is no customer registered with the provided id", 404);
@@ -62,7 +62,7 @@ public class JakartaCustomerRepository extends SimpleJpaRepository<JakartaCustom
     }
 
     @Override
-    public CustomerDTO findCustomerById(String customerId) {
+    public CustomerDTO findByCustomerId(String customerId) {
         TypedQuery<JakartaCustomer> query = em.createQuery("SELECT e FROM JakartaCustomer e WHERE e.customerId = :customerId", JakartaCustomer.class)
                 .setParameter("customerId", customerId);
 

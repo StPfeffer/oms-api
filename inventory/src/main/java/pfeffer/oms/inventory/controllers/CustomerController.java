@@ -43,7 +43,7 @@ public class CustomerController {
 
     @GetMapping("{customerId}")
     public ResponseEntity<CustomerDTO> getCustomer(@PathVariable String customerId) {
-        CustomerDTO customer = this.service.findCustomerById(customerId);
+        CustomerDTO customer = this.service.findByCustomerId(customerId);
 
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }

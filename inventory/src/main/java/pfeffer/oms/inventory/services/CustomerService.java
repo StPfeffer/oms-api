@@ -45,8 +45,8 @@ public class CustomerService implements ICustomerRepository {
     }
 
     @Override
-    public CustomerDTO findCustomerById(String locationId) {
-        CustomerDTO location = this.repository.findCustomerById(locationId);
+    public CustomerDTO findByCustomerId(String locationId) {
+        CustomerDTO location = this.repository.findByCustomerId(locationId);
 
         if (location == null) {
             throw new CustomerException("There is no customer registered with the provided id", 404);
