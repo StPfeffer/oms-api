@@ -4,6 +4,6 @@ import pfeffer.oms.inventory.domain.dtos.CustomerDTO;
 
 public interface ICustomerRepository {
 
-    CustomerDTO findCustomerById(String id);
+    CustomerDTO findByCustomerId(String id);
 
 }
