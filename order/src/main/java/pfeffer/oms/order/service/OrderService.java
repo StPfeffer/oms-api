@@ -31,7 +31,7 @@ public class OrderService implements IOrderRepository {
         OrderDTO order = this.repository.findOrderByOrderIdAndChannelId(orderId, channelId);
 
         if (order == null) {
-            throw new OrderException("There is no order registered with the provided orderId and channelId", 404);
+            throw OrderException.NOT_FOUND;
         }
 
         return order;
