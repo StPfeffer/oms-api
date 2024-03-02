@@ -27,7 +27,7 @@ public class OrderController {
 
     @GetMapping("{orderId}")
     public ResponseEntity<OrderDTO> getOrder(@PathVariable String channelId, @PathVariable String orderId) {
-        OrderDTO order = this.service.findOrderByOrderIdAndChannelId(orderId, channelId);
+        OrderDTO order = this.service.findByOrderIdAndChannelId(orderId, channelId);
 
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
