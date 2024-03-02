@@ -10,6 +10,7 @@ public class FulfillmentMapper {
 
         dto.setFulfillmentId(bo.getFulfillmentId());
         dto.setOrderId(bo.getOrderId());
+        dto.setChannelId(bo.getChannelId());
         dto.setLocationId(bo.getLocationId());
         dto.setCreatedAt(bo.getCreatedAt());
         dto.setUpdatedAt(bo.getUpdatedAt());
@@ -25,6 +26,7 @@ public class FulfillmentMapper {
 
         bo.setFulfillmentId(dto.getFulfillmentId());
         bo.setOrderId(dto.getOrderId());
+        bo.setChannelId(dto.getChannelId());
         bo.setLocationId(dto.getLocationId());
         bo.setCreatedAt(dto.getCreatedAt());
         bo.setUpdatedAt(dto.getUpdatedAt());
