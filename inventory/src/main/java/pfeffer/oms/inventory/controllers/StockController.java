@@ -36,14 +36,14 @@ public class StockController {
 
     @GetMapping("{skuId}")
     public ResponseEntity<List<StockDTO>> listStock(@PathVariable String skuId) {
-        List<StockDTO> stocks = this.service.listStockBySkuId(skuId);
+        List<StockDTO> stocks = this.service.listBySkuId(skuId);
 
         return new ResponseEntity<>(stocks, HttpStatus.OK);
     }
 
     @GetMapping("{locationId}/{skuId}")
     public ResponseEntity<StockDTO> getStock(@PathVariable String locationId, @PathVariable String skuId) {
-        StockDTO stock = this.service.findStockBySkuIdAndLocationId(skuId, locationId);
+        StockDTO stock = this.service.findBySkuIdAndLocationId(skuId, locationId);
 
         return new ResponseEntity<>(stock, HttpStatus.OK);
     }

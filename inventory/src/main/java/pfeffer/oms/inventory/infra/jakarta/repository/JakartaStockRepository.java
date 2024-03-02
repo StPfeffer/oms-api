@@ -49,7 +49,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
 
     @Override
     public StockBO update(String locationId, String skuId, StockBO bo) {
-        JakartaStock stock = findJakartaStockBySkuIdAndLocationId(skuId, locationId);
+        JakartaStock stock = findEntityBySkuIdAndLocationId(skuId, locationId);
 
         JakartaStock entity = JakartaStockMapper.toEntity(bo);
         entity.setId(stock.getId());
@@ -62,7 +62,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
     }
 
     @Override
-    public List<StockDTO> listStockBySkuId(String skuId) {
+    public List<StockDTO> listBySkuId(String skuId) {
         TypedQuery<JakartaStock> query = em.createQuery("SELECT e FROM JakartaStock e WHERE e.skuId = :skuId", JakartaStock.class)
                 .setParameter("skuId", skuId);
 
@@ -78,23 +78,21 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
     }
 
     @Override
-    public StockDTO findStockBySkuIdAndLocationId(String skuId, String locationId) {
-        TypedQuery<JakartaStock> query = em.createQuery("SELECT e FROM JakartaStock e WHERE e.skuId = :skuId AND e.location.locationId = :locationId", JakartaStock.class)
-                .setParameter("skuId", skuId)
-                .setParameter("locationId", locationId);
+    public StockDTO findBySkuIdAndLocationId(String skuId, String locationId) {
+        JakartaStock entity = this.findEntityBySkuIdAndLocationId(skuId, locationId);
 
         try {
-            return StockMapper.toDTO(JakartaStockMapper.toDomain(query.getSingleResult()));
+            return StockMapper.toDTO(JakartaStockMapper.toDomain(entity));
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public JakartaStock findJakartaStockBySkuIdAndLocationId(String skuId, String locationId) {
-        return this.findJakartaStockBySkuIdAndLocationId(skuId, locationId, false);
+    public JakartaStock findEntityBySkuIdAndLocationId(String skuId, String locationId) {
+        return this.findEntityBySkuIdAndLocationId(skuId, locationId, false);
     }
 
-    public JakartaStock findJakartaStockBySkuIdAndLocationId(String skuId, String locationId, boolean exception) {
+    public JakartaStock findEntityBySkuIdAndLocationId(String skuId, String locationId, boolean exception) {
         TypedQuery<JakartaStock> query = em.createQuery("SELECT e FROM JakartaStock e WHERE e.skuId = :skuId AND e.location.locationId = :locationId", JakartaStock.class)
                 .setParameter("skuId", skuId)
                 .setParameter("locationId", locationId);
@@ -111,7 +109,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
     }
 
     public void canCreate(JakartaStock entity) {
-        StockDTO stock = this.findStockBySkuIdAndLocationId(entity.getSkuId(), entity.getLocation().getLocationId());
+        StockDTO stock = this.findBySkuIdAndLocationId(entity.getSkuId(), entity.getLocation().getLocationId());
 
         if (stock != null) {
             throw new StockException("There is already a stock registered with the provided skuId and locationId", 400);

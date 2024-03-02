@@ -37,8 +37,8 @@ public class StockService implements IStockRepository {
     }
 
     @Override
-    public List<StockDTO> listStockBySkuId(String skuId) {
-        List<StockDTO> stocks = this.repository.listStockBySkuId(skuId);
+    public List<StockDTO> listBySkuId(String skuId) {
+        List<StockDTO> stocks = this.repository.listBySkuId(skuId);
 
         if (stocks == null) {
             throw StockException.NOT_FOUND;
@@ -48,8 +48,8 @@ public class StockService implements IStockRepository {
     }
 
     @Override
-    public StockDTO findStockBySkuIdAndLocationId(String skuId, String locationId) {
-        StockDTO stock = this.repository.findStockBySkuIdAndLocationId(skuId, locationId);
+    public StockDTO findBySkuIdAndLocationId(String skuId, String locationId) {
+        StockDTO stock = this.repository.findBySkuIdAndLocationId(skuId, locationId);
 
         if (stock == null) {
             throw StockException.NOT_FOUND_LOCATION;
