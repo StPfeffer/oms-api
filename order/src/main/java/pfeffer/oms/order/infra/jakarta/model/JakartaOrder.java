@@ -51,6 +51,9 @@ public class JakartaOrder {
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<JakartaPayment> payments;
 
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<JakartaFulfillment> fulfillments;
+
     @Column(name = "price", nullable = false)
     private BigDecimal price = BigDecimal.ZERO;
 
