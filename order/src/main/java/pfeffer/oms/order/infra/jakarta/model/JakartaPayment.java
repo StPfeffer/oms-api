@@ -28,10 +28,10 @@ public class JakartaPayment {
     private BigDecimal amount;
 
     @Column(name = "tariff", precision = 10, scale = 4, nullable = false)
-    private BigDecimal tariff = BigDecimal.ZERO;
+    private BigDecimal tariff;
 
     @Column(name = "discount", precision = 10, scale = 4, nullable = false)
-    private BigDecimal discount = BigDecimal.ZERO;
+    private BigDecimal discount;
 
     @Column(name = "acquirer")
     private String acquirer;

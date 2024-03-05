@@ -32,7 +32,7 @@ public class JakartaStock {
     private Integer quantity;
 
     @Column(name = "threshold", nullable = false)
-    private Integer threshold = 0;
+    private Integer threshold;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "stock_type", nullable = false)
