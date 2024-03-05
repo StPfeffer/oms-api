@@ -34,10 +34,10 @@ public class JakartaFulfillment {
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", precision = 10, scale = 4, nullable = false)
     private BigDecimal price;
 
-    @Column(name = "shipping_price", nullable = false)
+    @Column(name = "shipping_price", precision = 10, scale = 4, nullable = false)
     private BigDecimal shippingPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
