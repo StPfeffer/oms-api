@@ -10,6 +10,10 @@ public class ItemMapper {
 
         dto.setSkuId(bo.getSkuId());
         dto.setQuantity(bo.getQuantity());
+        dto.setHeight(bo.getHeight());
+        dto.setLength(bo.getLength());
+        dto.setWidth(bo.getWidth());
+        dto.setWeight(bo.getWeight());
         dto.setPrice(bo.getPrice());
         dto.setShippingPrice(bo.getShippingPrice());
 
@@ -21,6 +25,10 @@ public class ItemMapper {
 
         bo.setSkuId(dto.getSkuId());
         bo.setQuantity(dto.getQuantity());
+        bo.setHeight(dto.getHeight());
+        bo.setLength(dto.getLength());
+        bo.setWidth(dto.getWidth());
+        bo.setWeight(dto.getWeight());
         bo.setPrice(dto.getPrice());
         bo.setShippingPrice(dto.getShippingPrice());
 
