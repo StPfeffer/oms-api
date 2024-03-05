@@ -15,7 +15,7 @@ import pfeffer.oms.order.domain.entities.FulfillmentBO;
 import pfeffer.oms.order.domain.exceptions.FulfillmentException;
 import pfeffer.oms.order.domain.mappers.FulfillmentMapper;
 import pfeffer.oms.order.domain.repositories.IFulfillmentRepository;
-import pfeffer.oms.order.domain.repositories.IFulfilmentDataBaseRepository;
+import pfeffer.oms.order.domain.repositories.IFulfillmentDataBaseRepository;
 import pfeffer.oms.order.infra.jakarta.mappers.JakartaFulfillmentMapper;
 import pfeffer.oms.order.infra.jakarta.model.JakartaFulfillment;
 import pfeffer.oms.order.infra.jakarta.model.JakartaOrder;
@@ -23,7 +23,7 @@ import pfeffer.oms.order.infra.jakarta.model.JakartaOrder;
 import java.util.List;
 
 @Service
-public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFulfillment, Long> implements IFulfilmentDataBaseRepository, IFulfillmentRepository {
+public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFulfillment, Long> implements IFulfillmentDataBaseRepository, IFulfillmentRepository {
 
     private final EntityManager em;
 
