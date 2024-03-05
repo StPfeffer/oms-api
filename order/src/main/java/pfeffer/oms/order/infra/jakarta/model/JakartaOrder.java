@@ -54,10 +54,10 @@ public class JakartaOrder {
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
     private List<JakartaFulfillment> fulfillments;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", precision = 10, scale = 4, nullable = false)
     private BigDecimal price = BigDecimal.ZERO;
 
-    @Column(name = "shipping_price", nullable = false)
+    @Column(name = "shipping_price", precision = 10, scale = 4, nullable = false)
     private BigDecimal shippingPrice = BigDecimal.ZERO;
 
 }
