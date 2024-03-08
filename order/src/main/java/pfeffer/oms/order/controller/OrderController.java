@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pfeffer.oms.order.domain.dtos.OrderDTO;
 import pfeffer.oms.order.service.OrderService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("channels/{channelId}/orders")
 public class OrderController {
@@ -30,6 +32,13 @@ public class OrderController {
         OrderDTO order = this.service.findByOrderIdAndChannelId(orderId, channelId);
 
         return new ResponseEntity<>(order, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<OrderDTO>> listOrders(@PathVariable String channelId) {
+        List<OrderDTO> orders = this.service.listAllByChannelId(channelId);
+
+        return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
 }
