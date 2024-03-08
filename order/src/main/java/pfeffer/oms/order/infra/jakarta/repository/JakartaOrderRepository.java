@@ -66,27 +66,34 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
 
     @Override
     public List<OrderDTO> listAllByChannelId(String channelId) {
-        TypedQuery<JakartaOrder> query = em.createQuery("SELECT e FROM JakartaOrder e WHERE e.channel.channelId = :channelId", JakartaOrder.class)
-                .setParameter("channelId", channelId);
+        List<JakartaOrder> orders = this.listAllEntityByChannelId(channelId);
 
         try {
-            return query.getResultList()
+            return orders.stream()
+                    .map(JakartaOrderMapper::toDomain).toList()
                     .stream()
-                    .map(JakartaOrderMapper::toDomain)
-                    .toList()
-                    .stream()
-                    .map(OrderMapper::toDTO)
-                    .toList();
+                    .map(OrderMapper::toDTO).toList();
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public JakartaOrder findJakartaOrderByOrderIdAndChannelId(String orderId, String channelId) {
-        return this.findJakartaOrderByOrderIdAndChannelId(orderId, channelId, false);
+    public List<JakartaOrder> listAllEntityByChannelId(String channelId) {
+        TypedQuery<JakartaOrder> query = em.createQuery("SELECT e FROM JakartaOrder e WHERE e.channel.channelId = :channelId", JakartaOrder.class)
+                .setParameter("channelId", channelId);
+
+        try {
+            return query.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
-    public JakartaOrder findJakartaOrderByOrderIdAndChannelId(String orderId, String channelId, boolean exception) {
+    public JakartaOrder findEntityByOrderIdAndChannelId(String orderId, String channelId) {
+        return this.findEntityByOrderIdAndChannelId(orderId, channelId, false);
+    }
+
+    public JakartaOrder findEntityByOrderIdAndChannelId(String orderId, String channelId, boolean exception) {
         TypedQuery<JakartaOrder> query = em.createQuery("SELECT e FROM JakartaOrder e WHERE e.orderId = :orderId AND e.channel.channelId = :channelId", JakartaOrder.class)
                 .setParameter("orderId", orderId)
                 .setParameter("channelId", channelId);
