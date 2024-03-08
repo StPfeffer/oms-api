@@ -30,7 +30,7 @@ public class FulfillmentService implements IFulfillmentRepository {
             throw FulfillmentException.DIFF_CHANNEL;
         }
 
-        if (orderRepository.findJakartaOrderByOrderIdAndChannelId(orderId, channelId) == null) {
+        if (orderRepository.findEntityByOrderIdAndChannelId(orderId, channelId) == null) {
             throw OrderException.NOT_FOUND;
         }
 

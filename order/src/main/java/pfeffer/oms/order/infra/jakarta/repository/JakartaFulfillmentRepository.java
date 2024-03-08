@@ -100,7 +100,7 @@ public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFul
         JakartaLocation location = locationRepository.findEntityByLocationId(bo.getLocationId(), true);
         fulfillment.setLocation(location);
 
-        JakartaOrder order = orderRepository.findJakartaOrderByOrderIdAndChannelId(bo.getOrderId(), bo.getChannelId(), true);
+        JakartaOrder order = orderRepository.findEntityByOrderIdAndChannelId(bo.getOrderId(), bo.getChannelId(), true);
         fulfillment.setOrder(order);
     }
 
