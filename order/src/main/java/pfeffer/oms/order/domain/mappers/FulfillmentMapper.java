@@ -15,6 +15,8 @@ public class FulfillmentMapper {
         dto.setCreatedAt(bo.getCreatedAt());
         dto.setUpdatedAt(bo.getUpdatedAt());
 
+        dto.setItems(bo.getItems().stream().map(ItemMapper::toDTO).toList());
+
         dto.setPrice(bo.getPrice());
         dto.setShippingPrice(bo.getShippingPrice());
 
@@ -30,6 +32,8 @@ public class FulfillmentMapper {
         bo.setLocationId(dto.getLocationId());
         bo.setCreatedAt(dto.getCreatedAt());
         bo.setUpdatedAt(dto.getUpdatedAt());
+
+        bo.setItems(dto.getItems().stream().map(ItemMapper::toBO).toList());
 
         bo.setPrice(dto.getPrice());
         bo.setShippingPrice(dto.getShippingPrice());
