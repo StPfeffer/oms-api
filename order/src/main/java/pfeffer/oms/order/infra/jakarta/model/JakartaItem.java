@@ -44,4 +44,8 @@ public class JakartaItem {
     @Column(name = "shipping_price", precision = 10, scale = 4, nullable = false)
     private BigDecimal shippingPrice;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fulfillment_id", nullable = false)
+    private JakartaFulfillment fulfillment;
+
 }
