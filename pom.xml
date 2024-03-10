@@ -20,7 +20,8 @@
 	<modules>
 		<module>inventory</module>
 		<module>order</module>
-	</modules>
+        <module>logistic</module>
+    </modules>
 
 	<properties>
 		<java.version>17</java.version>
