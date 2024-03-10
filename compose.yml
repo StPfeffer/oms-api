@@ -26,6 +26,19 @@ services:
     volumes:
       - "oms-inventory-volume:/tmp"
 
+  logistic:
+    image: logistic:latest
+    container_name: logistic
+    build:
+      context: ./logistic
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    volumes:
+      - "oms-logistic-volume:/tmp"
+
   order:
     image: order:latest
     container_name: order
@@ -66,4 +79,5 @@ volumes:
   grafana-data-volume: {}
   oms-database-volume:
   oms-inventory-volume:
+  oms-logistic-volume:
   oms-order-volume:
