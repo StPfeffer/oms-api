@@ -2,6 +2,7 @@ package pfeffer.oms.order.domain.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class FulfillmentBO {
 
@@ -16,6 +17,8 @@ public class FulfillmentBO {
     private Date createdAt;
 
     private Date updatedAt;
+
+    private List<ItemBO> items;
 
     private BigDecimal price;
 
@@ -67,6 +70,14 @@ public class FulfillmentBO {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<ItemBO> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemBO> items) {
+        this.items = items;
     }
 
     public BigDecimal getPrice() {
