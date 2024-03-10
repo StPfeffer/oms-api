@@ -2,6 +2,7 @@ package pfeffer.oms.order.domain.dtos;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class FulfillmentDTO {
 
@@ -16,6 +17,8 @@ public class FulfillmentDTO {
     private Date createdAt;
 
     private Date updatedAt;
+
+    private List<ItemDTO> items;
 
     private BigDecimal price;
 
@@ -67,6 +70,14 @@ public class FulfillmentDTO {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<ItemDTO> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemDTO> items) {
+        this.items = items;
     }
 
     public BigDecimal getPrice() {
