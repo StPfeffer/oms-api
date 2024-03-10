@@ -11,6 +11,8 @@ public class CarrierMapper {
 
         dto.setCarrierId(bo.getCarrierId());
         dto.setName(bo.getName());
+        dto.setCreatedAt(bo.getCreatedAt());
+        dto.setUpdatedAt(bo.getUpdatedAt());
 
         return dto;
     }
@@ -20,6 +22,8 @@ public class CarrierMapper {
 
         bo.setCarrierId(dto.getCarrierId());
         bo.setName(dto.getName());
+        bo.setCreatedAt(dto.getCreatedAt());
+        bo.setUpdatedAt(dto.getUpdatedAt());
 
         return bo;
     }
