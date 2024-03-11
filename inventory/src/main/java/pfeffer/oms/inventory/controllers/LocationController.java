@@ -43,7 +43,7 @@ public class LocationController {
 
     @GetMapping("{locationId}")
     public ResponseEntity<LocationDTO> getLocation(@PathVariable String locationId) {
-        LocationDTO location = this.service.findDTOByLocationId(locationId);
+        LocationDTO location = this.service.findByLocationId(locationId);
 
         return new ResponseEntity<>(location, HttpStatus.OK);
     }

@@ -27,8 +27,8 @@ public class LocationChannelService implements ILocationChannelRepository {
     }
 
     @Override
-    public LocationChannelDTO findLocationChannelByLocationIdAndChannelId(String locationId, String channelId) {
-        LocationChannelDTO locationChannel = this.repository.findLocationChannelByLocationIdAndChannelId(locationId, channelId);
+    public LocationChannelDTO findByLocationIdAndChannelId(String locationId, String channelId) {
+        LocationChannelDTO locationChannel = this.repository.findByLocationIdAndChannelId(locationId, channelId);
 
         if (locationChannel == null) {
             throw new ChannelException("There is no branch with the provided ID associated with the provided channel", 400);

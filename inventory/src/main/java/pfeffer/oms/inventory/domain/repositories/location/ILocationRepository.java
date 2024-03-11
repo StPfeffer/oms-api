@@ -4,6 +4,6 @@ import pfeffer.oms.inventory.domain.dtos.LocationDTO;
 
 public interface ILocationRepository {
 
-    LocationDTO findDTOByLocationId(String locationId);
+    LocationDTO findByLocationId(String locationId);
 
 }

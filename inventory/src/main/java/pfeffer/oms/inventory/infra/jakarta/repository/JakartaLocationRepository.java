@@ -31,7 +31,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
 
     @Override
     public LocationBO persist(LocationBO bo) {
-        LocationDTO location = this.findDTOByLocationId(bo.getId());
+        LocationDTO location = this.findByLocationId(bo.getId());
 
         if (location != null) {
             throw LocationException.ALREADY_EXISTS;
@@ -67,7 +67,7 @@ public class JakartaLocationRepository extends SimpleJpaRepository<JakartaLocati
     }
 
     @Override
-    public LocationDTO findDTOByLocationId(String locationId) {
+    public LocationDTO findByLocationId(String locationId) {
         JakartaLocation entity = this.findEntityByLocationId(locationId);
 
         try {
