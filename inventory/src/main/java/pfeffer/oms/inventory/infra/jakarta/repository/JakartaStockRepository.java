@@ -108,7 +108,7 @@ public class JakartaStockRepository extends SimpleJpaRepository<JakartaStock, Lo
         }
     }
 
-    public void canCreate(JakartaStock entity) {
+    private void canCreate(JakartaStock entity) {
         StockDTO stock = this.findBySkuIdAndLocationId(entity.getSkuId(), entity.getLocation().getLocationId());
 
         if (stock != null) {
