@@ -51,8 +51,8 @@ public class ChannelService implements IChannelRepository {
     }
 
     @Override
-    public ChannelDTO findChannelByChannelId(String channelId) {
-        ChannelDTO channel = this.repository.findChannelByChannelId(channelId);
+    public ChannelDTO findByChannelId(String channelId) {
+        ChannelDTO channel = this.repository.findByChannelId(channelId);
 
         if (channel == null) {
             throw ChannelException.NOT_FOUND;

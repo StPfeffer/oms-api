@@ -94,7 +94,7 @@ public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFul
     }
 
     private void populateAdditionalAttributes(JakartaFulfillment fulfillment, FulfillmentBO bo) {
-        JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
+        JakartaChannel channel = channelRepository.findEntityByChannelId(bo.getChannelId(), true);
         fulfillment.setChannel(channel);
 
         JakartaLocation location = locationRepository.findEntityByLocationId(bo.getLocationId(), true);

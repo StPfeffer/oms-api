@@ -32,7 +32,7 @@ public class JakartaChannelStockRepository extends SimpleJpaRepository<JakartaCh
 
     @Override
     public ChannelStockBO persist(ChannelStockBO bo) {
-        JakartaChannel channel = this.channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
+        JakartaChannel channel = this.channelRepository.findEntityByChannelId(bo.getChannelId(), true);
 
         JakartaChannelStock channelStock = this.findEntityByChannelId(bo.getChannelId());
 

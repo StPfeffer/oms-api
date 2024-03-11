@@ -110,7 +110,7 @@ public class JakartaOrderRepository extends SimpleJpaRepository<JakartaOrder, Lo
     }
 
     private void populateAdditionalAttributes(JakartaOrder order, OrderBO bo) {
-        JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
+        JakartaChannel channel = channelRepository.findEntityByChannelId(bo.getChannelId(), true);
         order.setChannel(channel);
     }
 
