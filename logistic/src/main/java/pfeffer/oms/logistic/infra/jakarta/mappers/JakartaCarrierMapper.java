@@ -16,7 +16,7 @@ public class JakartaCarrierMapper {
         return domain;
     }
 
-    public static JakartaCarrier toDomain(CarrierBO domain) {
+    public static JakartaCarrier toEntity(CarrierBO domain) {
         JakartaCarrier entity = new JakartaCarrier();
 
         entity.setCarrierId(domain.getCarrierId());
