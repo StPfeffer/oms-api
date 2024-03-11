@@ -37,7 +37,7 @@ public class JakartaLocationChannelRepository extends SimpleJpaRepository<Jakart
     @Override
     public LocationChannelBO persist(LocationChannelBO bo) {
         JakartaLocation location = locationRepository.findEntityByLocationId(bo.getLocationId(), true);
-        JakartaChannel channel = channelRepository.findJakartaChannelByChannelId(bo.getChannelId(), true);
+        JakartaChannel channel = channelRepository.findEntityByChannelId(bo.getChannelId(), true);
 
         JakartaLocationChannel entity = JakartaLocationChannelMapper.toEntity(bo);
         entity.setLocation(location);
@@ -51,8 +51,8 @@ public class JakartaLocationChannelRepository extends SimpleJpaRepository<Jakart
         return JakartaLocationChannelMapper.toDomain(entity);
     }
 
-    public void canCreate(JakartaLocationChannel entity) {
-        LocationChannelDTO locationChannel = this.findLocationChannelByLocationIdAndChannelId(entity.getLocation().getLocationId(), entity.getChannel().getChannelId());
+    private void canCreate(JakartaLocationChannel entity) {
+        LocationChannelDTO locationChannel = this.findByLocationIdAndChannelId(entity.getLocation().getLocationId(), entity.getChannel().getChannelId());
 
         if (locationChannel != null) {
             throw new ChannelException("The informed branch is already linked to the informed channel", 409);
@@ -60,7 +60,7 @@ public class JakartaLocationChannelRepository extends SimpleJpaRepository<Jakart
     }
 
     @Override
-    public LocationChannelDTO findLocationChannelByLocationIdAndChannelId(String locationId, String channelId) {
+    public LocationChannelDTO findByLocationIdAndChannelId(String locationId, String channelId) {
         TypedQuery<JakartaLocationChannel> query = em.createQuery("SELECT e FROM JakartaLocationChannel e WHERE e.channel.channelId = :channelId AND e.location.locationId = :locationId", JakartaLocationChannel.class)
                 .setParameter("channelId", channelId)
                 .setParameter("locationId", locationId);
