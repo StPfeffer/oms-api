@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
+import pfeffer.oms.logistic.infra.jakarta.model.JakartaCarrier;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -51,5 +52,9 @@ public class JakartaFulfillment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id", nullable = false)
     private JakartaLocation location;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "carrier_id", nullable = false)
+    private JakartaCarrier carrier;
 
 }
