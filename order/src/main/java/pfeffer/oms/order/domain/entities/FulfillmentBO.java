@@ -1,5 +1,7 @@
 package pfeffer.oms.order.domain.entities;
 
+import pfeffer.oms.logistic.domain.entities.CarrierBO;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,8 @@ public class FulfillmentBO {
     private Date updatedAt;
 
     private List<ItemBO> items;
+
+    private String carrierId;
 
     private BigDecimal price;
 
@@ -78,6 +82,14 @@ public class FulfillmentBO {
 
     public void setItems(List<ItemBO> items) {
         this.items = items;
+    }
+
+    public String getCarrierId() {
+        return carrierId;
+    }
+
+    public void setCarrierId(String carrierId) {
+        this.carrierId = carrierId;
     }
 
     public BigDecimal getPrice() {
