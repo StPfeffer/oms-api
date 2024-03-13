@@ -48,12 +48,30 @@ public class JakartaCarrierRepository extends SimpleJpaRepository<JakartaCarrier
 
     @Override
     public CarrierDTO findByCarrierId(String carrierId) {
+        JakartaCarrier carrier = this.findEntityByCarrierId(carrierId);
+
+        try {
+            return CarrierMapper.toDTO(JakartaCarrierMapper.toDomain(carrier));
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public JakartaCarrier findEntityByCarrierId(String carrierId) {
+        return this.findEntityByCarrierId(carrierId, false);
+    }
+
+    public JakartaCarrier findEntityByCarrierId(String carrierId, boolean exception) {
         TypedQuery<JakartaCarrier> query = em.createQuery("SELECT e FROM JakartaCarrier e WHERE e.carrierId = :carrierId", JakartaCarrier.class)
                 .setParameter("carrierId", carrierId);
 
         try {
-            return CarrierMapper.toDTO(JakartaCarrierMapper.toDomain(query.getSingleResult()));
+            return query.getSingleResult();
         } catch (NoResultException e) {
+            if (exception) {
+                throw CarrierException.NOT_FOUND;
+            }
+
             return null;
         }
     }
