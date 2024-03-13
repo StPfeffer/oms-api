@@ -10,6 +10,8 @@ import pfeffer.oms.inventory.infra.jakarta.model.JakartaChannel;
 import pfeffer.oms.inventory.infra.jakarta.model.JakartaLocation;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaChannelRepository;
 import pfeffer.oms.inventory.infra.jakarta.repository.JakartaLocationRepository;
+import pfeffer.oms.logistic.infra.jakarta.model.JakartaCarrier;
+import pfeffer.oms.logistic.infra.jakarta.repository.JakartaCarrierRepository;
 import pfeffer.oms.order.domain.dtos.FulfillmentDTO;
 import pfeffer.oms.order.domain.entities.FulfillmentBO;
 import pfeffer.oms.order.domain.exceptions.FulfillmentException;
@@ -33,13 +35,16 @@ public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFul
 
     private final JakartaLocationRepository locationRepository;
 
+    private final JakartaCarrierRepository carrierRepository;
+
     @Autowired
-    public JakartaFulfillmentRepository(EntityManager em, JakartaOrderRepository orderRepository, JakartaChannelRepository channelRepository, JakartaLocationRepository locationRepository) {
+    public JakartaFulfillmentRepository(EntityManager em, JakartaOrderRepository orderRepository, JakartaChannelRepository channelRepository, JakartaLocationRepository locationRepository, JakartaCarrierRepository carrierRepository) {
         super(JakartaFulfillment.class, em);
         this.em = em;
         this.orderRepository = orderRepository;
         this.channelRepository = channelRepository;
         this.locationRepository = locationRepository;
+        this.carrierRepository = carrierRepository;
     }
 
     @Override
@@ -96,6 +101,9 @@ public class JakartaFulfillmentRepository extends SimpleJpaRepository<JakartaFul
     private void populateAdditionalAttributes(JakartaFulfillment fulfillment, FulfillmentBO bo) {
         JakartaChannel channel = channelRepository.findEntityByChannelId(bo.getChannelId(), true);
         fulfillment.setChannel(channel);
+
+        JakartaCarrier carrier = carrierRepository.findEntityByCarrierId(bo.getCarrierId(), true);
+        fulfillment.setCarrier(carrier);
 
         JakartaLocation location = locationRepository.findEntityByLocationId(bo.getLocationId(), true);
         fulfillment.setLocation(location);
