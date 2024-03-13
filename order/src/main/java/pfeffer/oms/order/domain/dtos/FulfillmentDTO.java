@@ -1,5 +1,7 @@
 package pfeffer.oms.order.domain.dtos;
 
+import pfeffer.oms.logistic.domain.dtos.CarrierDTO;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,8 @@ public class FulfillmentDTO {
     private Date updatedAt;
 
     private List<ItemDTO> items;
+
+    private String carrierId;
 
     private BigDecimal price;
 
@@ -78,6 +82,14 @@ public class FulfillmentDTO {
 
     public void setItems(List<ItemDTO> items) {
         this.items = items;
+    }
+
+    public String getCarrierId() {
+        return carrierId;
+    }
+
+    public void setCarrierId(String carrierId) {
+        this.carrierId = carrierId;
     }
 
     public BigDecimal getPrice() {
