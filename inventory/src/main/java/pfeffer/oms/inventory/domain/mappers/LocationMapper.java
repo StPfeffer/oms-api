@@ -21,12 +21,12 @@ public class LocationMapper {
         dto.setDescription(bo.getDescription());
         dto.setAddress(AddressMapper.toDTO(bo.getAddress()));
 
-        if (bo.getTelephones() != null && bo.getTelephones().size() > 0) {
+        if (bo.getTelephones() != null && !bo.getTelephones().isEmpty()) {
             List<TelephoneDTO> telephones = bo.getTelephones().stream().map(TelephoneMapper::toDTO).toList();
             dto.setTelephones(telephones);
         }
 
-        if (bo.getDocuments() != null && bo.getDocuments().size() > 0) {
+        if (bo.getDocuments() != null && !bo.getDocuments().isEmpty()) {
             List<DocumentDTO> documents = bo.getDocuments().stream().map(DocumentMapper::toDTO).toList();
             dto.setDocuments(documents);
         }
@@ -56,12 +56,12 @@ public class LocationMapper {
         bo.setDescription(dto.getDescription());
         bo.setAddress(AddressMapper.toBO(dto.getAddress()));
 
-        if (dto.getTelephones() != null && dto.getTelephones().size() > 0) {
+        if (dto.getTelephones() != null && !dto.getTelephones().isEmpty()) {
             List<TelephoneBO> telephones = dto.getTelephones().stream().map(TelephoneMapper::toBO).toList();
             bo.setTelephones(telephones);
         }
 
-        if (dto.getDocuments() != null && dto.getDocuments().size() > 0) {
+        if (dto.getDocuments() != null && !dto.getDocuments().isEmpty()) {
             List<DocumentBO> documents = dto.getDocuments().stream().map(DocumentMapper::toBO).toList();
             bo.setDocuments(documents);
         }

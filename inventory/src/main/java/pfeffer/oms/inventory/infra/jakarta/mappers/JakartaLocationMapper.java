@@ -26,13 +26,13 @@ public class JakartaLocationMapper {
 
         entity.setAddress(jakartaAddress);
 
-        if (bo.getTelephones() != null && bo.getTelephones().size() > 0) {
+        if (bo.getTelephones() != null && !bo.getTelephones().isEmpty()) {
             List<JakartaTelephone> telephones = bo.getTelephones().stream().map(JakartaTelephoneMapper::toEntity).toList();
             telephones.forEach(telephone -> telephone.setLocation(entity));
             entity.setTelephones(telephones);
         }
 
-        if (bo.getDocuments() != null && bo.getDocuments().size() > 0) {
+        if (bo.getDocuments() != null && !bo.getDocuments().isEmpty()) {
             List<JakartaDocument> documents = bo.getDocuments().stream().map(JakartaDocumentMapper::toEntity).toList();
             documents.forEach(document -> document.setLocation(entity));
             entity.setDocuments(documents);
@@ -61,12 +61,12 @@ public class JakartaLocationMapper {
         bo.setDescription(entity.getDescription());
         bo.setAddress(JakartaAddressMapper.toDomain(entity.getAddress()));
 
-        if (entity.getTelephones() != null && entity.getTelephones().size() > 0) {
+        if (entity.getTelephones() != null && !entity.getTelephones().isEmpty()) {
             List<TelephoneBO> telephones = entity.getTelephones().stream().map(JakartaTelephoneMapper::toDomain).toList();
             bo.setTelephones(telephones);
         }
 
-        if (entity.getDocuments() != null && entity.getDocuments().size() > 0) {
+        if (entity.getDocuments() != null && !entity.getDocuments().isEmpty()) {
             List<DocumentBO> documents = entity.getDocuments().stream().map(JakartaDocumentMapper::toDomain).toList();
             bo.setDocuments(documents);
         }
